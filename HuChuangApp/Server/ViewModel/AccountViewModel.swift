@@ -38,7 +38,7 @@ class LoginViewModel: BaseViewModel {
             .filter{ [unowned self] in self.dealInputError(phone: $0) }
             ._doNext(forNotice: hud)
             .drive(onNext: { [unowned self] in self.sendCode(phone: $0) })
-            .disposed(by: disposeBag)        
+            .disposed(by: disposeBag)
     }
     
     private func sendCode(phone: String) {
@@ -47,7 +47,7 @@ class LoginViewModel: BaseViewModel {
         HCProvider.request(.validateCode(mobile: phone))
             .mapResponse()
             .subscribe(onSuccess: { [weak self] model in
-                if RequestCode(rawValue: model.code) == .success {
+                if RequestCode(rawValue: model.infoCode) == .success {
                     self?.hud.successHidden("验证码已发送")
                 }else {
                     self?.codeEnable.value = true
@@ -180,7 +180,7 @@ class HCBindPhoneViewModel: BaseViewModel {
         HCProvider.request(.validateCode(mobile: phone))
             .mapResponse()
             .subscribe(onSuccess: { [weak self] model in
-                if RequestCode(rawValue: model.code) == .success {
+                if RequestCode(rawValue: model.infoCode) == .success {
                     self?.hud.successHidden("验证码已发送")
                 }else {
                     self?.codeEnable.value = true

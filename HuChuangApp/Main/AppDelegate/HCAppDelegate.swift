@@ -39,18 +39,7 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
-        
-        if userDefault.loginInfoString.count == 0 {
-            HCProvider.request(.selectInfo)
-                .map(model: HCUserModel.self)
-                .subscribe(onSuccess: { user in
-                    HCHelper.saveLogin(user: user)
-                }) { error in
-                    PrintLog(error)
-                }
-                .disposed(by: disposeBag)
-        }
-        
+                
 //        if userDefault.lanuchStatue != vLaunch { AppLaunchView().show() }
         return true
     }

@@ -119,7 +119,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
             }
             PrintLog("h5拼接后地址：\(url)")
             
-            HomeViewModel.push(BaseWebViewController.self, ["url": url])
+//            HomeViewModel.push(BaseWebViewController.self, ["url": url])
         }else {
             hud.failureHidden("功能暂不开放")
         }
@@ -139,7 +139,7 @@ class MineViewModel: BaseViewModel, VMNavigation {
             break
         }
         if url.count > 0 {
-            HomeViewModel.push(BaseWebViewController.self, ["url": url])
+//            HomeViewModel.push(BaseWebViewController.self, ["url": url])
         }
     }
 }

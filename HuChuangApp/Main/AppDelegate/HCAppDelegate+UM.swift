@@ -6,8 +6,7 @@
 //  Copyright © 2019 sw. All rights reserved.
 //
 
-private let AppKey = "5d5811164ca357b2690003a2"
-private let AppSecret = "wnk8jo4tswwlyy5tkgsalypydl1hk0xh"
+private let AppKey = "5af55a55b27b0a7c2600002c"
 
 import Foundation
 
@@ -192,7 +191,7 @@ extension HCAppDelegate {
                     _ = HCProvider.request(.UMAdd(deviceToken: strongSelf.deviceToken))
                         .mapResponse()
                         .subscribe(onSuccess: { res in
-                            if RequestCode(rawValue: res.code) == RequestCode.success {
+                            if RequestCode(rawValue: res.infoCode) == RequestCode.success {
                                 PrintLog("友盟token上传成功")
                             }else {
                                 PrintLog(res.message)
@@ -215,7 +214,7 @@ extension HCAppDelegate {
                 _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
                     .mapResponse()
                     .subscribe(onSuccess: { res in
-                        if RequestCode(rawValue: res.code) == RequestCode.success {
+                        if RequestCode(rawValue: res.infoCode) == RequestCode.success {
                             PrintLog("友盟token上传成功")
                         }else {
                             PrintLog(res.message)

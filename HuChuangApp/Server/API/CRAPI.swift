@@ -119,13 +119,15 @@ enum HCsearchModule: String {
 //MARK:
 //MARK: 接口定义
 enum API{
+    /// 登录
+    case login(mobile: String, smsCode: String)
+
+    
     /// 向app服务器注册友盟token
     case UMAdd(deviceToken: String)
 
     /// 获取验证码
     case validateCode(mobile: String)
-    /// 登录
-    case login(mobile: String, smsCode: String)
     /// 绑定微信
     case bindAuthMember(userInfo: UMSocialUserInfoResponse, mobile: String, smsCode: String)
     /// 获取用户信息
@@ -200,12 +202,14 @@ extension API: TargetType{
     
     var path: String{
         switch self {
+        case .login(_):
+            return "api/doctor/login"
+
+            
         case .UMAdd(_):
             return "api/umeng/add"
         case .validateCode(_):
             return "api/login/validateCode"
-        case .login(_):
-            return "api/login/login"
         case .bindAuthMember(_):
             return "api/login/bindAuthMember"
         case .selectInfo:
@@ -291,14 +295,15 @@ extension API: TargetType{
                                       encoding: URLEncoding.default)
         default:
             if let _parameters = parameters {
-                guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
-                    return .requestPlain
-                }
-                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
+//                guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
+//                    return .requestPlain
+//                }
+//                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
+                return .requestParameters(parameters: _parameters, encoding: URLEncoding.default)
+            }else {
+                return .requestPlain
             }
-        }
-        
-        return .requestPlain
+        }        
     }
     
     var method: Moya.Method { return APIAssistance.mothed(API: self) }
@@ -308,24 +313,25 @@ extension API: TargetType{
     var validate: Bool { return false }
     
     var headers: [String : String]? {
-        var contentType: String = "application/json; charset=utf-8"
-        switch self {
-        case .uploadIcon(_):
-            contentType = "image/jpeg"
-        default:
-            break
-        }
-        
-        let userAgent: String = "\(Bundle.main.bundleIdentifier),\(Bundle.main.version),\(UIDevice.iosVersion),\(UIDevice.modelName)"
-        
-        
-        let customHeaders: [String: String] = ["token": userDefault.token,
-                                               "User-Agent": userAgent,
-                                               "unitId": userDefault.unitId,
-                                               "Content-Type": contentType,
-                                               "Accept": "application/json"]
-        PrintLog("request headers -- \(customHeaders)")
-        return customHeaders
+//        var contentType: String = "application/json; charset=utf-8"
+//        switch self {
+//        case .uploadIcon(_):
+//            contentType = "image/jpeg"
+//        default:
+//            break
+//        }
+//
+//        let userAgent: String = "\(Bundle.main.bundleIdentifier),\(Bundle.main.version),\(UIDevice.iosVersion),\(UIDevice.modelName)"
+//
+//
+//        let customHeaders: [String: String] = ["token": userDefault.token,
+//                                               "User-Agent": userAgent,
+//                                               "unitId": userDefault.unitId,
+//                                               "Content-Type": contentType,
+//                                               "Accept": "application/json"]
+//        PrintLog("request headers -- \(customHeaders)")
+//        return customHeaders
+        return nil
     }
     
 }
@@ -336,7 +342,15 @@ extension API {
     
     private var parameters: [String: Any]? {
         var params = [String: Any]()
+        params["version"] = Bundle.main.version
+        params["deviceType"] = "iOS"
+
         switch self {
+        case .login(let mobile, let smsCode):
+            params["phone"] = mobile
+            params["code"] = smsCode
+
+            
         case .UMAdd(let deviceToken):
             params["deviceToken"] = deviceToken
             params["appPackage"] = Bundle.main.bundleIdentifier
@@ -344,9 +358,6 @@ extension API {
 
         case .validateCode(let mobile):
             params["mobile"] = mobile
-        case .login(let mobile, let smsCode):
-            params["mobile"] = mobile
-            params["smsCode"] = smsCode
         case .bindAuthMember(let userInfo, let mobile, let smsCode):
             params["openId"] = userInfo.openid
             params["accessToken"] = userInfo.accessToken
