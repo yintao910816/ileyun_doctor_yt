@@ -123,6 +123,8 @@ enum API{
     case login(mobile: String, smsCode: String)
     /// 获取用户信息
     case selectInfo
+    /// 首页banner
+    case selectBanner
 
     
     /// 向app服务器注册友盟token
@@ -136,8 +138,6 @@ enum API{
     case updateInfo(param: [String: String])
     /// 上传头像
     case uploadIcon(image: UIImage)
-    /// 首页banner
-    case selectBanner
     /// 首页功能列表
     case functionList
     /// 好消息
@@ -206,6 +206,8 @@ extension API: TargetType{
             return "api/doctor/login"
         case .selectInfo:
             return "api/doctor/userInfo"
+        case .selectBanner:
+            return "api/doctor/index/bannerList"
 
             
         case .UMAdd(_):
@@ -218,8 +220,6 @@ extension API: TargetType{
             return "api/member/updateInfo"
         case .uploadIcon(_):
             return "api/upload/imgSingle"
-        case .selectBanner:
-            return "api/index/selectBanner"
         case .functionList:
             return "api/index/select"
         case .noticeList(_):
@@ -351,7 +351,9 @@ extension API {
             params["code"] = smsCode
         case .selectInfo:
             params["token"] = userDefault.token
-            
+        case .selectBanner:
+            params["token"] = userDefault.token
+
         case .UMAdd(let deviceToken):
             params["deviceToken"] = deviceToken
             params["appPackage"] = Bundle.main.bundleIdentifier
@@ -368,8 +370,6 @@ extension API {
             params["smsCode"] = smsCode
         case .updateInfo(let param):
             params = param
-        case .selectBanner:
-            params["code"] = "activity"
 
         case .noticeList(let type, let pageNum, let pageSize):
             params["type"] = type
