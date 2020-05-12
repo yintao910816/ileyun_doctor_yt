@@ -43,7 +43,7 @@ class MineHeaderView: UIView {
         
     private func rxBind() {
         userModel.subscribe(onNext: { [weak self] user in
-            self?.userIconOutlet.setImage(user.imgUrl)
+            self?.userIconOutlet.setImage(user.headImg)
             self?.nickNameOutlet.text = user.realName
             self?.idOutlet.text = "ID: \(user.id)"
         })

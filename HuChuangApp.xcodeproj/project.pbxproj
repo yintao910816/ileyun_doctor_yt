@@ -887,7 +887,7 @@
 		C0330B19F13F10F1584530CD /* Pods-HuChuangApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuChuangApp.debug.xcconfig"; path = "Target Support Files/Pods-HuChuangApp/Pods-HuChuangApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C4193D8322A7649F007A9E07 /* TYClickedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYClickedButton.swift; sourceTree = "<group>"; };
 		C41A12C022BCF49100214216 /* String+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Operation.swift"; sourceTree = "<group>"; };
-		C42132EB22054462006C10C4 /* 南昌生殖医生.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "南昌生殖医生.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C42132EB22054462006C10C4 /* 爱乐孕医生.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "爱乐孕医生.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C42132F522054463006C10C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C42132FA22054463006C10C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C421330A22056B59006C10C4 /* HCAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAppDelegate.swift; sourceTree = "<group>"; };
@@ -1892,7 +1892,7 @@
 		C42132EC22054462006C10C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C42132EB22054462006C10C4 /* 南昌生殖医生.app */,
+				C42132EB22054462006C10C4 /* 爱乐孕医生.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2339,7 +2339,7 @@
 			);
 			name = HuChuangApp;
 			productName = HuChuangApp;
-			productReference = C42132EB22054462006C10C4 /* 南昌生殖医生.app */;
+			productReference = C42132EB22054462006C10C4 /* 爱乐孕医生.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2944,7 +2944,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GMPPSEQW73;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2952,9 +2952,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.001;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinopharm.gydoctor;
-				PRODUCT_NAME = "南昌生殖医生";
+				MARKETING_VERSION = 2.1.001;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jclick.doctor;
+				PRODUCT_NAME = "爱乐孕医生";
 				PROVISIONING_PROFILE_SPECIFIER = aileyun_user_old_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2971,7 +2971,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GMPPSEQW73;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2979,9 +2979,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.001;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinopharm.gydoctor;
-				PRODUCT_NAME = "南昌生殖医生";
+				MARKETING_VERSION = 2.1.001;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jclick.doctor;
+				PRODUCT_NAME = "爱乐孕医生";
 				PROVISIONING_PROFILE_SPECIFIER = aleyun_user_old_hoc_pro;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;

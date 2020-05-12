@@ -45,14 +45,19 @@ import Moya
 
 struct APIAssistance {
         
-    public static let base   = "http://106.14.15.151:8081/doctor-api/"
-    public static let fileBase = "http://106.14.15.151:8086/common-file/api/fileUpload/singleImg"
+    public static let base    = "https://www.ivfcn.com/app/doctor/"
+    public static let newBase = "http://admin.ivfcn.com:8082/doctor-api/api/doctor/"
+    public static let baseImage = "https://www.ivfcn.com"
+    
+    public static let fileBase = "https://www.ivfcn.com/doctor/attach/upload.do"
     public static let baseH5Host = ""
 
     static public func baseURL(API: API) ->URL{
         switch API {
         case .uploadIcon(_):
             return URL(string: fileBase)!
+        case .selectBanner:
+            return URL(string: newBase)!
         default:
             return URL(string: base)!
         }

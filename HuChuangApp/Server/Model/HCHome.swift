@@ -29,5 +29,11 @@ class HCBannerModel: HJModel {
 
 extension HCBannerModel: CarouselSource {
 
-    var url: String? { return path }
+    var url: String? {
+        if path.contains("http"){
+            return path
+        }else{
+            return "\(APIAssistance.baseImage)\(path)"
+        }
+    }
 }

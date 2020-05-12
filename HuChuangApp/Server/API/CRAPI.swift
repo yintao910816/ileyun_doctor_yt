@@ -203,11 +203,11 @@ extension API: TargetType{
     var path: String{
         switch self {
         case .login(_):
-            return "api/doctor/login"
+            return "valify.do"
         case .selectInfo:
-            return "api/doctor/userInfo"
+            return "userInfo.do"
         case .selectBanner:
-            return "api/doctor/index/bannerList"
+            return "index/bannerList"
 
             
         case .UMAdd(_):
@@ -342,113 +342,23 @@ extension API {
     
     private var parameters: [String: Any]? {
         var params = [String: Any]()
-        params["version"] = Bundle.main.version
+        params["token"] = userDefault.token
         params["deviceType"] = "iOS"
+        params["version"] = Bundle.main.version
+        params["packageName"] = Bundle.main.bundleIdentifier
+        
+        let sysVersion = UIDevice.current.systemVersion
+        let deviceModel = UIDevice.modelName
+        let info = sysVersion + "," + deviceModel + ",apple," + Bundle.main.version
+        params["deviceInfo"] = info
 
         switch self {
         case .login(let mobile, let smsCode):
             params["phone"] = mobile
             params["code"] = smsCode
-        case .selectInfo:
-            params["token"] = userDefault.token
-        case .selectBanner:
-            params["token"] = userDefault.token
 
-        case .UMAdd(let deviceToken):
-            params["deviceToken"] = deviceToken
-            params["appPackage"] = Bundle.main.bundleIdentifier
-            params["appType"] = "ios"
-
-        case .validateCode(let mobile):
-            params["mobile"] = mobile
-        case .bindAuthMember(let userInfo, let mobile, let smsCode):
-            params["openId"] = userInfo.openid
-            params["accessToken"] = userInfo.accessToken
-            params["appType"] = "IOS"
-            params["oauthType"] = "weixin"
-            params["mobile"] = mobile
-            params["smsCode"] = smsCode
-        case .updateInfo(let param):
-            params = param
-
-        case .noticeList(let type, let pageNum, let pageSize):
-            params["type"] = type
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-        case .article(let id):
-            params["id"] = id
-        case .unitSetting(let type):
-            params["settingCode"] = type.rawValue
-        
-        case .increReading(let id):
-            params["id"] = id
-
-        case .consultList(let pageNum, let pageSize):
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-
-        case .allChannelArticle(let articleType, let pageNum, let pageSize):
-            params["unitId"] = userDefault.unitId
-            params["cmsCode"] = articleType.rawValue
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-        case .recommendDoctor(let areaCode, let lat, let lng):
-            params["areaCode"] = areaCode
-            params["lat"] = lat
-            params["lng"] = lng
-        case .column(let cmsType):
-            params["cmsCode"] = cmsType.rawValue
-        case .articlePage(let id, let pageNum, let pageSize):
-            params["id"] = id
-            params["unitId"] = userDefault.unitId
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-        case .consultSelectListPage(let pageNum, let pageSize, let searchName, let areaCode, let opType, let sceen):
-            params["unitId"] = userDefault.unitId
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-            params["searchName"] = searchName
-            params["areaCode"] = areaCode
-            params["opType"] = opType
-            params["sceen"] = sceen
-        case .getUserInfo(let userId):
-            params["userId"] = userId
-        case .getAuthMember(let openId):
-            params["openId"] = openId
-            params["appType"] = "IOS"
-            params["oauthType"] = "weixin"
-        case .search(let pageNum, let pageSize, let searchModule, let searchName):
-            if searchName.count > 0 {
-                switch searchModule {
-                case .all:
-                    params["searchName"] = searchName
-                default:
-                    params["searchName"] = searchName
-                    params["searchModule"] = searchModule.rawValue
-                }
-            }else {
-                params["searchModule"] = searchModule.rawValue
-//                params["searchName"] = ""
-            }
-            
-            params["pageNum"] = pageNum
-            params["pageSize"] = pageSize
-        case .storeAndStatus(let articleId):
-            params["articleId"] = articleId
-        case .articelStore(let articleId, let status):
-            params["articleId"] = articleId
-            params["status"] = status
-        case .mergePro(let opType, let date, let data):
-            params["opType"] = opType.rawValue
-            params["date"] = date
-            params["data"] = data
-        case .mergeWeekInfo(let id, let startDate, let keepDays, let next):
-            params["id"] = id
-            params["startDate"] = startDate
-            params["keepDays"] = keepDays
-            params["next"] = next
         default:
-            return nil
+            break
         }
         return params
     }

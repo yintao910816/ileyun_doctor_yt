@@ -6,7 +6,7 @@
 //  Copyright © 2019 sw. All rights reserved.
 //
 
-private let AppKey = "5af55a55b27b0a7c2600002c"
+private let AppKey = "5939f6e4aed1797af30014b5"
 
 import Foundation
 
