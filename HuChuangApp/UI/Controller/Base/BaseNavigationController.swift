@@ -43,8 +43,8 @@ class BaseNavigationController: UINavigationController {
         
         self.navigationBar.barTintColor   = .white
         navigationBar.isTranslucent       = false
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : RGB(51, 51, 51),
-                                             NSAttributedString.Key.font : UIFont.font(fontSize: 18, fontName: .PingFRegular)]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black,
+                                             NSAttributedString.Key.font : UIFont.font(fontSize: 16, fontName: .PingFMedium)]
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

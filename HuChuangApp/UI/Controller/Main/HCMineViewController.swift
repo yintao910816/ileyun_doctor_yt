@@ -48,7 +48,6 @@ class HCMineViewController: BaseViewController {
         let datasource = RxTableViewSectionedReloadDataSource<SectionModel<Int, HCListCellItem>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
             if indexPath.section == 3 {
                 let cell = (tb.dequeueReusableCell(withIdentifier: HCListButtonCell_identifier) as! HCListButtonCell)
-                
                 cell.model = model
                 return cell
             }

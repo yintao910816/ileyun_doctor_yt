@@ -23,7 +23,10 @@ class HCMineViewModel: BaseViewModel, VMNavigation {
              
 
         cellDidSelectedSubject
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: {
+                if $0.title == "退出登录" {
+                    HCHelper.presentLogin()
+                }
 //                if $0.h5Type == .share {
 //                    HCAccountManager.presentShare(thumbURL: UIImage(named: "app_icon")!,
 //                                                  title: "爱乐孕",

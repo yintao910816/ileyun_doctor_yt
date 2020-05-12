@@ -45,7 +45,7 @@ class MineHeaderView: UIView {
         userModel.subscribe(onNext: { [weak self] user in
             self?.userIconOutlet.setImage(user.imgUrl)
             self?.nickNameOutlet.text = user.realName
-            self?.idOutlet.text = user.id
+            self?.idOutlet.text = "ID: \(user.id)"
         })
             .disposed(by: disposeBag)
     }
