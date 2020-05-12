@@ -271,6 +271,8 @@
 		B8BE350F2214797200EF16F1 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */; };
 		B8BE351D221484C600EF16F1 /* UINavigationController+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */; };
 		B8BE603323BB4C4D00EC0027 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE603223BB4C4D00EC0027 /* Dictionary+Extension.swift */; };
+		B8D700A2246B10680024DE3E /* HCHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */; };
+		B8D700A4246B13A30024DE3E /* HCHomeBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700A3246B13A30024DE3E /* HCHomeBannerCell.swift */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F89239A9FCE006EB478 /* HCSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F88239A9FCE006EB478 /* HCSettingViewController.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
@@ -327,7 +329,6 @@
 		C421338622059B8C006C10C4 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421337F22059B8B006C10C4 /* DB.swift */; };
 		C421338722059B8C006C10C4 /* DBCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421338022059B8B006C10C4 /* DBCtrl.swift */; };
 		C421338822059B8C006C10C4 /* DB+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421338122059B8B006C10C4 /* DB+Extension.swift */; };
-		C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421338922059D7A006C10C4 /* HomeViewModel.swift */; };
 		C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421338F2205B1E9006C10C4 /* KeyboardManager.swift */; };
 		C42133942205B1E9006C10C4 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133912205B1E9006C10C4 /* CarouselView.swift */; };
 		C42133952205B1E9006C10C4 /* CarouselDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133922205B1E9006C10C4 /* CarouselDatasource.swift */; };
@@ -877,6 +878,8 @@
 		B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		B8BE351C221484C600EF16F1 /* UINavigationController+BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarButtonItem.swift"; sourceTree = "<group>"; };
 		B8BE603223BB4C4D00EC0027 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCHomeViewModel.swift; sourceTree = "<group>"; };
+		B8D700A3246B13A30024DE3E /* HCHomeBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHomeBannerCell.swift; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F88239A9FCE006EB478 /* HCSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingViewController.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
@@ -936,7 +939,6 @@
 		C421337F22059B8B006C10C4 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		C421338022059B8B006C10C4 /* DBCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBCtrl.swift; sourceTree = "<group>"; };
 		C421338122059B8B006C10C4 /* DB+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DB+Extension.swift"; sourceTree = "<group>"; };
-		C421338922059D7A006C10C4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C421338F2205B1E9006C10C4 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		C42133912205B1E9006C10C4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		C42133922205B1E9006C10C4 /* CarouselDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselDatasource.swift; sourceTree = "<group>"; };
@@ -2102,10 +2104,10 @@
 			isa = PBXGroup;
 			children = (
 				C42133542205883D006C10C4 /* Base */,
+				B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */,
 				B85E4D0D246B02AE00043493 /* HCMineViewModel.swift */,
 				B85E4D0B246AF8BD00043493 /* HCSettingViewModel.swift */,
 				C42133672205902A006C10C4 /* AccountViewModel.swift */,
-				C421338922059D7A006C10C4 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2271,6 +2273,7 @@
 		C497E93623444E4600328B47 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B8D700A3246B13A30024DE3E /* HCHomeBannerCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2759,6 +2762,7 @@
 				C421335D220588B7006C10C4 /* BaseModel.swift in Sources */,
 				B816EB38221DABF400F024D5 /* ZXAddressBookDoCoMoResultParser.m in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
+				B8D700A4246B13A30024DE3E /* HCHomeBannerCell.swift in Sources */,
 				B816EA9E221DABF400F024D5 /* ZXMultiDetector.m in Sources */,
 				B816EAB6221DABF400F024D5 /* ZXHybridBinarizer.m in Sources */,
 				B816EB44221DABF400F024D5 /* ZXResultParser.m in Sources */,
@@ -2775,7 +2779,6 @@
 				B816EAC3221DABF400F024D5 /* ZXReedSolomonDecoder.m in Sources */,
 				B816EB23221DABF400F024D5 /* ZXUPCAWriter.m in Sources */,
 				B816EB32221DABF400F024D5 /* ZXURIResultParser.m in Sources */,
-				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
 				B816EAD5221DABF400F024D5 /* ZXPDF417BoundingBox.m in Sources */,
 				B85E4D0E246B02AE00043493 /* HCMineViewModel.swift in Sources */,
 				B816EA7D221DABF400F024D5 /* ZXBinarizer.m in Sources */,
@@ -2784,6 +2787,7 @@
 				C43F09C3221448B000910437 /* HCNotifications.swift in Sources */,
 				B816EB0D221DABF400F024D5 /* ZXAI01AndOtherAIs.m in Sources */,
 				B816EAFA221DABF400F024D5 /* ZXEANManufacturerOrgSupport.m in Sources */,
+				B8D700A2246B10680024DE3E /* HCHomeViewModel.swift in Sources */,
 				B816EAA1221DABF400F024D5 /* ZXQRCodeDataMask.m in Sources */,
 				B816EA8F221DABF400F024D5 /* ZXAztecCode.m in Sources */,
 				B8508EA823421D7B008C24BA /* HCListDetailCell.swift in Sources */,
