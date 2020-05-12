@@ -147,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="1703" y="834"/>
         </scene>
-        <!--Item 2-->
+        <!--我的-->
         <scene sceneID="Gn2-kR-cQ7">
             <objects>
                 <viewController id="8UU-ND-G1F" customClass="HCMineViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
@@ -173,7 +173,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="8Lz-KP-Gyw"/>
-                    <navigationItem key="navigationItem" id="gk1-SN-2jY"/>
+                    <navigationItem key="navigationItem" title="我的" id="gk1-SN-2jY"/>
                     <connections>
                         <outlet property="tableView" destination="Whz-Wr-R97" id="yPN-fY-aqj"/>
                         <segue destination="JNK-Rr-UPR" kind="show" identifier="settingSegue" id="YG7-pQ-2F2"/>

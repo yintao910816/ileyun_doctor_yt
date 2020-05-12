@@ -244,7 +244,6 @@
 		B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AF81221C6C23000428C1 /* String+Extends.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B8454ED323A3EF5200E88BAD /* TYDateCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */; };
-		B8508E9A2341BFB3008C24BA /* HCMineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508E992341BFB3008C24BA /* HCMineCell.swift */; };
 		B8508EA42342149B008C24BA /* HCBaseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EA32342149B008C24BA /* HCBaseListCell.swift */; };
 		B8508EA623421700008C24BA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EA523421700008C24BA /* DataModel.swift */; };
 		B8508EA823421D7B008C24BA /* HCListDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EA723421D7B008C24BA /* HCListDetailCell.swift */; };
@@ -253,6 +252,7 @@
 		B8508EAE23422052008C24BA /* HCListButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EAD23422052008C24BA /* HCListButtonCell.swift */; };
 		B8508EB0234250CF008C24BA /* HCListDetailNewTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EAF234250CF008C24BA /* HCListDetailNewTypeCell.swift */; };
 		B85E4D0C246AF8BD00043493 /* HCSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85E4D0B246AF8BD00043493 /* HCSettingViewModel.swift */; };
+		B85E4D0E246B02AE00043493 /* HCMineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85E4D0D246B02AE00043493 /* HCMineViewModel.swift */; };
 		B86993D32337395800086A77 /* TYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993D22337395800086A77 /* TYButton.swift */; };
 		B86993D623373A6500086A77 /* TYSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993D523373A6500086A77 /* TYSearchBar.swift */; };
 		B86993E12337547700086A77 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993E02337547700086A77 /* BaseLayout.swift */; };
@@ -262,14 +262,10 @@
 		B870E54E23902D0D0085AFA3 /* TYListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870E54D23902D0D0085AFA3 /* TYListMenuView.swift */; };
 		B870E55023902E110085AFA3 /* TYListMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870E54F23902E110085AFA3 /* TYListMenuCell.swift */; };
 		B870E5542391981C0085AFA3 /* HCCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870E5532391981C0085AFA3 /* HCCustomNavBar.swift */; };
-		B870E55A2391A0150085AFA3 /* HCEditAvatarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870E5592391A0150085AFA3 /* HCEditAvatarHeaderView.swift */; };
-		B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879A05F221AF0B200E573C9 /* MineFooterView.swift */; };
-		B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B879A061221AF0BB00E573C9 /* MineFooterView.xib */; };
 		B89C397123A141B200CAB651 /* TYMarkString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C397023A141B200CAB651 /* TYMarkString.swift */; };
 		B8BE1AE423A698C300DF472A /* HCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE323A698C300DF472A /* HCAccountManager.swift */; };
 		B8BE1AE923A7E36B00DF472A /* HCBaseDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */; };
 		B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */; };
-		B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE34F32214645900EF16F1 /* MineViewModel.swift */; };
 		B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350A221478A900EF16F1 /* VCServer.swift */; };
 		B8BE350D2214794900EF16F1 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */; };
 		B8BE350F2214797200EF16F1 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */; };
@@ -854,7 +850,6 @@
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYDateCalculate.swift; sourceTree = "<group>"; };
-		B8508E992341BFB3008C24BA /* HCMineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCMineCell.swift; sourceTree = "<group>"; };
 		B8508EA32342149B008C24BA /* HCBaseListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseListCell.swift; sourceTree = "<group>"; };
 		B8508EA523421700008C24BA /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		B8508EA723421D7B008C24BA /* HCListDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCListDetailCell.swift; sourceTree = "<group>"; };
@@ -863,6 +858,7 @@
 		B8508EAD23422052008C24BA /* HCListButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCListButtonCell.swift; sourceTree = "<group>"; };
 		B8508EAF234250CF008C24BA /* HCListDetailNewTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCListDetailNewTypeCell.swift; sourceTree = "<group>"; };
 		B85E4D0B246AF8BD00043493 /* HCSettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCSettingViewModel.swift; sourceTree = "<group>"; };
+		B85E4D0D246B02AE00043493 /* HCMineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCMineViewModel.swift; sourceTree = "<group>"; };
 		B86993D22337395800086A77 /* TYButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYButton.swift; sourceTree = "<group>"; };
 		B86993D523373A6500086A77 /* TYSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYSearchBar.swift; sourceTree = "<group>"; };
 		B86993E02337547700086A77 /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
@@ -872,14 +868,10 @@
 		B870E54D23902D0D0085AFA3 /* TYListMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYListMenuView.swift; sourceTree = "<group>"; };
 		B870E54F23902E110085AFA3 /* TYListMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYListMenuCell.swift; sourceTree = "<group>"; };
 		B870E5532391981C0085AFA3 /* HCCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCustomNavBar.swift; sourceTree = "<group>"; };
-		B870E5592391A0150085AFA3 /* HCEditAvatarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCEditAvatarHeaderView.swift; sourceTree = "<group>"; };
-		B879A05F221AF0B200E573C9 /* MineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineFooterView.swift; sourceTree = "<group>"; };
-		B879A061221AF0BB00E573C9 /* MineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineFooterView.xib; sourceTree = "<group>"; };
 		B89C397023A141B200CAB651 /* TYMarkString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYMarkString.swift; sourceTree = "<group>"; };
 		B8BE1AE323A698C300DF472A /* HCAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountManager.swift; sourceTree = "<group>"; };
 		B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBaseDoctorCell.swift; sourceTree = "<group>"; };
 		B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
-		B8BE34F32214645900EF16F1 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		B8BE350A221478A900EF16F1 /* VCServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCServer.swift; sourceTree = "<group>"; };
 		B8BE350C2214794900EF16F1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		B8BE350E2214797200EF16F1 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
@@ -1860,9 +1852,6 @@
 			children = (
 				B81C2F762215B60E00A887AF /* MineHeaderView.swift */,
 				B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */,
-				B879A05F221AF0B200E573C9 /* MineFooterView.swift */,
-				B879A061221AF0BB00E573C9 /* MineFooterView.xib */,
-				B870E5592391A0150085AFA3 /* HCEditAvatarHeaderView.swift */,
 				B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */,
 			);
 			path = Mine;
@@ -2113,10 +2102,10 @@
 			isa = PBXGroup;
 			children = (
 				C42133542205883D006C10C4 /* Base */,
+				B85E4D0D246B02AE00043493 /* HCMineViewModel.swift */,
 				B85E4D0B246AF8BD00043493 /* HCSettingViewModel.swift */,
 				C42133672205902A006C10C4 /* AccountViewModel.swift */,
 				C421338922059D7A006C10C4 /* HomeViewModel.swift */,
-				B8BE34F32214645900EF16F1 /* MineViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2275,7 +2264,6 @@
 				B8BE1AE723A7E36B00DF472A /* Base */,
 				C497E93623444E4600328B47 /* Home */,
 				B8508EA223421486008C24BA /* HCCellItem */,
-				B8508E992341BFB3008C24BA /* HCMineCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2401,7 +2389,6 @@
 				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
-				B879A062221AF0BB00E573C9 /* MineFooterView.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2515,7 +2502,6 @@
 				B816EA93221DABF400F024D5 /* ZXAztecDecoder.m in Sources */,
 				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
 				C47E067923588FCD003A3320 /* TYCalendarView.swift in Sources */,
-				B870E55A2391A0150085AFA3 /* HCEditAvatarHeaderView.swift in Sources */,
 				B816EB06221DABF400F024D5 /* ZXAnyAIDecoder.m in Sources */,
 				B816EAC4221DABF400F024D5 /* ZXReedSolomonEncoder.m in Sources */,
 				B816EA9F221DABF400F024D5 /* ZXQRCodeMultiReader.m in Sources */,
@@ -2582,7 +2568,6 @@
 				B816EB1F221DABF400F024D5 /* ZXAbstractRSSReader.m in Sources */,
 				B816EAD2221DABF400F024D5 /* ZXModulusGF.m in Sources */,
 				B86993E12337547700086A77 /* BaseLayout.swift in Sources */,
-				B8BE34F42214645900EF16F1 /* MineViewModel.swift in Sources */,
 				B816EAC6221DABF400F024D5 /* ZXIntArray.m in Sources */,
 				B816EAE3221DABF400F024D5 /* ZXDataMatrixEdifactEncoder.m in Sources */,
 				B816EB4A221DABF400F024D5 /* ZXTelParsedResult.m in Sources */,
@@ -2722,7 +2707,6 @@
 				B8454ED323A3EF5200E88BAD /* TYDateCalculate.swift in Sources */,
 				B816EAAF221DABF400F024D5 /* ZXQRCodeDetector.m in Sources */,
 				B816EB13221DABF400F024D5 /* ZXAI01decoder.m in Sources */,
-				B879A060221AF0B200E573C9 /* MineFooterView.swift in Sources */,
 				C4F139B9235419EF00D777F6 /* TYIcon.swift in Sources */,
 				C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */,
 				B816EAC1221DABF400F024D5 /* ZXBitSource.m in Sources */,
@@ -2793,6 +2777,7 @@
 				B816EB32221DABF400F024D5 /* ZXURIResultParser.m in Sources */,
 				C421338A22059D7A006C10C4 /* HomeViewModel.swift in Sources */,
 				B816EAD5221DABF400F024D5 /* ZXPDF417BoundingBox.m in Sources */,
+				B85E4D0E246B02AE00043493 /* HCMineViewModel.swift in Sources */,
 				B816EA7D221DABF400F024D5 /* ZXBinarizer.m in Sources */,
 				B826AF82221C6C24000428C1 /* String+Extends.swift in Sources */,
 				B816EA7C221DABF400F024D5 /* ZXByteMatrix.m in Sources */,
@@ -2802,7 +2787,6 @@
 				B816EAA1221DABF400F024D5 /* ZXQRCodeDataMask.m in Sources */,
 				B816EA8F221DABF400F024D5 /* ZXAztecCode.m in Sources */,
 				B8508EA823421D7B008C24BA /* HCListDetailCell.swift in Sources */,
-				B8508E9A2341BFB3008C24BA /* HCMineCell.swift in Sources */,
 				B816EB2C221DABF400F024D5 /* ZXUPCEReader.m in Sources */,
 				C421332D22056F24006C10C4 /* HUDUtil.swift in Sources */,
 				B8FC3F89239A9FCE006EB478 /* HCSettingViewController.swift in Sources */,

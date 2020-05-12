@@ -25,10 +25,10 @@ class HCSettingViewModel: BaseViewModel {
     private func prepareData() {
         var datas = [HCListCellItem]()
         
-        datas.append(HCListCellItem.init(title: "账号与安全", shwoArrow: true, cellIdentifier: HCBaseListCell_identifier))
+        datas.append(HCListCellItem.init(title: "账号与安全", showArrow: true, cellIdentifier: HCBaseListCell_identifier))
 //        datas.append(HCListCellItem.init(title: "接受消息通知", shwoArrow: false, cellIdentifier: HCListSwitchCell_identifier))
-        datas.append(HCListCellItem.init(title: "清除缓存", shwoArrow: true, cellIdentifier: HCBaseListCell_identifier))
-        datas.append(HCListCellItem.init(title: "当前版本", detailTitle: Bundle.main.version, shwoArrow: false, cellIdentifier: HCBaseListCell_identifier))
+        datas.append(HCListCellItem.init(title: "清除缓存", showArrow: true, cellIdentifier: HCBaseListCell_identifier))
+        datas.append(HCListCellItem.init(title: "当前版本", detailTitle: Bundle.main.version, showArrow: false, cellIdentifier: HCBaseListCell_identifier))
         
         listDataObser.value = [SectionModel.init(model: 0, items: datas)]
     }

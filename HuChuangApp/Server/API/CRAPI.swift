@@ -121,6 +121,8 @@ enum HCsearchModule: String {
 enum API{
     /// 登录
     case login(mobile: String, smsCode: String)
+    /// 获取用户信息
+    case selectInfo
 
     
     /// 向app服务器注册友盟token
@@ -130,8 +132,6 @@ enum API{
     case validateCode(mobile: String)
     /// 绑定微信
     case bindAuthMember(userInfo: UMSocialUserInfoResponse, mobile: String, smsCode: String)
-    /// 获取用户信息
-    case selectInfo
     /// 修改用户信息
     case updateInfo(param: [String: String])
     /// 上传头像
@@ -204,6 +204,8 @@ extension API: TargetType{
         switch self {
         case .login(_):
             return "api/doctor/login"
+        case .selectInfo:
+            return "api/doctor/userInfo"
 
             
         case .UMAdd(_):
@@ -212,8 +214,6 @@ extension API: TargetType{
             return "api/login/validateCode"
         case .bindAuthMember(_):
             return "api/login/bindAuthMember"
-        case .selectInfo:
-            return "api/member/selectInfo"
         case .updateInfo(_):
             return "api/member/updateInfo"
         case .uploadIcon(_):
@@ -303,7 +303,7 @@ extension API: TargetType{
             }else {
                 return .requestPlain
             }
-        }        
+        }
     }
     
     var method: Moya.Method { return APIAssistance.mothed(API: self) }
@@ -349,7 +349,8 @@ extension API {
         case .login(let mobile, let smsCode):
             params["phone"] = mobile
             params["code"] = smsCode
-
+        case .selectInfo:
+            params["token"] = userDefault.token
             
         case .UMAdd(let deviceToken):
             params["deviceToken"] = deviceToken

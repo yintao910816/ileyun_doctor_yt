@@ -29,7 +29,7 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
         
         DbManager.dbSetup()
         
-        setupUM(launchOptions: launchOptions)
+//        setupUM(launchOptions: launchOptions)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.checkVersion()
         }
@@ -42,14 +42,6 @@ class HCAppDelegate: UIResponder, UIApplicationDelegate {
                 
 //        if userDefault.lanuchStatue != vLaunch { AppLaunchView().show() }
         return true
-    }
-
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        if allowRotation {
-            return .landscapeLeft
-        }else {
-            return .portrait
-        }
     }
 }
 

@@ -37,7 +37,7 @@ class HCListDetailInputCell: HCBaseListCell {
             
             inputTf.placeholder = model.placeholder
             
-            if model.shwoArrow && arrowImgV.isHidden {
+            if model.showArrow && arrowImgV.isHidden {
                 inputTf.snp.updateConstraints {
                     $0.right.equalTo(contentView).offset(-7 - 8 - 15)
                     $0.size.equalTo(model.inputSize)

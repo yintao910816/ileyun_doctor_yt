@@ -76,7 +76,7 @@ extension HCHelper {
     class func saveLogin(user: HCUserModel) {
 //        NoticesCenter.alert(message: "更新unitId为\(user.unitId)")
         userDefault.uid = user.id
-//        userDefault.token = user.token
+        userDefault.token = user.token
 //        userDefault.unitId = user.unitId
 //        userDefault.unitIdNoEmpty = user.unitId
 

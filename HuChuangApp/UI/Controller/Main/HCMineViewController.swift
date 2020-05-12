@@ -14,12 +14,8 @@ class HCMineViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     private var header: MineHeaderView!
     
-    private var viewModel: MineViewModel!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
+    private var viewModel: HCMineViewModel!
+        
     override func setupUI() {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -30,43 +26,34 @@ class HCMineViewController: BaseViewController {
         
         view.backgroundColor = RGB(249, 249, 249)
         
-        header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 255 + LayoutSize.topVirtualArea))
+        header =  MineHeaderView.init(frame: .init(x: 0, y: 0, width: tableView.width, height: 100))
         tableView.tableHeaderView = header
                 
         tableView.rowHeight = 50
-        tableView.register(HCMineCell.self, forCellReuseIdentifier: HCMineCell_identifier)
+        tableView.register(HCBaseListCell.self, forCellReuseIdentifier: HCBaseListCell_identifier)
+        tableView.register(HCListButtonCell.self, forCellReuseIdentifier: HCListButtonCell_identifier)
     }
     
     override func rxBind() {
-        viewModel = MineViewModel()
-        
-        header.gotoEditUserInfo
-            .subscribe(onNext: { [unowned self] in
-                self.performSegue(withIdentifier: "editUserInfoVC", sender: nil)
-            })
-            .disposed(by: disposeBag)
-        
+        viewModel = HCMineViewModel()
+                
         viewModel.userInfo
             .bind(to: header.userModel)
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(MenuListItemModel.self)
+        tableView.rx.modelSelected(HCListCellItem.self)
             .bind(to: viewModel.cellDidSelectedSubject)
             .disposed(by: disposeBag)
         
-        header.openH5Publish
-//            .subscribe(onNext: { HCHelper.preloadH5(type: $0, arg: nil) })
-            .subscribe(onNext: { HCHelper.pushLocalH5(type: $0) })
-            .disposed(by: disposeBag)
-        
-        header.gotoSetting
-            .subscribe(onNext: { [unowned self] in
-                self.performSegue(withIdentifier: "settingSegue", sender: nil)
-            })
-            .disposed(by: disposeBag)
-
-        let datasource = RxTableViewSectionedReloadDataSource<SectionModel<Int, MenuListItemModel>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
-            let cell = (tb.dequeueReusableCell(withIdentifier: HCMineCell_identifier) as! HCMineCell)
+        let datasource = RxTableViewSectionedReloadDataSource<SectionModel<Int, HCListCellItem>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
+            if indexPath.section == 3 {
+                let cell = (tb.dequeueReusableCell(withIdentifier: HCListButtonCell_identifier) as! HCListButtonCell)
+                
+                cell.model = model
+                return cell
+            }
+            
+            let cell = (tb.dequeueReusableCell(withIdentifier: HCBaseListCell_identifier) as! HCBaseListCell)
             cell.model = model
             return cell
         })
@@ -83,16 +70,14 @@ class HCMineViewController: BaseViewController {
 }
 
 extension HCMineViewController: UITableViewDelegate {
-        
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 2 { return nil }
-        
+            
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sepView = UIView()
         sepView.backgroundColor = RGB(249, 249, 249)
         return sepView
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section == 2 ? 0 : 10
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
 }

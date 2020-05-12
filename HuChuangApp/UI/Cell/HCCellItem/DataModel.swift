@@ -41,7 +41,7 @@ struct HCListCellItem {
     var detailButtonTitle: String = ""
     
     var cellHeight: CGFloat = 50
-    var shwoArrow: Bool = true
+    var showArrow: Bool = true
     
     var cellIdentifier: String = ""
     

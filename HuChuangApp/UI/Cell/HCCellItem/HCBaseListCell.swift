@@ -103,7 +103,7 @@ class HCBaseListCell: UITableViewCell {
                 titleLabel.textColor = model.titleColor
             }
             
-            arrowImgV.isHidden = !model.shwoArrow
+            arrowImgV.isHidden = !model.showArrow
         }
     }
     
