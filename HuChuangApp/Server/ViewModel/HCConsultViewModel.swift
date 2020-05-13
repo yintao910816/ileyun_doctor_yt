@@ -22,6 +22,14 @@ class HCConsultViewModel: RefreshVM<HCConsultModel> {
                 self?.requestData(true)
             })
             .disposed(by: disposeBag)
+        
+        HCProvider.request(.getMonthBillInfo(year: 2019, month: 12, pageNum: 1, pageSize: 10))
+            .subscribe(onSuccess: { _ in
+                
+            }) { _ in
+                
+        }
+        .disposed(by: disposeBag)
     }
     
     override func requestData(_ refresh: Bool) {

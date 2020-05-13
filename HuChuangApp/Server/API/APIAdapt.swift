@@ -49,6 +49,8 @@ struct APIAssistance {
     public static let newBase = "http://admin.ivfcn.com:8082/doctor-api/api/doctor/"
     public static let baseImage = "https://www.ivfcn.com"
     
+    public static let addBase = "http://admin.ivfcn.com:8082/hc-doctor/api/"
+
     public static let fileBase = "https://www.ivfcn.com/doctor/attach/upload.do"
     public static let baseH5Host = ""
 
@@ -58,6 +60,8 @@ struct APIAssistance {
             return URL(string: fileBase)!
         case .selectBanner, .consultList(_):
             return URL(string: newBase)!
+        case .getMonthBillInfo(_):
+            return URL(string: addBase)!
         default:
             return URL(string: base)!
         }

@@ -127,7 +127,8 @@ enum API{
     case selectBanner
     /// 咨询列表 sort - 0顺序1倒叙
     case consultList(sort: Int, pageNum: Int, pageSize: Int)
-
+    /// 个人账单-某月
+    case getMonthBillInfo(year: Int, month: Int, pageNum: Int, pageSize: Int)
     
     /// 向app服务器注册友盟token
     case UMAdd(deviceToken: String)
@@ -209,7 +210,8 @@ extension API: TargetType{
             return "index/bannerList"
         case .consultList(_):
             return "consult/getPatientConsultList"
-
+        case .getMonthBillInfo(_):
+            return "patientConsult/getMonthBillInfo"
             
         case .UMAdd(_):
             return "api/umeng/add"
@@ -357,6 +359,11 @@ extension API {
             params["code"] = smsCode
         case .consultList(let sort, let pageNum, let pageSize):
             params["sort"] = sort
+            params["pageNum"] = pageNum
+            params["pageSize"] = pageSize
+        case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
+            params["year"] = year
+            params["month"] = month
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
 

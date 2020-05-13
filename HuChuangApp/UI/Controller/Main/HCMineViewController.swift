@@ -42,7 +42,13 @@ class HCMineViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(HCListCellItem.self)
-            .bind(to: viewModel.cellDidSelectedSubject)
+            .subscribe(onNext: { [unowned self] in
+                if $0.title == "退出登录" {
+                    HCHelper.presentLogin()
+                }else {
+                    self.performSegue(withIdentifier: $0.segue, sender: nil)
+                }
+            })
             .disposed(by: disposeBag)
         
         let datasource = RxTableViewSectionedReloadDataSource<SectionModel<Int, HCListCellItem>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
