@@ -205,7 +205,7 @@ class TYSearchBar: UIView {
     }()
 
     private lazy var searchIcon: UIImageView = {
-        let imgV = UIImageView.init(image: .image(for: "nav_search"))
+        let imgV = UIImageView.init(image: .image(for: "patient_icon_search"))
         imgV.contentMode = .scaleAspectFill
         imgV.clipsToBounds = true
         self.contentContainer.addSubview(imgV)

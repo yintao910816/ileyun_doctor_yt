@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="-693" y="-305"/>
         </scene>
-        <!--Consult View Controller-->
+        <!--咨询-->
         <scene sceneID="YtX-O9-eEt">
             <objects>
                 <viewController id="A5a-k5-t2h" customClass="HCConsultViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,13 +103,66 @@
                     <view key="view" contentMode="scaleToFill" id="x7M-3D-TIu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkm-7A-fxM">
+                                <rect key="frame" x="0.0" y="44" width="375" height="46"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4F-ei-OGI" customClass="TYSearchBar" customModule="爱乐孕医生" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="46"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sK-UR-X1d" customClass="TYClickedButton" customModule="爱乐孕医生" customModuleProvider="target">
+                                        <rect key="frame" x="295" y="15" width="65" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="sfE-2q-3oh"/>
+                                            <constraint firstAttribute="height" constant="16" id="uLp-U6-oGP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="52" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="按时间" image="consult_row_down">
+                                            <color key="titleColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                        <state key="selected" image="consult_row_up"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9sK-UR-X1d" firstAttribute="centerY" secondItem="wkm-7A-fxM" secondAttribute="centerY" id="Lki-3g-BUZ"/>
+                                    <constraint firstAttribute="height" constant="46" id="Scg-ib-a7f"/>
+                                    <constraint firstItem="9sK-UR-X1d" firstAttribute="leading" secondItem="j4F-ei-OGI" secondAttribute="trailing" id="mgN-kP-Xi9"/>
+                                    <constraint firstItem="j4F-ei-OGI" firstAttribute="leading" secondItem="wkm-7A-fxM" secondAttribute="leading" id="ntm-wi-Ga9"/>
+                                    <constraint firstItem="j4F-ei-OGI" firstAttribute="top" secondItem="wkm-7A-fxM" secondAttribute="top" id="rym-LL-ohj"/>
+                                    <constraint firstAttribute="bottom" secondItem="j4F-ei-OGI" secondAttribute="bottom" id="t87-xY-4Ld"/>
+                                    <constraint firstAttribute="trailing" secondItem="9sK-UR-X1d" secondAttribute="trailing" constant="15" id="tmK-81-jM7"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-xV-5a2">
+                                <rect key="frame" x="0.0" y="90" width="375" height="528"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Esb-xV-5a2" secondAttribute="trailing" id="5ja-Hg-sI8"/>
+                            <constraint firstItem="Esb-xV-5a2" firstAttribute="top" secondItem="wkm-7A-fxM" secondAttribute="bottom" id="DhJ-nc-PSa"/>
+                            <constraint firstItem="wkm-7A-fxM" firstAttribute="top" secondItem="P7W-dd-8Gu" secondAttribute="bottom" id="NA3-eP-pTL"/>
+                            <constraint firstAttribute="trailing" secondItem="wkm-7A-fxM" secondAttribute="trailing" id="PZG-oN-o8U"/>
+                            <constraint firstItem="8Ab-hy-30n" firstAttribute="top" secondItem="Esb-xV-5a2" secondAttribute="bottom" id="gdg-l8-GHF"/>
+                            <constraint firstItem="Esb-xV-5a2" firstAttribute="leading" secondItem="x7M-3D-TIu" secondAttribute="leading" id="iqH-qz-oyh"/>
+                            <constraint firstItem="wkm-7A-fxM" firstAttribute="leading" secondItem="x7M-3D-TIu" secondAttribute="leading" id="xk8-up-vag"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PPe-J9-Ab2"/>
+                    <navigationItem key="navigationItem" title="咨询" id="PPe-J9-Ab2"/>
+                    <connections>
+                        <outlet property="orderOutlet" destination="9sK-UR-X1d" id="2nr-HM-zeb"/>
+                        <outlet property="searchBarOutlet" destination="j4F-ei-OGI" id="Qk0-zs-sG9"/>
+                        <outlet property="tableView" destination="Esb-xV-5a2" id="sZf-qr-XfS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvH-4b-TkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="-309"/>
+            <point key="canvasLocation" x="416.80000000000001" y="-309.89505247376314"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="GJw-Zs-FAD">
@@ -221,6 +274,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="consult_row_down" width="7" height="10"/>
+        <image name="consult_row_up" width="7" height="10"/>
         <image name="first_tab_selected" width="27" height="27"/>
         <image name="first_tab_unselected" width="27" height="27"/>
         <image name="second_tab_selected" width="27" height="27"/>

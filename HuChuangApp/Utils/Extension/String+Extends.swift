@@ -181,6 +181,16 @@ extension String {
         return "\(month!).\(day!) \(hh!):\(mm!)"
     }
     
+    //时间戳转成字符串 eg: 7/9 18:30
+    public func timeSeprate2(dateFormat: String? = nil) -> String {
+        let interval = TimeInterval.init(self) ?? 0.00
+
+        let date = Date(timeIntervalSince1970: interval)
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "dd/MM HH:mm"
+
+        return dateformatter.string(from: date)
+    }
 }
 
 // MARK:

@@ -125,6 +125,8 @@ enum API{
     case selectInfo
     /// 首页banner
     case selectBanner
+    /// 咨询列表 sort - 0顺序1倒叙
+    case consultList(sort: Int, pageNum: Int, pageSize: Int)
 
     
     /// 向app服务器注册友盟token
@@ -149,10 +151,7 @@ enum API{
     case article(id: String)
     /// 今日知识点击更新阅读量
     case increReading(id: String)
-    
-    /// 医生列表
-    case consultList(pageNum: Int, pageSize: Int)
-    
+        
     /// 获取h5地址
     case unitSetting(type: H5Type)
     
@@ -208,6 +207,8 @@ extension API: TargetType{
             return "userInfo.do"
         case .selectBanner:
             return "index/bannerList"
+        case .consultList(_):
+            return "consult/getPatientConsultList"
 
             
         case .UMAdd(_):
@@ -236,8 +237,6 @@ extension API: TargetType{
             return "api/index/unitSetting"
         case .version:
             return "api/apk/version"
-        case .consultList(_):
-            return "api/consult/selectPageList"
             
         case .column(_):
             return "api/index/column"
@@ -356,6 +355,10 @@ extension API {
         case .login(let mobile, let smsCode):
             params["phone"] = mobile
             params["code"] = smsCode
+        case .consultList(let sort, let pageNum, let pageSize):
+            params["sort"] = sort
+            params["pageNum"] = pageNum
+            params["pageSize"] = pageSize
 
         default:
             break
@@ -377,17 +380,3 @@ extension API {
 //MARK: API server
 let HCProvider = MoyaProvider<API>(plugins: [MoyaPlugins.MyNetworkActivityPlugin,
                                              RequestLoadingPlugin()]).rx
-
-/**
- yyyy, [22.12.19 09:48]
- https://ileyun.ivfcn.com/hc-patient/api/physiology/mergePro
-
- yyyy, [22.12.19 09:49]
- opType = knewRecord
-
- yyyy, [22.12.19 09:49]
- opType = ovulation
-
- yyyy, [22.12.19 09:49]
- opType = temperature
- */

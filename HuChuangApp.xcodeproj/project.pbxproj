@@ -277,6 +277,10 @@
 		B8D700A9246B98170024DE3E /* HCHomeNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700A7246B98170024DE3E /* HCHomeNotificationCell.swift */; };
 		B8D700AA246B98170024DE3E /* HCHomeNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700A8246B98170024DE3E /* HCHomeNotificationCell.xib */; };
 		B8D700AC246BB6080024DE3E /* HCHomeFuncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700AB246BB6080024DE3E /* HCHomeFuncCell.swift */; };
+		B8D700AE246C40100024DE3E /* HCConsultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700AD246C40100024DE3E /* HCConsultViewModel.swift */; };
+		B8D700B0246C42480024DE3E /* HCConsult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700AF246C42480024DE3E /* HCConsult.swift */; };
+		B8D700B4246C49A40024DE3E /* HCConsultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700B2246C49A40024DE3E /* HCConsultListCell.swift */; };
+		B8D700B5246C49A40024DE3E /* HCConsultListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700B3246C49A40024DE3E /* HCConsultListCell.xib */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F89239A9FCE006EB478 /* HCSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F88239A9FCE006EB478 /* HCSettingViewController.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
@@ -888,6 +892,10 @@
 		B8D700A7246B98170024DE3E /* HCHomeNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHomeNotificationCell.swift; sourceTree = "<group>"; };
 		B8D700A8246B98170024DE3E /* HCHomeNotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCHomeNotificationCell.xib; sourceTree = "<group>"; };
 		B8D700AB246BB6080024DE3E /* HCHomeFuncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHomeFuncCell.swift; sourceTree = "<group>"; };
+		B8D700AD246C40100024DE3E /* HCConsultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultViewModel.swift; sourceTree = "<group>"; };
+		B8D700AF246C42480024DE3E /* HCConsult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsult.swift; sourceTree = "<group>"; };
+		B8D700B2246C49A40024DE3E /* HCConsultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultListCell.swift; sourceTree = "<group>"; };
+		B8D700B3246C49A40024DE3E /* HCConsultListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCConsultListCell.xib; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F88239A9FCE006EB478 /* HCSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingViewController.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
@@ -1887,6 +1895,15 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
+		B8D700B1246C49750024DE3E /* Consult */ = {
+			isa = PBXGroup;
+			children = (
+				B8D700B2246C49A40024DE3E /* HCConsultListCell.swift */,
+				B8D700B3246C49A40024DE3E /* HCConsultListCell.xib */,
+			);
+			path = Consult;
+			sourceTree = "<group>";
+		};
 		C42132E222054462006C10C4 = {
 			isa = PBXGroup;
 			children = (
@@ -2114,6 +2131,7 @@
 			children = (
 				C42133542205883D006C10C4 /* Base */,
 				B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */,
+				B8D700AD246C40100024DE3E /* HCConsultViewModel.swift */,
 				B85E4D0D246B02AE00043493 /* HCMineViewModel.swift */,
 				B85E4D0B246AF8BD00043493 /* HCSettingViewModel.swift */,
 				C42133672205902A006C10C4 /* AccountViewModel.swift */,
@@ -2139,6 +2157,7 @@
 				C4F3E87522201D1B008B143C /* H5.swift */,
 				C449FA5A2298021D00B7803E /* AppAbout.swift */,
 				C497E9672344658D00328B47 /* HCHome.swift */,
+				B8D700AF246C42480024DE3E /* HCConsult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2272,6 +2291,7 @@
 		C43F09B722142DEA00910437 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B8D700B1246C49750024DE3E /* Consult */,
 				B8BE1AE723A7E36B00DF472A /* Base */,
 				C497E93623444E4600328B47 /* Home */,
 				B8508EA223421486008C24BA /* HCCellItem */,
@@ -2401,6 +2421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D700AA246B98170024DE3E /* HCHomeNotificationCell.xib in Resources */,
+				B8D700B5246C49A40024DE3E /* HCConsultListCell.xib in Resources */,
 				B816EA73221DABF400F024D5 /* CodeScan.bundle in Resources */,
 				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
@@ -2593,6 +2614,7 @@
 				B821E34D23070907009A11A3 /* HCLocationManager.swift in Sources */,
 				C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */,
 				C421332C22056F24006C10C4 /* TYHUD.swift in Sources */,
+				B8D700AE246C40100024DE3E /* HCConsultViewModel.swift in Sources */,
 				B816EAAA221DABF400F024D5 /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				C42133582205883D006C10C4 /* BaseViewModel.swift in Sources */,
 				B816EAEC221DABF400F024D5 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
@@ -2629,6 +2651,7 @@
 				B816EB37221DABF400F024D5 /* ZXProductResultParser.m in Sources */,
 				B816EB2B221DABF400F024D5 /* ZXUPCEANExtension2Support.m in Sources */,
 				B816EB39221DABF400F024D5 /* ZXEmailDoCoMoResultParser.m in Sources */,
+				B8D700B4246C49A40024DE3E /* HCConsultListCell.swift in Sources */,
 				B816EAAB221DABF400F024D5 /* ZXQRCodeAlignmentPattern.m in Sources */,
 				B816EADD221DABF400F024D5 /* ZXPDF417DetectorResult.m in Sources */,
 				B816EB2A221DABF400F024D5 /* ZXUPCEANWriter.m in Sources */,
@@ -2783,6 +2806,7 @@
 				B816EB44221DABF400F024D5 /* ZXResultParser.m in Sources */,
 				B816EA8C221DABF400F024D5 /* ZXAztecToken.m in Sources */,
 				C42133682205902A006C10C4 /* AccountViewModel.swift in Sources */,
+				B8D700B0246C42480024DE3E /* HCConsult.swift in Sources */,
 				B816EB52221DABF400F024D5 /* ZXVINParsedResult.m in Sources */,
 				B816EABE221DABF400F024D5 /* ZXDefaultGridSampler.m in Sources */,
 				B816EAF5221DABF400F024D5 /* ZXMaxiCodeDecoder.m in Sources */,
@@ -2958,8 +2982,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GMPPSEQW73;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
@@ -2971,7 +2995,7 @@
 				MARKETING_VERSION = 2.1.001;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jclick.doctor;
 				PRODUCT_NAME = "爱乐孕医生";
-				PROVISIONING_PROFILE_SPECIFIER = aileyun_user_old_dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

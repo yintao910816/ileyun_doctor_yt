@@ -56,7 +56,7 @@ struct APIAssistance {
         switch API {
         case .uploadIcon(_):
             return URL(string: fileBase)!
-        case .selectBanner:
+        case .selectBanner, .consultList(_):
             return URL(string: newBase)!
         default:
             return URL(string: base)!
