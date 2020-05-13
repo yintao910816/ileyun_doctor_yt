@@ -10,7 +10,7 @@
         <!--首页-->
         <scene sceneID="qWj-5b-UzD">
             <objects>
-                <navigationController id="x6K-Ya-dkR" customClass="MainNavigationController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="x6K-Ya-dkR" customClass="MainNavigationController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="first_tab_unselected" selectedImage="first_tab_selected" id="wRe-aY-dVH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VRV-Fw-Hfe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -27,7 +27,7 @@
         <!--爱乐孕-->
         <scene sceneID="7xF-aE-OIr">
             <objects>
-                <viewController id="hnC-bI-7ao" customClass="HCHomeViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hnC-bI-7ao" customClass="HCHomeViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Siy-eQ-uIU"/>
                         <viewControllerLayoutGuide type="bottom" id="Ka6-1G-w0L"/>
@@ -75,31 +75,68 @@
             </objects>
             <point key="canvasLocation" x="401" y="-1143"/>
         </scene>
+        <!--咨询-->
+        <scene sceneID="EfL-8G-Tzf">
+            <objects>
+                <navigationController id="5vY-30-I1k" customClass="MainNavigationController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="咨询" image="second_tab_unselected" selectedImage="second_tab_selected" id="FlR-7K-jBJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ia8-DP-9mS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A5a-k5-t2h" kind="relationship" relationship="rootViewController" id="szE-dl-fkC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKx-7H-G0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="-305"/>
+        </scene>
+        <!--Consult View Controller-->
+        <scene sceneID="YtX-O9-eEt">
+            <objects>
+                <viewController id="A5a-k5-t2h" customClass="HCConsultViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P7W-dd-8Gu"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Ab-hy-30n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x7M-3D-TIu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PPe-J9-Ab2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BvH-4b-TkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="417" y="-309"/>
+        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="GJw-Zs-FAD">
             <objects>
-                <tabBarController id="RGT-h1-fgX" customClass="HCTabBarViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="RGT-h1-fgX" customClass="HCTabBarViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Th-zj-BqG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="selectedImageTintColor" red="0.92941176470588238" green="0.5725490196078431" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0039215686274509803" green="0.78431372549019607" blue="0.66666666666666663" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x6K-Ya-dkR" kind="relationship" relationship="viewControllers" id="vez-4M-ADp"/>
-                        <segue destination="FRr-GN-JsD" kind="relationship" relationship="viewControllers" id="A0X-41-uMn"/>
+                        <segue destination="5vY-30-I1k" kind="relationship" relationship="viewControllers" id="kCf-Gc-QsO"/>
+                        <segue destination="FRr-GN-JsD" kind="relationship" relationship="viewControllers" id="che-16-v6q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wY-47-QrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2750" y="-93"/>
+            <point key="canvasLocation" x="-3066" y="-272"/>
         </scene>
         <!--我的-->
         <scene sceneID="6tI-b1-oi9">
             <objects>
-                <navigationController id="FRr-GN-JsD" customClass="MainNavigationController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="five_tab_unselected" selectedImage="five_tab_selected" id="SCf-pw-k1l"/>
+                <navigationController id="FRr-GN-JsD" customClass="MainNavigationController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="third_tab_unselected" selectedImage="third_tab_selected" id="SCf-pw-k1l"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T5e-l9-Dh1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -110,12 +147,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vn-tX-do2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698" y="835"/>
+            <point key="canvasLocation" x="-698" y="576"/>
         </scene>
         <!--设置-->
         <scene sceneID="Acn-uR-Ogm">
             <objects>
-                <viewController id="JNK-Rr-UPR" customClass="HCSettingViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JNK-Rr-UPR" customClass="HCSettingViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7bW-y6-Pyj"/>
                         <viewControllerLayoutGuide type="bottom" id="dTz-59-Rri"/>
@@ -144,12 +181,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYc-wP-oGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="834"/>
+            <point key="canvasLocation" x="1665" y="575"/>
         </scene>
         <!--我的-->
         <scene sceneID="Gn2-kR-cQ7">
             <objects>
-                <viewController id="8UU-ND-G1F" customClass="HCMineViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8UU-ND-G1F" customClass="HCMineViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BxQ-c1-Upl"/>
                         <viewControllerLayoutGuide type="bottom" id="cIi-QX-AUu"/>
@@ -180,13 +217,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-g1-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="834"/>
+            <point key="canvasLocation" x="401" y="576"/>
         </scene>
     </scenes>
     <resources>
-        <image name="first_tab_selected" width="18.5" height="20"/>
-        <image name="first_tab_unselected" width="18.5" height="20"/>
-        <image name="five_tab_selected" width="17.5" height="19"/>
-        <image name="five_tab_unselected" width="17.5" height="19"/>
+        <image name="first_tab_selected" width="27" height="27"/>
+        <image name="first_tab_unselected" width="27" height="27"/>
+        <image name="second_tab_selected" width="27" height="27"/>
+        <image name="second_tab_unselected" width="27" height="27"/>
+        <image name="third_tab_selected" width="27" height="27"/>
+        <image name="third_tab_unselected" width="27" height="27"/>
     </resources>
 </document>
