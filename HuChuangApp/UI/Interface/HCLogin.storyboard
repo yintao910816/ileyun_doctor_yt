@@ -10,7 +10,7 @@
         <!--Main Navigation Controller-->
         <scene sceneID="AOf-e2-yRI">
             <objects>
-                <navigationController storyboardIdentifier="loginControl" id="9dJ-v9-J3u" customClass="MainNavigationController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginControl" id="9dJ-v9-J3u" customClass="MainNavigationController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UdW-bv-9ee">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,7 +26,7 @@
         <!--Login View Controller-->
         <scene sceneID="ZoR-ny-vz6">
             <objects>
-                <viewController id="RTX-Se-1rC" customClass="HCLoginViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RTX-Se-1rC" customClass="HCLoginViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1kO-F8-5vg"/>
                         <viewControllerLayoutGuide type="bottom" id="Nn4-LC-qFZ"/>
@@ -104,10 +104,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71r-m4-x7N">
-                                        <rect key="frame" x="25" y="246" width="100" height="30"/>
+                                        <rect key="frame" x="25" y="246" width="225" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="TlL-fs-fWb"/>
-                                            <constraint firstAttribute="width" constant="100" id="s6A-WU-Xr0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -138,13 +137,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cm-Nr-DzU">
                                         <rect key="frame" x="266" y="306" width="84" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                                        <inset key="titleEdgeInsets" minX="-17" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="17" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="已有账号登录">
                                             <color key="titleColor" red="0.0039215686274509803" green="0.78431372549019607" blue="0.66666666666666663" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
-                                        <state key="selected" image="login_arrow_up">
-                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <state key="selected" title="账号密码登录">
+                                            <color key="titleColor" red="0.0039215686274509803" green="0.78431372549019607" blue="0.66666666666666663" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" tag="1001" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Iu-ao-fKK">
@@ -170,6 +167,7 @@
                                     <constraint firstItem="aNg-TZ-OW4" firstAttribute="top" secondItem="aQN-Sn-6aU" secondAttribute="bottom" constant="15" id="PIQ-3K-QAr"/>
                                     <constraint firstItem="6Iu-ao-fKK" firstAttribute="centerY" secondItem="pHx-03-8qa" secondAttribute="centerY" id="Pf4-pA-IJ9"/>
                                     <constraint firstItem="tet-dC-PXn" firstAttribute="trailing" secondItem="aQN-Sn-6aU" secondAttribute="trailing" id="TD1-Hu-0Yd"/>
+                                    <constraint firstItem="vYa-PB-Sed" firstAttribute="leading" secondItem="71r-m4-x7N" secondAttribute="trailing" constant="20" id="Uz3-Iz-c5b"/>
                                     <constraint firstItem="rKg-Og-di4" firstAttribute="leading" secondItem="a5u-Gp-u42" secondAttribute="leading" constant="31" id="cKj-Jz-Dg1"/>
                                     <constraint firstItem="71r-m4-x7N" firstAttribute="leading" secondItem="aQN-Sn-6aU" secondAttribute="leading" id="f45-TG-Wht"/>
                                     <constraint firstAttribute="trailing" secondItem="aQN-Sn-6aU" secondAttribute="trailing" constant="25" id="hXh-yQ-fpM"/>
@@ -202,11 +200,13 @@
                     <connections>
                         <outlet property="accountInputOutlet" destination="aQN-Sn-6aU" id="nJs-5o-yko"/>
                         <outlet property="agreeButton" destination="pHx-03-8qa" id="H0N-DZ-IJa"/>
+                        <outlet property="changeLoginTypeOutlet" destination="8cm-Nr-DzU" id="e4h-dC-kCe"/>
                         <outlet property="contentBgView" destination="a5u-Gp-u42" id="f7y-0c-0nL"/>
                         <outlet property="getAuthorOutlet" destination="vYa-PB-Sed" id="VOW-LI-LAd"/>
                         <outlet property="isAgreeButton" destination="6Iu-ao-fKK" id="AgP-h4-uZD"/>
                         <outlet property="loginOutlet" destination="Xj7-Wy-dLN" id="FNw-25-fCV"/>
                         <outlet property="passInputOutlet" destination="71r-m4-x7N" id="3O0-5G-iiU"/>
+                        <outlet property="titleOutlet" destination="rKg-Og-di4" id="1xH-ax-gFa"/>
                         <segue destination="vec-Ty-dEg" kind="show" identifier="bindPhoneSegue" id="pFh-70-MAN"/>
                     </connections>
                 </viewController>
@@ -222,13 +222,7 @@
         <!--Bind Phone View Controller-->
         <scene sceneID="Ybp-UR-bDB">
             <objects>
-                <tapGestureRecognizer id="3Yf-Lz-9SA">
-                    <connections>
-                        <action selector="tapAction:" destination="vec-Ty-dEg" id="vJb-2f-bhi"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mI9-ra-txY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="vec-Ty-dEg" customClass="HCBindPhoneViewController" customModule="南昌生殖医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vec-Ty-dEg" customClass="HCBindPhoneViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="buh-mk-wa0"/>
                         <viewControllerLayoutGuide type="bottom" id="kNr-f6-6rn"/>
@@ -388,12 +382,17 @@
                         <outlet property="smsCodeInputOutlet" destination="bTT-QH-M18" id="bYt-zS-0QB"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer id="3Yf-Lz-9SA">
+                    <connections>
+                        <action selector="tapAction:" destination="vec-Ty-dEg" id="vJb-2f-bhi"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mI9-ra-txY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1889" y="-134"/>
         </scene>
     </scenes>
     <resources>
-        <image name="login_arrow_up" width="10" height="5"/>
         <image name="login_selected_agree" width="11.5" height="11.5"/>
         <image name="login_unselected_agree" width="11.5" height="11.5"/>
     </resources>

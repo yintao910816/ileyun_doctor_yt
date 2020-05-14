@@ -9,21 +9,23 @@
 import Foundation
 
 class HCConsultListModel: HJModel {
-    var list: [HCConsultModel] = []
+    var records: [HCConsultModel] = []
 }
 
 class HCConsultModel: HJModel {
+    var age: String = ""
     var content: String = ""
-    var create_time: String = ""
-    var currentStatus: Int = 0
-    var doctorId: Int = 0
-    var doctorIds: Int = 0
-    var doctorName: String = ""
-    var headImg: String = ""
-    var identityNo: String = ""
-    var lastestTime: String = ""
-    var patientId: String = ""
-    var patientName: String = ""
-    var unReplyCount: Int = 0
-
+    var createDate: String = ""
+    var headPath: String = ""
+    var id: String = ""
+    var lastestConsultDate: String = ""
+    var memberId: String = ""
+    var memberName: String = ""
+    var name: String = ""
+    var price: String = ""
+    var realName: String = ""
+    var sex: Int = 0
+    var unreplyNum: Int = 0
+    var userId: String = ""
+    var userName: String = ""
 }

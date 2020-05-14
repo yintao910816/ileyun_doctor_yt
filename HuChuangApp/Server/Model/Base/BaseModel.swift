@@ -23,7 +23,7 @@ enum RequestCode: Int {
 // MARK: 所有请求数据
 class ResponseModel: HJModel{
     
-    var infoCode: Int = 0
+    var code: Int = 0
     var message : String = ""
     
 }

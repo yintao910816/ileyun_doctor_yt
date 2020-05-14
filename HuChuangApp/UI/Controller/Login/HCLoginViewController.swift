@@ -16,19 +16,19 @@ class HCLoginViewController: BaseViewController {
     
     @IBOutlet weak var loginOutlet: UIButton!
     @IBOutlet weak var getAuthorOutlet: UIButton!
+    @IBOutlet weak var titleOutlet: UILabel!
     
     @IBOutlet weak var contentBgView: UIView!
     @IBOutlet weak var agreeButton: UIButton!
     @IBOutlet weak var isAgreeButton: UIButton!
+    @IBOutlet weak var changeLoginTypeOutlet: UIButton!
     
-    private let loginTypeObser = Variable(LoginType.phone)
+    private let loginTypeObser = Variable(LoginType.smsCode)
     
     private var timer: CountdownTimer!
     
     private var viewModel: LoginViewModel!
-    
-//    private let keyBoardManager = KeyboardManager()
-    
+        
     private var agreeObservable = Variable(true)
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
@@ -48,14 +48,8 @@ class HCLoginViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {        
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-//        keyBoardManager.registerNotification()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-//        keyBoardManager.removeNotification()
-    }
-
     override func setupUI() {        
         let agreeText = "我已阅读并接受《用户协议》"
         agreeButton.setAttributedTitle(agreeText.attributed(.init(location: 7, length: 6), HC_MAIN_COLOR, nil), for: .normal)
@@ -71,6 +65,20 @@ class HCLoginViewController: BaseViewController {
     }
     
     override func rxBind() {
+        
+        changeLoginTypeOutlet.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.changeLoginTypeOutlet.isSelected = !strongSelf.changeLoginTypeOutlet.isSelected
+                strongSelf.loginTypeObser.value = strongSelf.changeLoginTypeOutlet.isSelected ? .pwd : .smsCode
+                strongSelf.accountInputOutlet.placeholder = strongSelf.loginTypeObser.value == .smsCode ? "请输入手机号码" : "请输入账号"
+                strongSelf.passInputOutlet.placeholder = strongSelf.loginTypeObser.value == .smsCode ? "请输入验证码" : "请输入密码"
+                strongSelf.getAuthorOutlet.isHidden = strongSelf.loginTypeObser.value != .smsCode
+                strongSelf.titleOutlet.text = strongSelf.loginTypeObser.value == .smsCode ? "手机号登录" : "已有账号登录"
+            })
+            .disposed(by: disposeBag)
+        
         timer.showText.asDriver()
             .skip(1)
             .drive(onNext: { [weak self] second in
@@ -117,25 +125,5 @@ class HCLoginViewController: BaseViewController {
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        
-        viewModel.pushBindSubject
-            .subscribe(onNext: { [weak self] in
-                self?.performSegue(withIdentifier: "bindPhoneSegue", sender: $0)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "bindPhoneSegue" {
-            segue.destination.prepare(parameters: ["model": sender!])
-        }
-    }
-}
-
-extension HCLoginViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        keyBoardManager.move(coverView: loginOutlet, moveView: contentBgView)
-        return true
     }
 }

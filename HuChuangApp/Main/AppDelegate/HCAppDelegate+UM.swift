@@ -191,7 +191,7 @@ extension HCAppDelegate {
                     _ = HCProvider.request(.UMAdd(deviceToken: strongSelf.deviceToken))
                         .mapResponse()
                         .subscribe(onSuccess: { res in
-                            if RequestCode(rawValue: res.infoCode) == RequestCode.success {
+                            if RequestCode(rawValue: res.code) == RequestCode.success {
                                 PrintLog("友盟token上传成功")
                             }else {
                                 PrintLog(res.message)
@@ -214,7 +214,7 @@ extension HCAppDelegate {
                 _ = HCProvider.request(.UMAdd(deviceToken: deviceToken))
                     .mapResponse()
                     .subscribe(onSuccess: { res in
-                        if RequestCode(rawValue: res.infoCode) == RequestCode.success {
+                        if RequestCode(rawValue: res.code) == RequestCode.success {
                             PrintLog("友盟token上传成功")
                         }else {
                             PrintLog(res.message)

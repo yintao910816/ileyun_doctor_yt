@@ -119,8 +119,10 @@ enum HCsearchModule: String {
 //MARK:
 //MARK: 接口定义
 enum API{
-    /// 登录
+    /// 验证码登录
     case login(mobile: String, smsCode: String)
+    /// 账号密码登录
+    case loginTwo(account: String, psd: String)
     /// 获取用户信息
     case selectInfo
     /// 首页banner
@@ -203,13 +205,15 @@ extension API: TargetType{
     var path: String{
         switch self {
         case .login(_):
-            return "valify.do"
+            return "api/login/login"
+        case .loginTwo(_):
+            return "api/login/loginTwo"
         case .selectInfo:
-            return "userInfo.do"
+            return "api/member/selectInfo"
         case .selectBanner:
             return "index/bannerList"
         case .consultList(_):
-            return "consult/getPatientConsultList"
+            return "api/patientConsult/getConsultList"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
             
@@ -296,11 +300,11 @@ extension API: TargetType{
                                       encoding: URLEncoding.default)
         default:
             if let _parameters = parameters {
-//                guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
-//                    return .requestPlain
-//                }
-//                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
-                return .requestParameters(parameters: _parameters, encoding: URLEncoding.default)
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
+                    return .requestPlain
+                }
+                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
+//                return .requestParameters(parameters: _parameters, encoding: URLEncoding.default)
             }else {
                 return .requestPlain
             }
@@ -314,7 +318,7 @@ extension API: TargetType{
     var validate: Bool { return false }
     
     var headers: [String : String]? {
-//        var contentType: String = "application/json; charset=utf-8"
+        var contentType: String = "application/json; charset=utf-8"
 //        switch self {
 //        case .uploadIcon(_):
 //            contentType = "image/jpeg"
@@ -322,17 +326,17 @@ extension API: TargetType{
 //            break
 //        }
 //
-//        let userAgent: String = "\(Bundle.main.bundleIdentifier),\(Bundle.main.version),\(UIDevice.iosVersion),\(UIDevice.modelName)"
-//
-//
-//        let customHeaders: [String: String] = ["token": userDefault.token,
-//                                               "User-Agent": userAgent,
-//                                               "unitId": userDefault.unitId,
-//                                               "Content-Type": contentType,
-//                                               "Accept": "application/json"]
-//        PrintLog("request headers -- \(customHeaders)")
-//        return customHeaders
-        return nil
+        let userAgent: String = "\(Bundle.main.bundleIdentifier),\(Bundle.main.version),\(UIDevice.iosVersion),\(UIDevice.modelName)"
+
+
+        let customHeaders: [String: String] = ["token": userDefault.token,
+                                               "User-Agent": userAgent,
+                                               "unitId": userDefault.unitId,
+                                               "Content-Type": contentType,
+                                               "Accept": "application/json"]
+        PrintLog("request headers -- \(customHeaders)")
+        return customHeaders
+//        return nil
     }
     
 }
@@ -343,20 +347,23 @@ extension API {
     
     private var parameters: [String: Any]? {
         var params = [String: Any]()
-        params["token"] = userDefault.token
-        params["deviceType"] = "iOS"
-        params["version"] = Bundle.main.version
-        params["packageName"] = Bundle.main.bundleIdentifier
+//        params["token"] = userDefault.token
+//        params["deviceType"] = "iOS"
+//        params["version"] = Bundle.main.version
+//        params["packageName"] = Bundle.main.bundleIdentifier
         
-        let sysVersion = UIDevice.current.systemVersion
-        let deviceModel = UIDevice.modelName
-        let info = sysVersion + "," + deviceModel + ",apple," + Bundle.main.version
-        params["deviceInfo"] = info
+//        let sysVersion = UIDevice.current.systemVersion
+//        let deviceModel = UIDevice.modelName
+//        let info = sysVersion + "," + deviceModel + ",apple," + Bundle.main.version
+//        params["deviceInfo"] = info
 
         switch self {
         case .login(let mobile, let smsCode):
-            params["phone"] = mobile
-            params["code"] = smsCode
+            params["mobile"] = mobile
+            params["smsCode"] = smsCode
+        case .loginTwo(let account, let psd):
+            params["account"] = account
+            params["psd"] = psd
         case .consultList(let sort, let pageNum, let pageSize):
             params["sort"] = sort
             params["pageNum"] = pageNum

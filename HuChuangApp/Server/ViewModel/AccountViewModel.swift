@@ -11,15 +11,14 @@ import RxSwift
 import RxCocoa
 
 enum LoginType {
-    case phone
-    case idCard
+    case smsCode
+    case pwd
 }
 
 class LoginViewModel: BaseViewModel {
     
     public let codeEnable = Variable(true)
     public let enableLogin = Variable(false)
-    public let pushBindSubject = PublishSubject<UMSocialUserInfoResponse>()
     
     init(input: (account: Driver<String>, pass: Driver<String>, loginType: Driver<LoginType>),
          tap: (loginTap: Driver<Void>, sendCodeTap: Driver<Void>, agreeTap: Variable<Bool>)) {
@@ -47,7 +46,7 @@ class LoginViewModel: BaseViewModel {
         HCProvider.request(.validateCode(mobile: phone))
             .mapResponse()
             .subscribe(onSuccess: { [weak self] model in
-                if RequestCode(rawValue: model.infoCode) == .success {
+                if RequestCode(rawValue: model.code) == .success {
                     self?.hud.successHidden("验证码已发送")
                 }else {
                     self?.codeEnable.value = true
@@ -60,26 +59,41 @@ class LoginViewModel: BaseViewModel {
     }
     
     private func login(data: (String, String, LoginType)) {
-        HCProvider.request(.login(mobile: data.0, smsCode: data.1))
-            .map(model: HCUserModel.self)
-            .subscribe(onSuccess: { [weak self] user in
-                userDefault.loginPhone = data.0
-                HCHelper.saveLogin(user: user)
-
-                self?.popSubject.onNext(Void())
-            }) { [weak self] error in
-                self?.hud.failureHidden(self?.errorMessage(error))
+        switch data.2 {
+        case .smsCode:
+            HCProvider.request(.login(mobile: data.0, smsCode: data.1))
+                .map(model: HCUserModel.self)
+                .subscribe(onSuccess: { [weak self] user in
+                    userDefault.loginPhone = data.0
+                    HCHelper.saveLogin(user: user)
+                    
+                    self?.popSubject.onNext(Void())
+                }) { [weak self] error in
+                    self?.hud.failureHidden(self?.errorMessage(error))
             }
             .disposed(by: disposeBag)
+        case .pwd:
+            HCProvider.request(.loginTwo(account: data.0, psd: data.1))
+                .map(model: HCUserModel.self)
+                .subscribe(onSuccess: { [weak self] user in
+                    userDefault.loginPhone = data.0
+                    HCHelper.saveLogin(user: user)
+                    
+                    self?.popSubject.onNext(Void())
+                }) { [weak self] error in
+                    self?.hud.failureHidden(self?.errorMessage(error))
+            }
+            .disposed(by: disposeBag)
+        }
     }
     
-    private func getAuthMemberInfoRequest(socialInfo: UMSocialUserInfoResponse) ->Observable<(DataModel<HCUserModel>,UMSocialUserInfoResponse)>
-    {
-        return HCProvider.request(.getAuthMember(openId: socialInfo.openid))
-            .map(result: HCUserModel.self)
-            .map { ($0, socialInfo) }
-            .asObservable()
-    }
+//    private func getAuthMemberInfoRequest(socialInfo: UMSocialUserInfoResponse) ->Observable<(DataModel<HCUserModel>,UMSocialUserInfoResponse)>
+//    {
+//        return HCProvider.request(.getAuthMember(openId: socialInfo.openid))
+//            .map(result: HCUserModel.self)
+//            .map { ($0, socialInfo) }
+//            .asObservable()
+//    }
 
     private func dealInputError(phone: String) ->Bool {
         if ValidateNum.phoneNum(phone).isRight == false {
@@ -97,7 +111,7 @@ class LoginViewModel: BaseViewModel {
         }
         
         switch data.2 {
-        case .phone:
+        case .smsCode:
             if ValidateNum.phoneNum(data.0).isRight == false {
                 hud.failureHidden("请输入正确的手机号码")
                 enableLogin.value = false
@@ -110,7 +124,7 @@ class LoginViewModel: BaseViewModel {
             }
             enableLogin.value = true
             return true
-        case .idCard:
+        case .pwd:
             if ValidateNum.carNum(data.0).isRight == false {
                 hud.failureHidden("请输入正确的身份证号码")
                 return false
@@ -180,7 +194,7 @@ class HCBindPhoneViewModel: BaseViewModel {
         HCProvider.request(.validateCode(mobile: phone))
             .mapResponse()
             .subscribe(onSuccess: { [weak self] model in
-                if RequestCode(rawValue: model.infoCode) == .success {
+                if RequestCode(rawValue: model.code) == .success {
                     self?.hud.successHidden("验证码已发送")
                 }else {
                     self?.codeEnable.value = true

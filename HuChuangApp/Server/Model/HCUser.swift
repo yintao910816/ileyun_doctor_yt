@@ -11,24 +11,55 @@ import HandyJSON
 
 class HCUserModel: HJModel {
     
+    var account: String = ""
+    var age: String = ""
+    var areaCode: String = ""
+    var bak: String = ""
+    var birthday: String = ""
     var brief: String = ""
-    var docItem: String = ""
-    var docRole: String = ""
-    var docTitle: String = ""
-    var duty: String = ""
-    var goodProject: String = ""
-    var headImg: String = ""
-    var hospitalName: String = ""
+    var cityName: String = ""
+    var consult: String = ""
+    var consultPrice: String = ""
+    var createDate: String = ""
+    var creates: String = ""
+    var departmentId: Int = 0
+    var departmentName: Int = 0
+    var email: String = ""
+    var enable: Bool = false
+    var environment: String = ""
+    var headPath: String = ""
+    var hisCode: String = ""
+    var hisNo: String = ""
     var id: String = ""
-    var phone: String = ""
-    var realName: String = ""
-    var sex: Int = 0
-    var teamMember: Int = 0
+    var ip: String = ""
+    var lastLogin: String = ""
+    var linueupNo: String = ""
+    var mobile: String = ""
+    var modifyDate: String = ""
+    var modifys: String = ""
+    var name: String = ""
+    var numbers: String = ""
+    var practitionerYear: String = ""
+    var provinceName: String = ""
+    var recom: String = ""
+    var sex: Int = 1
+    var skilledIn: String = ""
+    var skilledInIds: String = ""
+    var skin: String = ""
+    var smsNotice: String = ""
+    var sort: String = ""
+    var spellBrevityCode: String = ""
+    var spellCode: String = ""
+    var status: Int = 0
+    var technicalPost: String = ""
+    var technicalPostId: String = ""
     var token: String = ""
-    var version: String = ""
-    
+    var unitId: String = ""
+    var unitName: String = ""
+    var viewProfile: String = ""
+    var wubiCode: String = ""
+
     var sexText: String {
         get { return sex == 1 ? "男" : "女" }
     }
-    
 }

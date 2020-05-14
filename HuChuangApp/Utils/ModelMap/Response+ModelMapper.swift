@@ -21,7 +21,7 @@ public extension Response {
             throw MapperError.json(message: "json解析失败")
         }
         
-        if serverModel.infoCode == RequestCode.success.rawValue {
+        if serverModel.code == RequestCode.success.rawValue {
             return serverModel
         }else {
             throw MapperError.server(message: serverModel.message)
@@ -36,7 +36,7 @@ public extension Response {
             throw MapperError.json(message: "json解析失败")
         }
         
-        if serverModel.infoCode == RequestCode.success.rawValue, let model = serverModel.data {
+        if serverModel.code == RequestCode.success.rawValue, let model = serverModel.data {
             return model
         }else {
             throw MapperError.server(message: serverModel.message)
@@ -51,7 +51,7 @@ public extension Response {
             throw MapperError.json(message: "json解析失败")
         }
     
-        if serverModel.infoCode == RequestCode.success.rawValue, let models = serverModel.data {
+        if serverModel.code == RequestCode.success.rawValue, let models = serverModel.data {
             return models
         }else {
             throw MapperError.server(message: serverModel.message)
@@ -84,7 +84,7 @@ public extension Response {
             throw MapperError.json(message: "json解析失败")
         }
 
-        if serverModel.infoCode == RequestCode.success.rawValue {
+        if serverModel.code == RequestCode.success.rawValue {
             return serverModel
         }else {
             throw MapperError.server(message: serverModel.message)

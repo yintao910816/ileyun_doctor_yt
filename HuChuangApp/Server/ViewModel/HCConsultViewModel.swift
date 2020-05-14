@@ -38,7 +38,7 @@ class HCConsultViewModel: RefreshVM<HCConsultModel> {
         HCProvider.request(.consultList(sort: order, pageNum: pageModel.currentPage, pageSize: pageModel.pageSize))
             .map(model: HCConsultListModel.self)
             .subscribe(onSuccess: { [weak self] data in
-                self?.updateRefresh(refresh, data.list, data.pages)
+                self?.updateRefresh(refresh, data.records, data.pages)
             }) { _ in }
             .disposed(by: disposeBag)
     }

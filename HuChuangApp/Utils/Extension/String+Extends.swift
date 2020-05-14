@@ -160,10 +160,10 @@ extension String {
         return  "\(month!)月\(day!)日"
     }
     
-    // eg:7.9 18:30
+    // eg:7/9 18:30
     public func timeSeprate1() -> String {
         
-        guard let date = stringFormatDate()  else {
+        guard let _ = stringFormatDate()  else {
             return ""
         }
         
@@ -178,7 +178,7 @@ extension String {
         let mm = times?[1]
 //        let ss = times?[2]
         
-        return "\(month!).\(day!) \(hh!):\(mm!)"
+        return "\(month!)/\(day!) \(hh!):\(mm!)"
     }
     
     //时间戳转成字符串 eg: 7/9 18:30

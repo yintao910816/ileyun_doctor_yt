@@ -27,13 +27,13 @@ class HCConsultListCell: UITableViewCell {
     
     public var consultModel: HCConsultModel! {
         didSet {
-            coverOutlet.setImage(consultModel.headImg)
-            titleOutlet.text = consultModel.patientName
-            detailOutlet.text = consultModel.create_time.timeSeprate2()
+            coverOutlet.setImage(consultModel.headPath)
+            titleOutlet.text = consultModel.userName
+            detailOutlet.text = consultModel.createDate.timeSeprate1()
             subTitleOutlet.text = consultModel.content
             
-            markOutlet.isHidden = consultModel.unReplyCount == 0
-            markOutlet.text = "\(consultModel.unReplyCount)"
+            markOutlet.isHidden = consultModel.unreplyNum == 0
+            markOutlet.text = "\(consultModel.unreplyNum)"
             let size = markOutlet.sizeThatFits(CGSize.init(width: Double(MAXFLOAT), height: 18.0))
             markWidthCns.constant = size.width + 10
             markRightCns.constant = markWidthCns.constant / 2.0
