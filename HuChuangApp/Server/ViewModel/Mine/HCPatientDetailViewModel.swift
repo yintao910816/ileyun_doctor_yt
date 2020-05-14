@@ -16,9 +16,24 @@ class HCPatientDetailViewModel: BaseViewModel {
     
     private var healthArchivesOriginalData: [[HCListCellItem]] = []
     public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, HCListCellItem>]())
-
+    public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
+    
     override init() {
         super.init()
+        
+        healthArchivesExpand.subscribe(onNext: { [weak self] in
+            guard let strongSelf = self else { return }
+            var data = strongSelf.healthArchivesData.value
+            if $0.0 {
+                data[0].model.isExpand = true
+                data[0].items = strongSelf.healthArchivesOriginalData[0]
+            }else {
+                data[0].model.isExpand = false
+                data[0].items = Array(strongSelf.healthArchivesOriginalData[0][0..<5])
+            }
+            strongSelf.healthArchivesData.value = data
+        })
+            .disposed(by: disposeBag)
         
         reloadSubject
             .subscribe(onNext: { [weak self] in
@@ -63,7 +78,7 @@ extension HCPatientDetailViewModel {
         
         healthArchivesOriginalData.append(firstSectionDatas)
         
-        healthArchivesData.value = [SectionModel.init(model: HCPatientDetailSectionModel(title: "健康档案", isExpand: false), items: firstSectionDatas)]
+        healthArchivesData.value = [SectionModel.init(model: HCPatientDetailSectionModel(title: "健康档案", isExpand: false), items: Array(firstSectionDatas[0..<5]))]
     }
 }
 

@@ -25,6 +25,10 @@ class HCPatientDetailController: BaseViewController {
             
         }
 
+        healthArchivesCtrl.expandChangeCallBack = { [weak self] in
+            self?.viewModel.healthArchivesExpand.onNext($0)
+        }
+        
         slideCtrl.menuItems = TYSlideItemModel.creatSimple(for: ["咨询记录", "健康档案", "患者管理"])
         slideCtrl.menuCtrls = [HCPatientConsultRecordController(),
                                healthArchivesCtrl,

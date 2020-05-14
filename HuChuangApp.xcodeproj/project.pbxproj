@@ -297,6 +297,8 @@
 		B8D700DA246DA82F0024DE3E /* HCPatientHealthArchivesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700D9246DA82F0024DE3E /* HCPatientHealthArchivesController.swift */; };
 		B8D700DC246DA8AA0024DE3E /* HCPatientManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700DB246DA8AA0024DE3E /* HCPatientManageController.swift */; };
 		B8D700DE246DB5BC0024DE3E /* HCPatientDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700DD246DB5BC0024DE3E /* HCPatientDetailViewModel.swift */; };
+		B8D700E0246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */; };
+		B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
 		B8FE96B72388301B0077B9BF /* TYCirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FE96B62388301B0077B9BF /* TYCirCleView.swift */; };
@@ -926,6 +928,8 @@
 		B8D700D9246DA82F0024DE3E /* HCPatientHealthArchivesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientHealthArchivesController.swift; sourceTree = "<group>"; };
 		B8D700DB246DA8AA0024DE3E /* HCPatientManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientManageController.swift; sourceTree = "<group>"; };
 		B8D700DD246DB5BC0024DE3E /* HCPatientDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientDetailViewModel.swift; sourceTree = "<group>"; };
+		B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientHealthArchivesHeaderView.swift; sourceTree = "<group>"; };
+		B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCPatientHealthArchivesHeaderView.xib; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
 		B8FE96B62388301B0077B9BF /* TYCirCleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYCirCleView.swift; sourceTree = "<group>"; };
@@ -1956,6 +1960,8 @@
 				B8D700C7246D98380024DE3E /* HCPatientListCell.xib */,
 				B8D700CC246D9A980024DE3E /* HCPatientListHeaderView.swift */,
 				B8D700CE246D9AA20024DE3E /* HCPatientListHeaderView.xib */,
+				B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */,
+				B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -2493,6 +2499,7 @@
 				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
+				B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 				B8D700CF246D9AA20024DE3E /* HCPatientListHeaderView.xib in Resources */,
 			);
@@ -2623,6 +2630,7 @@
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
 				C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */,
 				C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */,
+				B8D700E0246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift in Sources */,
 				B816EB2E221DABF400F024D5 /* ZXEAN13Writer.m in Sources */,
 				B8D700C2246D96310024DE3E /* HCConsultMemberListViewModel.swift in Sources */,
 				C4213352220587F6006C10C4 /* APIAdapt.swift in Sources */,

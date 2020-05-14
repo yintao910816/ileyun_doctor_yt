@@ -15,6 +15,8 @@ class HCPatientHealthArchivesController: HCSlideItemController {
 
     private var datasource: [SectionModel<HCPatientDetailSectionModel, HCListCellItem>] = []
     
+    public var expandChangeCallBack: (((Bool, Int))->())?
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -26,6 +28,7 @@ class HCPatientHealthArchivesController: HCSlideItemController {
         view.addSubview(tableView)
         
         tableView.register(HCListDetailCell.self, forCellReuseIdentifier: HCListDetailCell_identifier)
+        tableView.register(HCPatientHealthArchivesHeaderView.self, forHeaderFooterViewReuseIdentifier: HCPatientHealthArchivesHeaderView_identifier)
     }
     
     required init?(coder: NSCoder) {
@@ -70,6 +73,17 @@ extension HCPatientHealthArchivesController: UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseListCell
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HCPatientHealthArchivesHeaderView_identifier) as! HCPatientHealthArchivesHeaderView
+        header.model = datasource[section].model
+        header.expandChangeCallBack = { [weak self] in self?.expandChangeCallBack?(($0, section)) }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
     }
 }
 
