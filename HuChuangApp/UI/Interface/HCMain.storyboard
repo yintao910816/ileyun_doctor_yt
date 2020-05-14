@@ -232,11 +232,78 @@
                     <connections>
                         <outlet property="tableView" destination="Whz-Wr-R97" id="yPN-fY-aqj"/>
                         <segue destination="deW-Vv-Lj1" kind="show" identifier="monthBillSegue" id="pA7-0g-8wB"/>
+                        <segue destination="kZb-Sp-zPj" kind="show" identifier="ConsultMemberListSegue" id="cCM-gF-dJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-g1-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="576"/>
+        </scene>
+        <!--患者管理-->
+        <scene sceneID="hlh-9w-3nH">
+            <objects>
+                <viewController id="kZb-Sp-zPj" customClass="HCConsultMemberListController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G3H-lx-Mvl"/>
+                        <viewControllerLayoutGuide type="bottom" id="irh-7T-Kea"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JYc-XD-b7j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLj-wI-EiO" customClass="TYSearchBar" customModule="爱乐孕医生" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="XGs-Fq-bqA"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNw-p6-kZk">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YNw-p6-kZk" firstAttribute="top" secondItem="GLj-wI-EiO" secondAttribute="bottom" id="2Ox-9c-pSA"/>
+                            <constraint firstAttribute="trailing" secondItem="GLj-wI-EiO" secondAttribute="trailing" id="J6C-d6-eI9"/>
+                            <constraint firstItem="YNw-p6-kZk" firstAttribute="leading" secondItem="JYc-XD-b7j" secondAttribute="leading" id="O8g-JM-lLs"/>
+                            <constraint firstAttribute="trailing" secondItem="YNw-p6-kZk" secondAttribute="trailing" id="TYW-gt-Q4B"/>
+                            <constraint firstItem="GLj-wI-EiO" firstAttribute="top" secondItem="G3H-lx-Mvl" secondAttribute="bottom" id="dqd-Co-VBK"/>
+                            <constraint firstItem="GLj-wI-EiO" firstAttribute="leading" secondItem="JYc-XD-b7j" secondAttribute="leading" id="mLL-4j-7Hg"/>
+                            <constraint firstAttribute="bottom" secondItem="YNw-p6-kZk" secondAttribute="bottom" id="xAU-oA-6Y1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="患者管理" id="Yd2-aq-fBm"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="GLj-wI-EiO" id="gfI-Ct-Ydu"/>
+                        <outlet property="tableView" destination="YNw-p6-kZk" id="bYQ-0H-HmL"/>
+                        <segue destination="dF4-tH-aa0" kind="show" identifier="patientDetailSegue" id="19f-Fs-rOW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFj-Mz-v3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384.8" y="1324.5877061469266"/>
+        </scene>
+        <!--Patient Detail Controller-->
+        <scene sceneID="3ez-rW-37J">
+            <objects>
+                <viewController id="dF4-tH-aa0" customClass="HCPatientDetailController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hQ7-7y-hFa"/>
+                        <viewControllerLayoutGuide type="bottom" id="HdF-xD-tYL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="30N-MZ-3UE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fcT-Yg-MNV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QOs-PG-0ec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2158" y="1325"/>
         </scene>
         <!--个人账单-->
         <scene sceneID="zod-WZ-yJJ">
