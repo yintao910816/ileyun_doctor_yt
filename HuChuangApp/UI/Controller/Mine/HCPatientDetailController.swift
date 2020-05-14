@@ -10,7 +10,11 @@ import UIKit
 
 class HCPatientDetailController: BaseViewController {
 
+    private var viewModel: HCPatientDetailViewModel!
+    
     private var slideCtrl: TYSlideMenuController!
+    private let healthArchivesCtrl = HCPatientHealthArchivesController()
+    private let manageCtrl = HCPatientManageController()
 
     override func setupUI() {
         slideCtrl = TYSlideMenuController()
@@ -23,11 +27,25 @@ class HCPatientDetailController: BaseViewController {
 
         slideCtrl.menuItems = TYSlideItemModel.creatSimple(for: ["咨询记录", "健康档案", "患者管理"])
         slideCtrl.menuCtrls = [HCPatientConsultRecordController(),
-                               HCPatientHealthArchivesController(),
-                               HCPatientManageController()]
+                               healthArchivesCtrl,
+                               manageCtrl]
     }
     
     override func rxBind() {
+        viewModel = HCPatientDetailViewModel()
         
+        viewModel.manageData.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.manageCtrl.reloadData(data: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.healthArchivesData.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.healthArchivesCtrl.reloadData(data: $0)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.reloadSubject.onNext(Void())
     }
 }
