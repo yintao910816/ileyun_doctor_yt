@@ -299,6 +299,8 @@
 		B8D700DE246DB5BC0024DE3E /* HCPatientDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700DD246DB5BC0024DE3E /* HCPatientDetailViewModel.swift */; };
 		B8D700E0246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */; };
 		B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */; };
+		B8D700E5246EE5240024DE3E /* HCPatientCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */; };
+		B8D700E6246EE5240024DE3E /* HCPatientCycleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
 		B8FE96B72388301B0077B9BF /* TYCirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FE96B62388301B0077B9BF /* TYCirCleView.swift */; };
@@ -930,6 +932,8 @@
 		B8D700DD246DB5BC0024DE3E /* HCPatientDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientDetailViewModel.swift; sourceTree = "<group>"; };
 		B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientHealthArchivesHeaderView.swift; sourceTree = "<group>"; };
 		B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCPatientHealthArchivesHeaderView.xib; sourceTree = "<group>"; };
+		B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientCycleCell.swift; sourceTree = "<group>"; };
+		B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCPatientCycleCell.xib; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
 		B8FE96B62388301B0077B9BF /* TYCirCleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYCirCleView.swift; sourceTree = "<group>"; };
@@ -1962,6 +1966,8 @@
 				B8D700CE246D9AA20024DE3E /* HCPatientListHeaderView.xib */,
 				B8D700DF246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift */,
 				B8D700E1246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib */,
+				B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */,
+				B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -2502,6 +2508,7 @@
 				B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 				B8D700CF246D9AA20024DE3E /* HCPatientListHeaderView.xib in Resources */,
+				B8D700E6246EE5240024DE3E /* HCPatientCycleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2915,6 +2922,7 @@
 				B816EAFA221DABF400F024D5 /* ZXEANManufacturerOrgSupport.m in Sources */,
 				B8D700A2246B10680024DE3E /* HCHomeViewModel.swift in Sources */,
 				B816EAA1221DABF400F024D5 /* ZXQRCodeDataMask.m in Sources */,
+				B8D700E5246EE5240024DE3E /* HCPatientCycleCell.swift in Sources */,
 				B816EA8F221DABF400F024D5 /* ZXAztecCode.m in Sources */,
 				B8508EA823421D7B008C24BA /* HCListDetailCell.swift in Sources */,
 				B816EB2C221DABF400F024D5 /* ZXUPCEReader.m in Sources */,

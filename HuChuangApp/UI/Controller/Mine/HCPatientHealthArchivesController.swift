@@ -13,7 +13,7 @@ class HCPatientHealthArchivesController: HCSlideItemController {
 
     private var tableView: UITableView!
 
-    private var datasource: [SectionModel<HCPatientDetailSectionModel, HCListCellItem>] = []
+    private var datasource: [SectionModel<HCPatientDetailSectionModel, Any>] = []
     
     public var expandChangeCallBack: (((Bool, Int))->())?
 
@@ -22,12 +22,13 @@ class HCPatientHealthArchivesController: HCSlideItemController {
         
         tableView = UITableView.init(frame: view.bounds)
         tableView.separatorStyle = .none
-        tableView.rowHeight = 55
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         
         tableView.register(HCListDetailCell.self, forCellReuseIdentifier: HCListDetailCell_identifier)
+        tableView.register(UINib.init(nibName: "HCPatientCycleCell", bundle: nil), forCellReuseIdentifier: HCPatientCycleCell_identifier)
+        
         tableView.register(HCPatientHealthArchivesHeaderView.self, forHeaderFooterViewReuseIdentifier: HCPatientHealthArchivesHeaderView_identifier)
     }
     
@@ -38,7 +39,7 @@ class HCPatientHealthArchivesController: HCSlideItemController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .clear
+        view.backgroundColor = RGB(245, 245, 245)
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,8 +50,9 @@ class HCPatientHealthArchivesController: HCSlideItemController {
     
     override func reloadData(data: Any?) {
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
 
-        if let models = data as? [SectionModel<HCPatientDetailSectionModel, HCListCellItem>] {
+        if let models = data as? [SectionModel<HCPatientDetailSectionModel, Any>] {
             datasource.removeAll()
             datasource.append(contentsOf: models)
             tableView.reloadData()
@@ -68,10 +70,20 @@ extension HCPatientHealthArchivesController: UITableViewDelegate, UITableViewDat
         return datasource[section].items.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 55 : 140
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = datasource[indexPath.section].items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseListCell
-        cell.model = model
+        if indexPath.section == 0 {
+            let tempModel = model as! HCListCellItem
+            let cell = tableView.dequeueReusableCell(withIdentifier: tempModel.cellIdentifier) as! HCBaseListCell
+            cell.model = tempModel
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: HCPatientCycleCell_identifier) as! HCPatientCycleCell
         return cell
     }
     

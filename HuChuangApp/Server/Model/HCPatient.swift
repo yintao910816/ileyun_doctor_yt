@@ -11,3 +11,8 @@ import Foundation
 class HCPatientListModel: HJModel {
     
 }
+
+class HCPatientCircleModel: HJModel {
+ 
+
+}

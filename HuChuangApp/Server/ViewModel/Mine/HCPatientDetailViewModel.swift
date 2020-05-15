@@ -14,8 +14,8 @@ class HCPatientDetailViewModel: BaseViewModel {
     
     public let manageData = Variable([HCListCellItem]())
     
-    private var healthArchivesOriginalData: [[HCListCellItem]] = []
-    public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, HCListCellItem>]())
+    private var healthArchivesOriginalData: [[Any]] = []
+    public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, Any>]())
     public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
     
     override init() {
@@ -25,11 +25,15 @@ class HCPatientDetailViewModel: BaseViewModel {
             guard let strongSelf = self else { return }
             var data = strongSelf.healthArchivesData.value
             if $0.0 {
-                data[0].model.isExpand = true
-                data[0].items = strongSelf.healthArchivesOriginalData[0]
+                data[$0.1].model.isExpand = true
+                data[$0.1].items = strongSelf.healthArchivesOriginalData[$0.1]
             }else {
-                data[0].model.isExpand = false
-                data[0].items = Array(strongSelf.healthArchivesOriginalData[0][0..<5])
+                data[$0.1].model.isExpand = false
+                if $0.1 == 0 {
+                    data[0].items = Array(strongSelf.healthArchivesOriginalData[0][0..<5])
+                }else {
+                    data[1].items = Array(strongSelf.healthArchivesOriginalData[1][0..<1])
+                }
             }
             strongSelf.healthArchivesData.value = data
         })
@@ -59,6 +63,7 @@ extension HCPatientDetailViewModel {
         var firstSectionDatas: [HCListCellItem] = []
         for item in firstSectionTitles {
             var model = HCListCellItem()
+            model.cellHeight = 55
             model.title = item
             model.cellIdentifier = HCListDetailCell_identifier
             model.showArrow = false
@@ -77,10 +82,16 @@ extension HCPatientDetailViewModel {
             }
             firstSectionDatas.append(model)
         }
-        
+
         healthArchivesOriginalData.append(firstSectionDatas)
         
-        healthArchivesData.value = [SectionModel.init(model: HCPatientDetailSectionModel(title: "健康档案", isExpand: false), items: Array(firstSectionDatas[0..<5]))]
+        let secondData = [HCPatientCircleModel(), HCPatientCircleModel()]
+        healthArchivesOriginalData.append(secondData)
+
+        healthArchivesData.value = [SectionModel.init(model: HCPatientDetailSectionModel(title: "健康档案", isExpand: false),
+                                                      items: Array(firstSectionDatas[0..<5])),
+                                    SectionModel.init(model: HCPatientDetailSectionModel(title: "周期档案", isExpand: false),
+                                                      items: Array(secondData[0..<1]))]
     }
 }
 
