@@ -62,16 +62,18 @@ extension HCPatientDetailViewModel {
             model.title = item
             model.cellIdentifier = HCListDetailCell_identifier
             model.showArrow = false
-            model.detailTitle = "未填写"
             model.titleFont = item.contains("健康信息") ? UIFont.font(fontSize: 17, fontName: .PingFMedium) : UIFont.font(fontSize: 16, fontName: .PingFRegular)
             if item.contains("女方健康信息") {
                 model.titleColor = HC_MAIN_COLOR
+                model.detailIcon = "record_icon_woman"
             }else if item.contains("男方健康信息") {
                 model.titleColor = RGB(253, 119, 146)
+                model.detailIcon = "record_icon_man"
             }else if item.contains("基本信息") || item.contains("月经史") || item.contains("婚育史") {
                 model.titleColor = RGB(253, 153, 39)
             }else {
                 model.titleColor = RGB(53, 53, 53)
+                model.detailTitle = "未填写"
             }
             firstSectionDatas.append(model)
         }
