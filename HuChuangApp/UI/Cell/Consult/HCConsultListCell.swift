@@ -28,7 +28,7 @@ class HCConsultListCell: UITableViewCell {
     public var consultModel: HCConsultModel! {
         didSet {
             coverOutlet.setImage(consultModel.headPath)
-            titleOutlet.text = consultModel.userName
+            titleOutlet.text = consultModel.memberName
             detailOutlet.text = consultModel.createDate.timeSeprate1()
             subTitleOutlet.text = consultModel.content
             
