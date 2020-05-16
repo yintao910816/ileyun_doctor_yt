@@ -233,11 +233,46 @@
                         <outlet property="tableView" destination="Whz-Wr-R97" id="yPN-fY-aqj"/>
                         <segue destination="deW-Vv-Lj1" kind="show" identifier="monthBillSegue" id="pA7-0g-8wB"/>
                         <segue destination="kZb-Sp-zPj" kind="show" identifier="ConsultMemberListSegue" id="cCM-gF-dJW"/>
+                        <segue destination="N04-x2-myB" kind="show" identifier="doctorProfileSegue" id="fmL-8g-e3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-g1-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="576"/>
+        </scene>
+        <!--医生资料-->
+        <scene sceneID="vwh-uK-jKy">
+            <objects>
+                <viewController id="N04-x2-myB" customClass="HCDoctorProfileController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S0g-jV-qbF"/>
+                        <viewControllerLayoutGuide type="bottom" id="N5R-aF-nWU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PkR-LP-Ih9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sYT-qe-R7z">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sYT-qe-R7z" firstAttribute="leading" secondItem="PkR-LP-Ih9" secondAttribute="leading" id="AnL-Lj-ocx"/>
+                            <constraint firstAttribute="bottom" secondItem="sYT-qe-R7z" secondAttribute="bottom" id="Cv1-Wr-5Oj"/>
+                            <constraint firstAttribute="trailing" secondItem="sYT-qe-R7z" secondAttribute="trailing" id="FBa-bR-a6h"/>
+                            <constraint firstItem="sYT-qe-R7z" firstAttribute="top" secondItem="S0g-jV-qbF" secondAttribute="bottom" id="doj-PD-fVD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="医生资料" id="GPF-U0-7VF"/>
+                    <connections>
+                        <outlet property="tableView" destination="sYT-qe-R7z" id="CDn-fe-RuJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhf-54-dl4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1385" y="2033"/>
         </scene>
         <!--患者管理-->
         <scene sceneID="hlh-9w-3nH">

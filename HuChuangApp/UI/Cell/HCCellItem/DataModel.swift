@@ -26,6 +26,7 @@ struct HCListCellItem {
     var detailTitle: String = ""
     var detailIcon: String = ""
     var detailIconSize: CGSize = .init(width: 25, height: 25)
+    var detailIconCorner: CGFloat = 5
 
     var iconType: CellIconType = .local
     

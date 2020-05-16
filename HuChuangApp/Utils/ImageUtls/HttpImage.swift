@@ -29,6 +29,8 @@ extension UIImageView {
             return
         }
 
+        image = type.placeholder
+
         if type != .userIcon {
             var _options = [KingfisherOptionsInfoItem]()
             if let _folder = folder {

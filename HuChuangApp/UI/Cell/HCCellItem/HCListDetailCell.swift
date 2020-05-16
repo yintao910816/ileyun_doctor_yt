@@ -35,7 +35,15 @@ class HCListDetailCell: HCBaseListCell {
             detailTitleLabel.text = model.detailTitle
             detailTitleLabel.textColor = model.detailTitleColor
             
-            detailIcon.image = UIImage(named: model.detailIcon)
+            if detailIcon.layer.cornerRadius != model.detailIconCorner {
+                detailIcon.layer.cornerRadius = model.detailIconCorner                
+            }
+            
+            if model.iconType == .local {
+                detailIcon.image = UIImage(named: model.detailIcon)
+            }else {
+                detailIcon.setImage(model.detailIcon, .userIcon)
+            }
             
             setNeedsLayout()
             layoutIfNeeded()
@@ -46,24 +54,30 @@ class HCListDetailCell: HCBaseListCell {
         super.layoutSubviews()
         
         let detailSize = detailTitleLabel.sizeThatFits(CGSize.init(width: Double(Float(MAXFLOAT)), height: 20.0))
-        var detailX: CGFloat = 0
-        
-        if detailIcon.image == nil {
+        var detailTitleX: CGFloat = 0
+        var detailIconX: CGFloat = 0
+
+        if model.detailIcon.count == 0 {
             detailIcon.frame = .zero
-            detailX = model.showArrow ? (width - 15 - 8 - detailSize.width - 5) : (width - 15 - detailSize.width);
-            detailTitleLabel.frame = .init(x: detailX,
+            detailTitleX = model.showArrow ? (width - 15 - 8 - detailSize.width - 5) : (width - 15 - detailSize.width);
+            detailTitleLabel.frame = .init(x: detailTitleX,
                                            y: (height - detailSize.height) / 2.0,
                                            width: detailSize.width,
                                            height: detailSize.height)
         }else {
-            detailIcon.frame = .init(x: width - 15 - detailIcon.image!.size.width,
-                                     y: (height - detailIcon.image!.size.height) / 2.0,
-                                     width: detailIcon.image!.size.width,
-                                     height: detailIcon.image!.size.height)
-            detailTitleLabel.frame = .init(x: detailIcon.frame.minX - detailSize.width - 10,
-                                           y: (height - detailSize.height) / 2.0,
-                                           width: detailSize.width,
-                                           height: detailSize.height)
+            detailIconX = model.showArrow ? (width - 15 - 8 - 5 - model.detailIconSize.width) : (width - 15 - model.detailIconSize.width);
+            detailIcon.frame = .init(x: detailIconX,
+                                     y: (height - model.detailIconSize.height) / 2.0,
+                                     width: model.detailIconSize.width,
+                                     height: model.detailIconSize.height)
+            if model.detailTitle.count > 0 {
+                detailTitleLabel.frame = .init(x: detailIcon.frame.minX - detailSize.width - 10,
+                                               y: (height - detailSize.height) / 2.0,
+                                               width: detailSize.width,
+                                               height: detailSize.height)
+            }else {
+                detailTitleLabel.frame = .zero
+            }
         }
     }
 }
