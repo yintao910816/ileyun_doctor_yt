@@ -12,8 +12,12 @@ class HCConsultSettingController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    private var contentView: HCConsultSettingContentView!
+    
     override func setupUI() {
+        contentView = HCConsultSettingContentView.init(frame: .init(x: 0, y: 0, width: view.width, height: 719))
         
+        tableView.tableHeaderView = contentView
     }
     
     override func rxBind() {
