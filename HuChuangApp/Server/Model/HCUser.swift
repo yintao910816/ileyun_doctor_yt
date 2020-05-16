@@ -23,7 +23,7 @@ class HCUserModel: HJModel {
     var createDate: String = ""
     var creates: String = ""
     var departmentId: Int = 0
-    var departmentName: Int = 0
+    var departmentName: String = ""
     var email: String = ""
     var enable: Bool = false
     var environment: String = ""

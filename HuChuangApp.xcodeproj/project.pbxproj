@@ -262,6 +262,10 @@
 		B870E5542391981C0085AFA3 /* HCCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870E5532391981C0085AFA3 /* HCCustomNavBar.swift */; };
 		B89AA654246FF2FF006BBAF4 /* HCDoctorProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA653246FF2FF006BBAF4 /* HCDoctorProfileViewModel.swift */; };
 		B89AA656246FFEAF006BBAF4 /* HCListTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA655246FFEAF006BBAF4 /* HCListTextViewCell.swift */; };
+		B89AA658247014D4006BBAF4 /* HCConsultSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA657247014D4006BBAF4 /* HCConsultSettingController.swift */; };
+		B89AA65A24701663006BBAF4 /* HCConsultSettingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA65924701663006BBAF4 /* HCConsultSettingContentView.swift */; };
+		B89AA65C2470166C006BBAF4 /* HCConsultSettingContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89AA65B2470166C006BBAF4 /* HCConsultSettingContentView.xib */; };
+		B89AA65E2470195B006BBAF4 /* HCShareCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA65D2470195B006BBAF4 /* HCShareCardController.swift */; };
 		B89C397123A141B200CAB651 /* TYMarkString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C397023A141B200CAB651 /* TYMarkString.swift */; };
 		B8BE1AE423A698C300DF472A /* HCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE323A698C300DF472A /* HCAccountManager.swift */; };
 		B8BE1AE923A7E36B00DF472A /* HCBaseDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */; };
@@ -898,6 +902,10 @@
 		B870E5532391981C0085AFA3 /* HCCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCustomNavBar.swift; sourceTree = "<group>"; };
 		B89AA653246FF2FF006BBAF4 /* HCDoctorProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCDoctorProfileViewModel.swift; sourceTree = "<group>"; };
 		B89AA655246FFEAF006BBAF4 /* HCListTextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCListTextViewCell.swift; sourceTree = "<group>"; };
+		B89AA657247014D4006BBAF4 /* HCConsultSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultSettingController.swift; sourceTree = "<group>"; };
+		B89AA65924701663006BBAF4 /* HCConsultSettingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultSettingContentView.swift; sourceTree = "<group>"; };
+		B89AA65B2470166C006BBAF4 /* HCConsultSettingContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCConsultSettingContentView.xib; sourceTree = "<group>"; };
+		B89AA65D2470195B006BBAF4 /* HCShareCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCShareCardController.swift; sourceTree = "<group>"; };
 		B89C397023A141B200CAB651 /* TYMarkString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYMarkString.swift; sourceTree = "<group>"; };
 		B8BE1AE323A698C300DF472A /* HCAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountManager.swift; sourceTree = "<group>"; };
 		B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBaseDoctorCell.swift; sourceTree = "<group>"; };
@@ -1914,6 +1922,8 @@
 				B81C2F762215B60E00A887AF /* MineHeaderView.swift */,
 				B8BE34EE2214599B00EF16F1 /* MineHeaderView.xib */,
 				B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */,
+				B89AA65924701663006BBAF4 /* HCConsultSettingContentView.swift */,
+				B89AA65B2470166C006BBAF4 /* HCConsultSettingContentView.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1941,6 +1951,8 @@
 				B8D700D9246DA82F0024DE3E /* HCPatientHealthArchivesController.swift */,
 				B8D700DB246DA8AA0024DE3E /* HCPatientManageController.swift */,
 				B8D700E7246FDA740024DE3E /* HCDoctorProfileController.swift */,
+				B89AA657247014D4006BBAF4 /* HCConsultSettingController.swift */,
+				B89AA65D2470195B006BBAF4 /* HCShareCardController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2514,6 +2526,7 @@
 				B8BE34EF2214599B00EF16F1 /* MineHeaderView.xib in Resources */,
 				C421336122058E50006C10C4 /* HCLogin.storyboard in Resources */,
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
+				B89AA65C2470166C006BBAF4 /* HCConsultSettingContentView.xib in Resources */,
 				B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
 				B8D700CF246D9AA20024DE3E /* HCPatientListHeaderView.xib in Resources */,
@@ -2667,6 +2680,7 @@
 				B816EA9A221DABF400F024D5 /* ZXQRCodeEncoder.m in Sources */,
 				B89AA656246FFEAF006BBAF4 /* HCListTextViewCell.swift in Sources */,
 				B816EB49221DABF400F024D5 /* ZXProductParsedResult.m in Sources */,
+				B89AA658247014D4006BBAF4 /* HCConsultSettingController.swift in Sources */,
 				B89C397123A141B200CAB651 /* TYMarkString.swift in Sources */,
 				C4213351220587F6006C10C4 /* CRAPI.swift in Sources */,
 				B816EA92221DABF400F024D5 /* ZXAztecSimpleToken.m in Sources */,
@@ -2723,6 +2737,7 @@
 				B8508EA623421700008C24BA /* DataModel.swift in Sources */,
 				B8D700CD246D9A980024DE3E /* HCPatientListHeaderView.swift in Sources */,
 				B816EB11221DABF400F024D5 /* ZXRSSExpandedCurrentParsingState.m in Sources */,
+				B89AA65A24701663006BBAF4 /* HCConsultSettingContentView.swift in Sources */,
 				B8D700DE246DB5BC0024DE3E /* HCPatientDetailViewModel.swift in Sources */,
 				B816EACF221DABF400F024D5 /* ZXPDF417.m in Sources */,
 				B816EAA8221DABF400F024D5 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
@@ -2797,6 +2812,7 @@
 				B8BE1AE923A7E36B00DF472A /* HCBaseDoctorCell.swift in Sources */,
 				C4F3B8EC235B342E00A6539A /* HCListDetailButtonCell.swift in Sources */,
 				C421335A2205883D006C10C4 /* RefreshServer.swift in Sources */,
+				B89AA65E2470195B006BBAF4 /* HCShareCardController.swift in Sources */,
 				C421333A220572F2006C10C4 /* HCTabBarViewController.swift in Sources */,
 				B816EAC5221DABF400F024D5 /* ZXGenericGFPoly.m in Sources */,
 				C421339C2205B224006C10C4 /* ImageCacheCenter.swift in Sources */,

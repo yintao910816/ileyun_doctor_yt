@@ -44,15 +44,8 @@ class AppSetup {
 import Moya
 
 struct APIAssistance {
-        
-//    public static let base    = "https://www.ivfcn.com/app/doctor/"
-//    public static let newBase = "http://admin.ivfcn.com:8082/doctor-api/api/doctor/"
-////    public static let newBase = "http://web.ivfcn.com/hc-doctor/"
-//
-    public static let baseImage = "https://www.ivfcn.com"
-//
-//    public static let addBase = "http://admin.ivfcn.com:8082/hc-doctor/api/"
 
+    public static let baseImage = "https://www.ivfcn.com"
     public static let base    = "https://ileyun.ivfcn.com/hc-doctor/"
 
     public static let fileBase = "https://www.ivfcn.com/doctor/attach/upload.do"
@@ -60,16 +53,6 @@ struct APIAssistance {
 
     static public func baseURL(API: API) ->URL{
         return URL(string: base)!
-//        switch API {
-//        case .uploadIcon(_):
-//            return URL(string: fileBase)!
-//        case .selectBanner, .consultList(_):
-//            return URL(string: newBase)!
-//        case .getMonthBillInfo(_):
-//            return URL(string: addBase)!
-//        default:
-//            return URL(string: base)!
-//        }
     }
     
     /**
@@ -77,6 +60,8 @@ struct APIAssistance {
      */
     static public func mothed(API: API) ->Moya.Method{
         switch API {
+        case .selectInfo:
+            return .get
         default:
             return .post
         }

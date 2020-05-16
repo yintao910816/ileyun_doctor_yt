@@ -209,7 +209,7 @@ extension API: TargetType{
         case .loginTwo(_):
             return "api/login/loginTwo"
         case .selectInfo:
-            return "api/member/selectInfo"
+            return "api/user/selectInfo"
         case .selectBanner:
             return "index/bannerList"
         case .consultList(_):
@@ -303,8 +303,7 @@ extension API: TargetType{
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: _parameters, options: []) else {
                     return .requestPlain
                 }
-                return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
-//                return .requestParameters(parameters: _parameters, encoding: URLEncoding.default)
+                return method == .get ? .requestParameters(parameters: _parameters, encoding: URLEncoding.default) : .requestCompositeData(bodyData: jsonData, urlParameters: [:])
             }else {
                 return .requestPlain
             }

@@ -38,9 +38,14 @@ class HCMineViewModel: BaseViewModel, VMNavigation {
                                                             HCListCellItem(title: "医生资料",
                                                                            titleIcon: "my_icon_data",
                                                                            segue: "doctorProfileSegue"),
-                                                            HCListCellItem(title: "咨询设置", titleIcon: "my_icon_consult")]),
-                        SectionModel.init(model: 2, items: [HCListCellItem(title: "分享名片", titleIcon: "my_icon_share")]),
-                        SectionModel.init(model: 2, items: [HCListCellItem(title: "退出登录", showArrow: false)])]
+                                                            HCListCellItem(title: "咨询设置",
+                                                                           titleIcon: "my_icon_consult",
+                                                                           segue: "consultSettingSegue")]),
+                        SectionModel.init(model: 2, items: [HCListCellItem(title: "分享名片",
+                                                                           titleIcon: "my_icon_share",
+                                                                           segue: "shareCardSegue")]),
+                        SectionModel.init(model: 2, items: [HCListCellItem(title: "退出登录",
+                                                                           showArrow: false)])]
         
         datasource.onNext(dataList)
         
