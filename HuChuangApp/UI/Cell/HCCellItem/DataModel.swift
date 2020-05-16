@@ -55,4 +55,10 @@ struct HCListCellItem {
     /// 按钮cell文字有边框时设置值
     var buttonBorderColor: CGColor? = nil
     var buttonEdgeInsets: UIEdgeInsets = .zero
+    
+    var showBottomLine: Bool = true
+    
+    mutating func change(cellHeight: CGFloat) {
+        self.cellHeight = cellHeight
+    }
 }

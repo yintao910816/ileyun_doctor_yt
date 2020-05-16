@@ -17,6 +17,10 @@ class HCBaseListCell: UITableViewCell {
     public var arrowImgV: UIImageView!
     public var bottomLine: UIView!
     
+    deinit {
+        print("释放了：\(self)")
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -109,6 +113,7 @@ class HCBaseListCell: UITableViewCell {
             }
             
             arrowImgV.isHidden = !model.showArrow
+            bottomLine.isHidden = !model.showBottomLine
         }
     }
     
