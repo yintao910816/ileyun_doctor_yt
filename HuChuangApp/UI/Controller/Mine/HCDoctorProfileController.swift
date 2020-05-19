@@ -37,6 +37,7 @@ class HCDoctorProfileController: BaseViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(HCListCellItem.self)
+            .do(onNext: { [unowned self] in if $0.segue.count > 0 { self.performSegue(withIdentifier: $0.segue, sender: $0) } })
             .bind(to: viewModel.cellDidSelected)
             .disposed(by: disposeBag)
         

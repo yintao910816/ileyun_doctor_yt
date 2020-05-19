@@ -266,6 +266,9 @@
 		B89AA65A24701663006BBAF4 /* HCConsultSettingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA65924701663006BBAF4 /* HCConsultSettingContentView.swift */; };
 		B89AA65C2470166C006BBAF4 /* HCConsultSettingContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89AA65B2470166C006BBAF4 /* HCConsultSettingContentView.xib */; };
 		B89AA65E2470195B006BBAF4 /* HCShareCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA65D2470195B006BBAF4 /* HCShareCardController.swift */; };
+		B89AA6602473A697006BBAF4 /* HCEditUserIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA65F2473A697006BBAF4 /* HCEditUserIconViewController.swift */; };
+		B89AA6622473A6E0006BBAF4 /* HCEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA6612473A6DF006BBAF4 /* HCEditViewModel.swift */; };
+		B89AA6642473A9A6006BBAF4 /* HCEditNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89AA6632473A9A6006BBAF4 /* HCEditNickNameViewController.swift */; };
 		B89C397123A141B200CAB651 /* TYMarkString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C397023A141B200CAB651 /* TYMarkString.swift */; };
 		B8BE1AE423A698C300DF472A /* HCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE323A698C300DF472A /* HCAccountManager.swift */; };
 		B8BE1AE923A7E36B00DF472A /* HCBaseDoctorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */; };
@@ -906,6 +909,9 @@
 		B89AA65924701663006BBAF4 /* HCConsultSettingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultSettingContentView.swift; sourceTree = "<group>"; };
 		B89AA65B2470166C006BBAF4 /* HCConsultSettingContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCConsultSettingContentView.xib; sourceTree = "<group>"; };
 		B89AA65D2470195B006BBAF4 /* HCShareCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCShareCardController.swift; sourceTree = "<group>"; };
+		B89AA65F2473A697006BBAF4 /* HCEditUserIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCEditUserIconViewController.swift; sourceTree = "<group>"; };
+		B89AA6612473A6DF006BBAF4 /* HCEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCEditViewModel.swift; sourceTree = "<group>"; };
+		B89AA6632473A9A6006BBAF4 /* HCEditNickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCEditNickNameViewController.swift; sourceTree = "<group>"; };
 		B89C397023A141B200CAB651 /* TYMarkString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYMarkString.swift; sourceTree = "<group>"; };
 		B8BE1AE323A698C300DF472A /* HCAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCAccountManager.swift; sourceTree = "<group>"; };
 		B8BE1AE823A7E36B00DF472A /* HCBaseDoctorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBaseDoctorCell.swift; sourceTree = "<group>"; };
@@ -1943,6 +1949,8 @@
 		B8BE34F92214704300EF16F1 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B89AA6632473A9A6006BBAF4 /* HCEditNickNameViewController.swift */,
+				B89AA65F2473A697006BBAF4 /* HCEditUserIconViewController.swift */,
 				B8D700B6246C5F2C0024DE3E /* HCMonthBillController.swift */,
 				B8D700B8246C65510024DE3E /* HCYearBillController.swift */,
 				B8D700BA246D92570024DE3E /* HCConsultMemberListController.swift */,
@@ -1969,6 +1977,7 @@
 		B8D700BC246D96200024DE3E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B89AA6612473A6DF006BBAF4 /* HCEditViewModel.swift */,
 				B8D700BD246D96200024DE3E /* HCMineViewModel.swift */,
 				B8D700BE246D96200024DE3E /* AccountViewModel.swift */,
 				B8D700C1246D96310024DE3E /* HCConsultMemberListViewModel.swift */,
@@ -2782,6 +2791,7 @@
 				B816EA7B221DABF400F024D5 /* ZXPlanarYUVLuminanceSource.m in Sources */,
 				B816EB55221DABF400F024D5 /* ZXCapture.m in Sources */,
 				B816EB45221DABF400F024D5 /* ZXSMTPResultParser.m in Sources */,
+				B89AA6622473A6E0006BBAF4 /* HCEditViewModel.swift in Sources */,
 				C421339D2205B224006C10C4 /* ImageRx.swift in Sources */,
 				C421338822059B8C006C10C4 /* DB+Extension.swift in Sources */,
 				C42133952205B1E9006C10C4 /* CarouselDatasource.swift in Sources */,
@@ -2861,6 +2871,7 @@
 				C421338522059B8C006C10C4 /* DBProtocol.swift in Sources */,
 				C4F139B6235419EF00D777F6 /* AppLaunchView.swift in Sources */,
 				C421336622058F97006C10C4 /* HCLoginViewController.swift in Sources */,
+				B89AA6602473A697006BBAF4 /* HCEditUserIconViewController.swift in Sources */,
 				B816EB4B221DABF400F024D5 /* ZXBookmarkDoCoMoResultParser.m in Sources */,
 				B816EB54221DABF400F024D5 /* ZXImage.m in Sources */,
 				B816EB12221DABF400F024D5 /* ZXRSSExpandedGeneralAppIdDecoder.m in Sources */,
@@ -2889,6 +2900,7 @@
 				B816EB4E221DABF400F024D5 /* ZXSMSTOMMSTOResultParser.m in Sources */,
 				B816EB1B221DABF400F024D5 /* ZXRSS14Reader.m in Sources */,
 				B8BE1AE423A698C300DF472A /* HCAccountManager.swift in Sources */,
+				B89AA6642473A9A6006BBAF4 /* HCEditNickNameViewController.swift in Sources */,
 				B816EB3D221DABF400F024D5 /* ZXVINResultParser.m in Sources */,
 				B816EB51221DABF400F024D5 /* ZXCalendarParsedResult.m in Sources */,
 				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,
