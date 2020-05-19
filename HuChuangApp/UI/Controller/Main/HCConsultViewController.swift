@@ -39,6 +39,10 @@ class HCConsultViewController: BaseViewController {
         }
         .disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(HCConsultModel.self)
+            .bind(to: viewModel.cellDidSelected)
+            .disposed(by: disposeBag)
+
         tableView.prepare(viewModel)
         tableView.headerRefreshing()
     }

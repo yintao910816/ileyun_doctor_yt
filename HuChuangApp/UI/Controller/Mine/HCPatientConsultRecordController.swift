@@ -13,7 +13,7 @@ class HCPatientConsultRecordController: HCSlideItemController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .clear
     }
     
       override func reloadData(data: Any?) {

@@ -500,7 +500,7 @@
         <!--Patient Detail Controller-->
         <scene sceneID="3ez-rW-37J">
             <objects>
-                <viewController id="dF4-tH-aa0" customClass="HCPatientDetailController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="patientDetailController" id="dF4-tH-aa0" customClass="HCPatientDetailController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hQ7-7y-hFa"/>
                         <viewControllerLayoutGuide type="bottom" id="HdF-xD-tYL"/>

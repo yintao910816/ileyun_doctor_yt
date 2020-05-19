@@ -8,28 +8,29 @@
 
 import Foundation
 import RxCocoa
+import RxSwift
 
-class HCConsultViewModel: RefreshVM<HCConsultModel> {
+class HCConsultViewModel: RefreshVM<HCConsultModel>, VMNavigation {
     
     private var order: Int = 1
     
+    public let cellDidSelected = PublishSubject<HCConsultModel>()
+
     init(orderDriver: Driver<Bool>) {
         super.init()
-        
+
         orderDriver
             .drive(onNext: { [weak self] in
                 self?.order = $0 ? 0 : 1
                 self?.requestData(true)
             })
             .disposed(by: disposeBag)
-        
-        HCProvider.request(.getMonthBillInfo(year: 2019, month: 12, pageNum: 1, pageSize: 10))
-            .subscribe(onSuccess: { _ in
-                
-            }) { _ in
-                
-        }
-        .disposed(by: disposeBag)
+
+        cellDidSelected
+            .subscribe(onNext: {
+                HCConsultViewModel.sbPush("HCMain","patientDetailController", parameters: ["model": $0])
+            })
+            .disposed(by: disposeBag)
     }
     
     override func requestData(_ refresh: Bool) {
