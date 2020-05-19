@@ -11,8 +11,9 @@ import UIKit
 class HCPatientManageController: HCSlideItemController {
 
     private var tableView: UITableView!
-    
     private var datasource: [HCListCellItem] = []
+    
+    public var cellDidSelected:((HCListCellItem)->())?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -60,5 +61,9 @@ extension HCPatientManageController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseListCell
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellDidSelected?(datasource[indexPath.row])
     }
 }

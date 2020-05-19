@@ -50,7 +50,11 @@ class HCPatientDetailViewModel: BaseViewModel {
     private func requestListData() {
         manageData.value = [HCListCellItem(title: "备注", detailTitle: "请输入", titleColor: .black,cellIdentifier: HCListDetailCell_identifier),
                             HCListCellItem(title: "年龄", detailTitle: "31岁", titleColor: .black, showArrow: false, cellIdentifier: HCListDetailCell_identifier),
-                            HCListCellItem(title: "分组", detailTitle: "默认分组", titleColor: .black, cellIdentifier: HCListDetailCell_identifier),
+                            HCListCellItem(title: "分组",
+                                           detailTitle: "默认分组",
+                                           titleColor: .black,
+                                           cellIdentifier: HCListDetailCell_identifier,
+                                           segue: "patientGroupSegue"),
                             HCListCellItem(title: "屏蔽该患者", titleColor: .black, cellIdentifier: HCListSwitchCell_identifier)]
     }
 

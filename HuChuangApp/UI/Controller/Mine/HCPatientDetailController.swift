@@ -29,6 +29,11 @@ class HCPatientDetailController: BaseViewController {
             self?.viewModel.healthArchivesExpand.onNext($0)
         }
         
+        manageCtrl.cellDidSelected = { [unowned self] in
+            guard $0.segue.count > 0 else { return }
+            self.performSegue(withIdentifier: $0.segue, sender: nil)
+        }
+        
         slideCtrl.menuItems = TYSlideItemModel.creatSimple(for: ["咨询记录", "健康档案", "患者管理"])
         slideCtrl.menuCtrls = [HCPatientConsultRecordController(),
                                healthArchivesCtrl,

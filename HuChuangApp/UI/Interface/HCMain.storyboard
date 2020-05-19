@@ -491,6 +491,7 @@
                         <outlet property="searchBar" destination="GLj-wI-EiO" id="gfI-Ct-Ydu"/>
                         <outlet property="tableView" destination="YNw-p6-kZk" id="bYQ-0H-HmL"/>
                         <segue destination="dF4-tH-aa0" kind="show" identifier="patientDetailSegue" id="19f-Fs-rOW"/>
+                        <segue destination="yFT-6v-VPu" kind="show" identifier="patientSearchSegue" id="Xqx-kE-Hdt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFj-Mz-v3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -511,6 +512,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="fcT-Yg-MNV"/>
+                    <connections>
+                        <segue destination="Pzr-BS-vBm" kind="show" identifier="patientGroupSegue" id="Wug-1C-4ts"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOs-PG-0ec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -842,7 +846,7 @@
         <!--修改头像-->
         <scene sceneID="2Jg-CF-6Ss">
             <objects>
-                <viewController storyboardIdentifier="editUserIconVC" title="修改头像" id="C50-m2-9FO" customClass="HCEditUserIconViewController" customModule="爱乐孕" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editUserIconVC" title="修改头像" id="C50-m2-9FO" customClass="HCEditUserIconViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8RP-36-qxb"/>
                         <viewControllerLayoutGuide type="bottom" id="v1y-DE-QKx"/>
@@ -921,10 +925,160 @@
             </objects>
             <point key="canvasLocation" x="417" y="2163"/>
         </scene>
+        <!--搜索-->
+        <scene sceneID="BxZ-rP-VUu">
+            <objects>
+                <viewController storyboardIdentifier="patientSearchController" id="yFT-6v-VPu" customClass="HCPatientSearchController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pjh-7P-rdR"/>
+                        <viewControllerLayoutGuide type="bottom" id="axe-wP-T5A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YYf-HP-y3n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7HS-hT-bgz" customClass="TYSearchBar" customModule="爱乐孕医生" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JfN-rm-IAW"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-UJ-Q4k">
+                                <rect key="frame" x="0.0" y="140" width="375" height="527"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="患者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBr-oO-3ZQ">
+                                <rect key="frame" x="15" y="104" width="30" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MCR-UJ-Q4k" secondAttribute="trailing" id="6RX-9y-KLK"/>
+                            <constraint firstItem="MCR-UJ-Q4k" firstAttribute="leading" secondItem="YYf-HP-y3n" secondAttribute="leading" id="Fg4-Gy-2sx"/>
+                            <constraint firstAttribute="trailing" secondItem="7HS-hT-bgz" secondAttribute="trailing" id="Kwj-tS-nXg"/>
+                            <constraint firstItem="7HS-hT-bgz" firstAttribute="top" secondItem="Pjh-7P-rdR" secondAttribute="bottom" id="SMv-jc-WIw"/>
+                            <constraint firstItem="7HS-hT-bgz" firstAttribute="leading" secondItem="YYf-HP-y3n" secondAttribute="leading" id="cIM-64-u5b"/>
+                            <constraint firstItem="MCR-UJ-Q4k" firstAttribute="top" secondItem="WBr-oO-3ZQ" secondAttribute="bottom" constant="15" id="hgs-kI-b20"/>
+                            <constraint firstAttribute="bottom" secondItem="MCR-UJ-Q4k" secondAttribute="bottom" id="ie2-En-A4G"/>
+                            <constraint firstItem="WBr-oO-3ZQ" firstAttribute="top" secondItem="7HS-hT-bgz" secondAttribute="bottom" constant="10" id="nWU-io-chv"/>
+                            <constraint firstItem="WBr-oO-3ZQ" firstAttribute="leading" secondItem="YYf-HP-y3n" secondAttribute="leading" constant="15" id="vPF-X8-Vfr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="搜索" id="gIT-2B-qdA"/>
+                    <connections>
+                        <outlet property="searchBar" destination="7HS-hT-bgz" id="cfa-zg-UyT"/>
+                        <outlet property="tabelView" destination="MCR-UJ-Q4k" id="KLp-c4-HIh"/>
+                        <outlet property="tbHeaderView" destination="WBr-oO-3ZQ" id="mrP-Ci-D3y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8XT-v1-m5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384.8" y="2162.9685157421291"/>
+        </scene>
+        <!--选择分组-->
+        <scene sceneID="MPD-2D-meP">
+            <objects>
+                <viewController id="Pzr-BS-vBm" customClass="HCPatientGroupManageController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3If-5k-5zj"/>
+                        <viewControllerLayoutGuide type="bottom" id="4c1-5q-yyt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EIH-TI-YJ8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-Ts-AXf">
+                                <rect key="frame" x="15" y="56" width="280" height="36"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="添加分组" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0W7-ir-p9l">
+                                        <rect key="frame" x="7" y="0.0" width="266" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0W7-ir-p9l" secondAttribute="bottom" id="4uO-QU-RxH"/>
+                                    <constraint firstAttribute="trailing" secondItem="0W7-ir-p9l" secondAttribute="trailing" constant="7" id="FdJ-J7-fZn"/>
+                                    <constraint firstItem="0W7-ir-p9l" firstAttribute="top" secondItem="1ZD-Ts-AXf" secondAttribute="top" id="Lwl-cM-zZo"/>
+                                    <constraint firstAttribute="height" constant="36" id="XoO-WO-ANH"/>
+                                    <constraint firstItem="0W7-ir-p9l" firstAttribute="leading" secondItem="1ZD-Ts-AXf" secondAttribute="leading" constant="7" id="hZW-va-Awt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g33-lL-znl">
+                                <rect key="frame" x="305" y="59" width="55" height="30"/>
+                                <color key="backgroundColor" red="0.0039215686274509803" green="0.78431372549019607" blue="0.66666666666666663" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="fO2-vi-frA"/>
+                                    <constraint firstAttribute="height" constant="30" id="fmO-Z8-lPy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                <state key="normal" title="添加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择已有分组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hn3-DT-3dx">
+                                <rect key="frame" x="15" y="117" width="102" height="24"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长按可删除分组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-IV-fyB">
+                                <rect key="frame" x="255" y="118.5" width="105" height="21"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fV6-QM-R8y" customClass="TYFiliterView" customModule="爱乐孕医生" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="156" width="375" height="511"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fV6-QM-R8y" secondAttribute="trailing" id="0q0-oe-HL4"/>
+                            <constraint firstItem="g33-lL-znl" firstAttribute="leading" secondItem="1ZD-Ts-AXf" secondAttribute="trailing" constant="10" id="2zY-hV-p7U"/>
+                            <constraint firstItem="hn3-DT-3dx" firstAttribute="top" secondItem="1ZD-Ts-AXf" secondAttribute="bottom" constant="25" id="E11-r4-W8D"/>
+                            <constraint firstAttribute="bottom" secondItem="fV6-QM-R8y" secondAttribute="bottom" id="FpX-Vu-RBL"/>
+                            <constraint firstItem="fV6-QM-R8y" firstAttribute="top" secondItem="hn3-DT-3dx" secondAttribute="bottom" constant="15" id="IKP-Eu-rEF"/>
+                            <constraint firstItem="hn3-DT-3dx" firstAttribute="leading" secondItem="EIH-TI-YJ8" secondAttribute="leading" constant="15" id="LrF-2X-jge"/>
+                            <constraint firstItem="ukp-IV-fyB" firstAttribute="centerY" secondItem="hn3-DT-3dx" secondAttribute="centerY" id="MvH-49-Rdc"/>
+                            <constraint firstItem="fV6-QM-R8y" firstAttribute="leading" secondItem="EIH-TI-YJ8" secondAttribute="leading" id="O70-c2-szB"/>
+                            <constraint firstAttribute="trailing" secondItem="ukp-IV-fyB" secondAttribute="trailing" constant="15" id="Tb1-lF-3qL"/>
+                            <constraint firstItem="1ZD-Ts-AXf" firstAttribute="centerY" secondItem="g33-lL-znl" secondAttribute="centerY" id="apI-Bw-bV6"/>
+                            <constraint firstAttribute="trailing" secondItem="g33-lL-znl" secondAttribute="trailing" constant="15" id="d94-dt-BFU"/>
+                            <constraint firstItem="g33-lL-znl" firstAttribute="top" secondItem="3If-5k-5zj" secondAttribute="bottom" constant="15" id="suy-4U-x8N"/>
+                            <constraint firstItem="1ZD-Ts-AXf" firstAttribute="leading" secondItem="EIH-TI-YJ8" secondAttribute="leading" constant="15" id="vTb-bf-a9k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择分组" id="4HZ-MK-0uZ"/>
+                    <connections>
+                        <outlet property="contentView" destination="fV6-QM-R8y" id="bvu-Dr-SJG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="apV-HT-wrb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2157.5999999999999" y="2162.9685157421291"/>
+        </scene>
         <!--修改昵称-->
         <scene sceneID="50E-ga-VxI">
             <objects>
-                <viewController storyboardIdentifier="editNickNameVC" title="修改昵称" id="yJ0-TG-rtz" customClass="HCEditNickNameViewController" customModule="爱乐孕" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editNickNameVC" title="修改昵称" id="yJ0-TG-rtz" customClass="HCEditNickNameViewController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mMP-KI-KCo"/>
                         <viewControllerLayoutGuide type="bottom" id="LQf-qc-KFl"/>

@@ -19,6 +19,9 @@ class HCConsultMemberListController: BaseViewController {
     override func setupUI() {
         searchBar.inputBackGroundColor = RGB(246, 246, 246)
         searchBar.searchPlaceholder = "搜索患者"
+        searchBar.tapInputCallBack = { [unowned self] in
+            self.performSegue(withIdentifier: "patientSearchSegue", sender: nil)
+        }
         
         tableView.rowHeight = 63
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HCConsultViewController: BaseViewController {
+class HCConsultViewController: BaseViewController, VMNavigation {
 
     @IBOutlet weak var searchBarOutlet: TYSearchBar!
     @IBOutlet weak var orderOutlet: TYClickedButton!
@@ -19,6 +19,9 @@ class HCConsultViewController: BaseViewController {
     override func setupUI() {
         searchBarOutlet.inputBackGroundColor = RGB(246, 246, 246)
         searchBarOutlet.searchPlaceholder = "搜索患者"
+        searchBarOutlet.tapInputCallBack = {
+            HCConsultViewController.sbPush("HCMain", "patientSearchController")
+        }
         
         tableView.rowHeight = 80
         tableView.register(UINib.init(nibName: "HCConsultListCell", bundle: nil), forCellReuseIdentifier: HCConsultListCell_identifier)
