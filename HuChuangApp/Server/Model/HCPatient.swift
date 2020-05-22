@@ -34,7 +34,38 @@ class HCPatientSearchDataModel: HJModel {
 
 /// 患者管理-周期档案
 class HCPatientCircleModel: HJModel {
- 
-
+    var p_id: String = ""
+    var o_id: String = ""
+    var name_w: String = ""
+    var name_m: String = ""
+    var age_w: String = ""
+    var age_m: String = ""
+    var identif_w: String = ""
+    var identif_m: String = ""
+    var opsname: String = ""
+    var opstimes: String = ""
+    var begindate: String = ""
+    var enddate: String = ""
+    var patientmemo: String = ""
+    var pourout: String = ""
+    var nowmedicalrecord: String = ""
+    var diagnose: String = ""
+    var casehistorysumm: String = ""
+    var fsh: String = ""
+    var fsh_units: String = ""
+    var lh: String = ""
+    var lh_units: String = ""
+    var e2: String = ""
+    var e2_units: String = ""
+    var prl: String = ""
+    var prl_units: String = ""
+    var t: String = ""
+    var t_units: String = ""
+    var p: String = ""
+    var p_units: String = ""
+    var amh: String = ""
+    var amh_units: String = ""
+    var bloodsugar: String = ""
+    var bloodinsulin: String = ""
 }
 

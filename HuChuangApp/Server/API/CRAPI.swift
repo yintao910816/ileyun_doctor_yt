@@ -135,6 +135,8 @@ enum API{
     case searchData(searchWords: String)
     /// 患者健康档案
     case getHealthArchives(memberId: String)
+    /// 周期档案
+    case getPatientCoupleInfo(memberId: String)
     /// 个人账单-某月
     case getMonthBillInfo(year: Int, month: Int, pageNum: Int, pageSize: Int)
     
@@ -222,6 +224,8 @@ extension API: TargetType{
             return "patientConsult/getMonthBillInfo"
         case .getHealthArchives:
             return "api/patientConsult/getHealthArchives"
+        case .getPatientCoupleInfo(_):
+            return "api/patientConsult/getPatientCoupleInfo"
         case .groupTagMemberList:
             return "api/patientInfo/groupTagMemberList"
         case .searchData(_):
@@ -383,6 +387,8 @@ extension API {
         case .searchData(let searchWords):
             params["searchWords"] = searchWords
         case .getHealthArchives(let memberId):
+            params["memberId"] = memberId
+        case .getPatientCoupleInfo(let memberId):
             params["memberId"] = memberId
         default:
             break

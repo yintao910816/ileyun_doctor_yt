@@ -19,6 +19,8 @@ class HCPatientDetailViewModel: BaseViewModel {
     public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
     // 健康档案数据
     private var healthArchivesModel = HCHealthArchivesModel()
+    // 周期档案数据
+    private var circleOrignalData: [HCPatientCircleModel] = []
     
     private var memberId: String = ""
     
@@ -37,7 +39,11 @@ class HCPatientDetailViewModel: BaseViewModel {
                 if $0.1 == 0 {
                     data[0].items = Array(strongSelf.healthArchivesOriginalData[0][0..<5])
                 }else {
-                    data[1].items = Array(strongSelf.healthArchivesOriginalData[1][0..<1])
+                    if strongSelf.circleOrignalData.count > 0 {
+                        data[1].items = Array(strongSelf.healthArchivesOriginalData[1][0..<1])
+                    }else {
+                        data[1].items = []
+                    }
                 }
             }
             strongSelf.healthArchivesData.value = data
@@ -64,12 +70,21 @@ class HCPatientDetailViewModel: BaseViewModel {
     }
 
     private func requestHealthArchives() {
-        HCProvider.request(.getHealthArchives(memberId: memberId))
+        let archivesSignal = HCProvider.request(.getHealthArchives(memberId: memberId))
             .map(model: HCHealthArchivesModel.self)
-            .subscribe(onSuccess: { [weak self] data in
-                self?.healthArchivesModel = data
+            .asObservable()
+        let coupleInfoSignal = HCProvider.request(.getPatientCoupleInfo(memberId: memberId))
+            .map(models: HCPatientCircleModel.self)
+            .asObservable()
+            .catchErrorJustReturn([])
+        
+        Observable.combineLatest(archivesSignal, coupleInfoSignal)
+            .subscribe(onNext: { [weak self] data in
+                self?.healthArchivesModel = data.0
+                self?.circleOrignalData = data.1
                 self?.prepareHealthArchivesOriginalData()
-            }, onError: { _ in })
+                
+                }, onError: { _ in })
             .disposed(by: disposeBag)
     }
     
@@ -82,7 +97,7 @@ extension HCPatientDetailViewModel {
         let memberInfo = healthArchivesModel.memberInfo
         let menstruationHistory = healthArchivesModel.menstruationHistory
         let maritalHistory = healthArchivesModel.maritalHistory
-        let firstSectionDetailTitles = ["","",memberInfo.nameW,memberInfo.heightW,memberInfo.weightW,"",menstruationHistory.catCatameniaAmount,menstruationHistory.catDysmenorrhea,menstruationHistory.catMensescycleDay,menstruationHistory.catMensescycleDay,"",maritalHistory.marReMarriage,maritalHistory.marReMarriageAge,maritalHistory.contraceptionNoPregnancyNo,maritalHistory.isPregnancy,maritalHistory.marDrugAbortion,maritalHistory.ectopicPregnancy,"","","无","无","无"]
+        let firstSectionDetailTitles = ["","",memberInfo.nameW,memberInfo.heightW,memberInfo.weightW,"",menstruationHistory.catCatameniaAmount,menstruationHistory.catDysmenorrhea,menstruationHistory.catMensescycleDay,menstruationHistory.catMensescycleDay,"",maritalHistory.marReMarriage,maritalHistory.marReMarriageAge,maritalHistory.contraceptionNoPregnancyNo,maritalHistory.isPregnancy,maritalHistory.marDrugAbortion,maritalHistory.ectopicPregnancy,"","",memberInfo.nameM,memberInfo.heightM,memberInfo.weightM]
         var firstSectionDatas: [HCListCellItem] = []
         for idx in 0..<firstSectionTitles.count {
             let title = firstSectionTitles[idx]
@@ -108,16 +123,18 @@ extension HCPatientDetailViewModel {
             }
             firstSectionDatas.append(model)
         }
-
         healthArchivesOriginalData.append(firstSectionDatas)
+        healthArchivesOriginalData.append(circleOrignalData)
         
-        let secondData = [HCPatientCircleModel(), HCPatientCircleModel()]
-        healthArchivesOriginalData.append(secondData)
-
+        var secondData: [HCPatientCircleModel] = []
+        if circleOrignalData.count > 0 {
+            secondData.append(circleOrignalData.first!)
+        }
+        
         healthArchivesData.value = [SectionModel.init(model: HCPatientDetailSectionModel(title: "健康档案", isExpand: false),
                                                       items: Array(firstSectionDatas[0..<5])),
                                     SectionModel.init(model: HCPatientDetailSectionModel(title: "周期档案", isExpand: false),
-                                                      items: Array(secondData[0..<1]))]
+                                                      items: secondData)]
     }
 }
 

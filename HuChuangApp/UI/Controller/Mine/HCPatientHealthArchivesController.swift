@@ -63,15 +63,17 @@ class HCPatientHealthArchivesController: HCSlideItemController {
 extension HCPatientHealthArchivesController: UITableViewDelegate, UITableViewDataSource {
    
     func numberOfSections(in tableView: UITableView) -> Int {
+        PrintLog("numberOfSections：\(datasource.count)")
         return datasource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        PrintLog("行数：\(datasource[section].items.count)")
         return datasource[section].items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 55 : 140
+        return indexPath.section == 0 ? 55 : 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +86,7 @@ extension HCPatientHealthArchivesController: UITableViewDelegate, UITableViewDat
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: HCPatientCycleCell_identifier) as! HCPatientCycleCell
+        cell.model = (model as! HCPatientCircleModel)
         return cell
     }
     
