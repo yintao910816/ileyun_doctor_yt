@@ -129,6 +129,12 @@ enum API{
     case selectBanner
     /// 咨询列表 sort - 0顺序1倒叙
     case consultList(sort: Int, pageNum: Int, pageSize: Int)
+    /// 患者管理-分组
+    case groupTagMemberList
+    /// 患者搜索
+    case searchData(searchWords: String)
+    /// 患者健康档案
+    case getHealthArchives(memberId: String)
     /// 个人账单-某月
     case getMonthBillInfo(year: Int, month: Int, pageNum: Int, pageSize: Int)
     
@@ -172,8 +178,6 @@ enum API{
     case column(cmsType: HCWebCmsType)
     /// 栏目文章列表
     case articlePage(id: Int, pageNum: Int, pageSize: Int)
-    /// 健康档案
-    case getHealthArchives
     /// 专家问诊医生列表
     case consultSelectListPage(pageNum: Int, pageSize: Int, searchName: String, areaCode: String, opType: [String: Any], sceen: [String: Any])
     /// 咨询医生信息
@@ -216,6 +220,12 @@ extension API: TargetType{
             return "api/patientConsult/getConsultList"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
+        case .getHealthArchives:
+            return "api/patientConsult/getHealthArchives"
+        case .groupTagMemberList:
+            return "api/patientInfo/groupTagMemberList"
+        case .searchData(_):
+            return "api/search/searchData"
             
         case .UMAdd(_):
             return "api/umeng/add"
@@ -252,8 +262,6 @@ extension API: TargetType{
             return "api/doctor/recommendDoctor"
         case .articlePage(_):
             return "api/index/articlePage"
-        case .getHealthArchives:
-            return "api/member/getHealthArchives"
         case .consultSelectListPage(_):
             return "api/consult/selectListPage"
         case .getUserInfo(_):
@@ -372,7 +380,10 @@ extension API {
             params["month"] = month
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
-
+        case .searchData(let searchWords):
+            params["searchWords"] = searchWords
+        case .getHealthArchives(let memberId):
+            params["memberId"] = memberId
         default:
             break
         }

@@ -316,6 +316,7 @@
 		B8D700E5246EE5240024DE3E /* HCPatientCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */; };
 		B8D700E6246EE5240024DE3E /* HCPatientCycleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */; };
 		B8D700E8246FDA740024DE3E /* HCDoctorProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700E7246FDA740024DE3E /* HCDoctorProfileController.swift */; };
+		B8DE187724782BC5004EC3CE /* HCPatientSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE187624782BC5004EC3CE /* HCPatientSearchViewModel.swift */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
 		B8FE96B72388301B0077B9BF /* TYCirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FE96B62388301B0077B9BF /* TYCirCleView.swift */; };
@@ -964,6 +965,7 @@
 		B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientCycleCell.swift; sourceTree = "<group>"; };
 		B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCPatientCycleCell.xib; sourceTree = "<group>"; };
 		B8D700E7246FDA740024DE3E /* HCDoctorProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCDoctorProfileController.swift; sourceTree = "<group>"; };
+		B8DE187624782BC5004EC3CE /* HCPatientSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientSearchViewModel.swift; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
 		B8FE96B62388301B0077B9BF /* TYCirCleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYCirCleView.swift; sourceTree = "<group>"; };
@@ -2005,6 +2007,7 @@
 				B8D700C1246D96310024DE3E /* HCConsultMemberListViewModel.swift */,
 				B8D700DD246DB5BC0024DE3E /* HCPatientDetailViewModel.swift */,
 				B89AA653246FF2FF006BBAF4 /* HCDoctorProfileViewModel.swift */,
+				B8DE187624782BC5004EC3CE /* HCPatientSearchViewModel.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2989,6 +2992,7 @@
 				B816EB0D221DABF400F024D5 /* ZXAI01AndOtherAIs.m in Sources */,
 				B816EAFA221DABF400F024D5 /* ZXEANManufacturerOrgSupport.m in Sources */,
 				B8D700A2246B10680024DE3E /* HCHomeViewModel.swift in Sources */,
+				B8DE187724782BC5004EC3CE /* HCPatientSearchViewModel.swift in Sources */,
 				B816EAA1221DABF400F024D5 /* ZXQRCodeDataMask.m in Sources */,
 				B8D700E5246EE5240024DE3E /* HCPatientCycleCell.swift in Sources */,
 				B816EA8F221DABF400F024D5 /* ZXAztecCode.m in Sources */,

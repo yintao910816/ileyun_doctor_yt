@@ -28,7 +28,7 @@ class HCConsultViewModel: RefreshVM<HCConsultModel>, VMNavigation {
 
         cellDidSelected
             .subscribe(onNext: {
-                HCConsultViewModel.sbPush("HCMain","patientDetailController", parameters: ["model": $0])
+                HCConsultViewModel.sbPush("HCMain","patientDetailController", parameters: ["id": $0.memberId])
             })
             .disposed(by: disposeBag)
     }

@@ -33,8 +33,9 @@ class HCConsultMemberListController: BaseViewController {
     override func rxBind() {
         viewModel = HCConsultMemberListViewModel()
         
-        let signal = RxTableViewSectionedReloadDataSource<SectionModel<HCPatientListSectionModel,HCPatientListModel>>.init(configureCell: { (_, tb, indexPath, model) ->UITableViewCell in
-            let cell = tb.dequeueReusableCell(withIdentifier: HCPatientListCell_identifier)!
+        let signal = RxTableViewSectionedReloadDataSource<SectionModel<HCPatientListSectionModel,HCPatientListItemModel>>.init(configureCell: { (_, tb, indexPath, model) ->UITableViewCell in
+            let cell = tb.dequeueReusableCell(withIdentifier: HCPatientListCell_identifier) as! HCPatientListCell
+            cell.model = model
             return cell
         })
         
@@ -49,7 +50,7 @@ class HCConsultMemberListController: BaseViewController {
             .subscribe(onNext: { [unowned self] in self.tableView.deselectRow(at: $0, animated: true) })
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(HCPatientListModel.self)
+        tableView.rx.modelSelected(HCPatientListItemModel.self)
             .subscribe(onNext: { [weak self] in
                 self?.performSegue(withIdentifier: "patientDetailSegue", sender: $0)
             })
@@ -60,7 +61,7 @@ class HCConsultMemberListController: BaseViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "patientDetailSegue" {
-            segue.destination.prepare(parameters: ["model":sender as! HCPatientListModel])
+            segue.destination.prepare(parameters: ["id":(sender as! HCPatientListItemModel).memberId])
         }
     }
 }

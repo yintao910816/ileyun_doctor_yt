@@ -17,9 +17,14 @@ class HCPatientDetailViewModel: BaseViewModel {
     private var healthArchivesOriginalData: [[Any]] = []
     public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, Any>]())
     public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
+    // 健康档案数据
+    private var healthArchivesModel = HCHealthArchivesModel()
     
-    override init() {
+    private var memberId: String = ""
+    
+    init(memberId: String) {
         super.init()
+        self.memberId = memberId
         
         healthArchivesExpand.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
@@ -42,7 +47,7 @@ class HCPatientDetailViewModel: BaseViewModel {
         reloadSubject
             .subscribe(onNext: { [weak self] in
                 self?.requestListData()
-                self?.prepareHealthArchivesOriginalData()
+                self?.requestHealthArchives()
             })
             .disposed(by: disposeBag)
     }
@@ -58,31 +63,48 @@ class HCPatientDetailViewModel: BaseViewModel {
                             HCListCellItem(title: "屏蔽该患者", titleColor: .black, cellIdentifier: HCListSwitchCell_identifier)]
     }
 
+    private func requestHealthArchives() {
+        HCProvider.request(.getHealthArchives(memberId: memberId))
+            .map(model: HCHealthArchivesModel.self)
+            .subscribe(onSuccess: { [weak self] data in
+                self?.healthArchivesModel = data
+                self?.prepareHealthArchivesOriginalData()
+            }, onError: { _ in })
+            .disposed(by: disposeBag)
+    }
+    
 }
 
 extension HCPatientDetailViewModel {
     
     private func prepareHealthArchivesOriginalData() {
         let firstSectionTitles = ["女方健康信息", "基本信息", "姓名", "身高", "体重", "月经史", "月经量", "是否痛经", "经期天数", "月经周期", "婚育史", "婚姻情况", "初/再婚几年", "未避孕未孕(年)", "是否有过怀孕", "人工流产", "宫外孕", "男方健康信息", "基本信息", "姓名", "身高", "体重"]
+        let memberInfo = healthArchivesModel.memberInfo
+        let menstruationHistory = healthArchivesModel.menstruationHistory
+        let maritalHistory = healthArchivesModel.maritalHistory
+        let firstSectionDetailTitles = ["","",memberInfo.nameW,memberInfo.heightW,memberInfo.weightW,"",menstruationHistory.catCatameniaAmount,menstruationHistory.catDysmenorrhea,menstruationHistory.catMensescycleDay,menstruationHistory.catMensescycleDay,"",maritalHistory.marReMarriage,maritalHistory.marReMarriageAge,maritalHistory.contraceptionNoPregnancyNo,maritalHistory.isPregnancy,maritalHistory.marDrugAbortion,maritalHistory.ectopicPregnancy,"","","无","无","无"]
         var firstSectionDatas: [HCListCellItem] = []
-        for item in firstSectionTitles {
+        for idx in 0..<firstSectionTitles.count {
+            let title = firstSectionTitles[idx]
+            let detailTitle = firstSectionDetailTitles[idx]
+            
             var model = HCListCellItem()
             model.cellHeight = 55
-            model.title = item
+            model.title = title
+            model.detailTitle = detailTitle
             model.cellIdentifier = HCListDetailCell_identifier
             model.showArrow = false
-            model.titleFont = item.contains("健康信息") ? UIFont.font(fontSize: 17, fontName: .PingFMedium) : UIFont.font(fontSize: 16, fontName: .PingFRegular)
-            if item.contains("女方健康信息") {
+            model.titleFont = title.contains("健康信息") ? UIFont.font(fontSize: 17, fontName: .PingFMedium) : UIFont.font(fontSize: 16, fontName: .PingFRegular)
+            if title.contains("女方健康信息") {
                 model.titleColor = HC_MAIN_COLOR
                 model.detailIcon = "record_icon_woman"
-            }else if item.contains("男方健康信息") {
+            }else if title.contains("男方健康信息") {
                 model.titleColor = RGB(253, 119, 146)
                 model.detailIcon = "record_icon_man"
-            }else if item.contains("基本信息") || item.contains("月经史") || item.contains("婚育史") {
+            }else if title.contains("基本信息") || title.contains("月经史") || title.contains("婚育史") {
                 model.titleColor = RGB(253, 153, 39)
             }else {
                 model.titleColor = RGB(53, 53, 53)
-                model.detailTitle = "未填写"
             }
             firstSectionDatas.append(model)
         }

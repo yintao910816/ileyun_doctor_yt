@@ -16,6 +16,8 @@ class HCPatientDetailController: BaseViewController {
     private let healthArchivesCtrl = HCPatientHealthArchivesController()
     private let manageCtrl = HCPatientManageController()
 
+    private var memberId: String = ""
+
     override func setupUI() {
         slideCtrl = TYSlideMenuController()
         addChild(slideCtrl)
@@ -41,7 +43,7 @@ class HCPatientDetailController: BaseViewController {
     }
     
     override func rxBind() {
-        viewModel = HCPatientDetailViewModel()
+        viewModel = HCPatientDetailViewModel(memberId: memberId)
         
         viewModel.manageData.asDriver()
             .drive(onNext: { [weak self] in
@@ -56,5 +58,9 @@ class HCPatientDetailController: BaseViewController {
             .disposed(by: disposeBag)
 
         viewModel.reloadSubject.onNext(Void())
+    }
+    
+    override func prepare(parameters: [String : Any]?) {
+        memberId = parameters!["id"] as! String
     }
 }

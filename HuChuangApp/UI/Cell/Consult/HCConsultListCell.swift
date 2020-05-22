@@ -23,6 +23,7 @@ class HCConsultListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        selectionStyle = .none
     }
     
     public var consultModel: HCConsultModel! {
