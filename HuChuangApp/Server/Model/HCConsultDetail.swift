@@ -124,7 +124,7 @@ class HCConsultDetailItemModel: HJModel {
 class HCConsultDetailFileModel: HJModel {
     var filePath: String = ""
     
-    var photoItemSize: CGSize = .init(width: 0, height: 0)
+//    var photoItemSize: CGSize = .init(width: 0, height: 0)
 }
 
 class HCConsultDetailConsultListModel: HJModel {

@@ -26,6 +26,8 @@ class HCBoxPhotoView: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
         addSubview(collectionView)
         
         collectionView.register(HCPhotoCell.self, forCellWithReuseIdentifier: "HCPhotoCell")
@@ -68,7 +70,7 @@ extension HCBoxPhotoView {
             return .init(width: itemSize.width * 2 + 5, height: itemSize.height)
         }else if dataCount < 5 {
             return .init(width: itemSize.width * 2 + 5, height: itemSize.height * 2 + 5)
-        }else if dataCount == 6 {
+        }else if dataCount < 6 {
             return .init(width: itemSize.width * 3 + 5 * 2, height: itemSize.height * 2 + 5)
         }else {
             return .init(width: itemSize.width * 3 + 5 * 2, height: itemSize.height * 3 + 5 * 2)
@@ -89,7 +91,7 @@ extension HCBoxPhotoView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return filles[indexPath.row].photoItemSize
+        return HCBoxPhotoView.itemSize(with: filles.count)
     }
 }
 
