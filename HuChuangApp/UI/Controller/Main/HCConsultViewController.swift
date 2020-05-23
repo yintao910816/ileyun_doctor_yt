@@ -43,10 +43,19 @@ class HCConsultViewController: BaseViewController, VMNavigation {
         .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(HCConsultModel.self)
-            .bind(to: viewModel.cellDidSelected)
+            .subscribe(onNext: { [unowned self] in
+                self.performSegue(withIdentifier: "consultDetailSegue", sender: $0)
+            })
             .disposed(by: disposeBag)
-
+        
         tableView.prepare(viewModel)
         tableView.headerRefreshing()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "consultDetailSegue", let model = sender as? HCConsultModel {
+            segue.destination.navigationItem.title = model.memberName
+            segue.destination.prepare(parameters: ["memberId":model.memberId, "id":model.id])
+        }
     }
 }

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A08398CF7D2F1A7EC078368A /* Pods_HuChuangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68DA0CD68B7D8ED10451F88 /* Pods_HuChuangApp.framework */; };
+		B806B12924796E61000CC720 /* HCConsultDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B12824796E61000CC720 /* HCConsultDetailViewModel.swift */; };
+		B806B12B2479728E000CC720 /* HCConsultDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B12A2479728E000CC720 /* HCConsultDetail.swift */; };
+		B806B12E24797850000CC720 /* HCConsultDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B12D24797850000CC720 /* HCConsultDetailController.swift */; };
+		B806B1322479789A000CC720 /* HCConsultDetailStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B1302479789A000CC720 /* HCConsultDetailStatusHeaderView.swift */; };
+		B806B1332479789B000CC720 /* HCConsultDetailStatusHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B806B1312479789A000CC720 /* HCConsultDetailStatusHeaderView.xib */; };
+		B806B13824797A7E000CC720 /* HCConsultDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B13724797A7E000CC720 /* HCConsultDetailSectionHeader.swift */; };
+		B806B13C24797CBB000CC720 /* HCBoxPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */; };
 		B816EA73221DABF400F024D5 /* CodeScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B816E874221DABF200F024D5 /* CodeScan.bundle */; };
 		B816EA74221DABF400F024D5 /* LBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B816E877221DABF200F024D5 /* LBXScanViewController.m */; };
 		B816EA75221DABF400F024D5 /* LBXScanViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = B816E878221DABF200F024D5 /* LBXScanViewStyle.m */; };
@@ -238,6 +245,7 @@
 		B816EB56221DABF400F024D5 /* ZXCGImageLuminanceSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B816EA69221DABF300F024D5 /* ZXCGImageLuminanceSource.m */; };
 		B816EB57221DABF400F024D5 /* ZXingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B816EA6F221DABF300F024D5 /* ZXingWrapper.m */; };
 		B816EB58221DABF400F024D5 /* LBXZXCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = B816EA70221DABF300F024D5 /* LBXZXCapture.m */; };
+		B81761F724798FB3005E91A0 /* HCConsultDetalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */; };
 		B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F762215B60E00A887AF /* MineHeaderView.swift */; };
 		B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C2F782215BBFB00A887AF /* FileUpload.swift */; };
 		B821E34D23070907009A11A3 /* HCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E34C23070907009A11A3 /* HCLocationManager.swift */; };
@@ -409,6 +417,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B806B12824796E61000CC720 /* HCConsultDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailViewModel.swift; sourceTree = "<group>"; };
+		B806B12A2479728E000CC720 /* HCConsultDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetail.swift; sourceTree = "<group>"; };
+		B806B12D24797850000CC720 /* HCConsultDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConsultDetailController.swift; sourceTree = "<group>"; };
+		B806B1302479789A000CC720 /* HCConsultDetailStatusHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConsultDetailStatusHeaderView.swift; sourceTree = "<group>"; };
+		B806B1312479789A000CC720 /* HCConsultDetailStatusHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCConsultDetailStatusHeaderView.xib; sourceTree = "<group>"; };
+		B806B13724797A7E000CC720 /* HCConsultDetailSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailSectionHeader.swift; sourceTree = "<group>"; };
+		B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBoxPhotoView.swift; sourceTree = "<group>"; };
 		B816E874221DABF200F024D5 /* CodeScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CodeScan.bundle; sourceTree = "<group>"; };
 		B816E875221DABF200F024D5 /* LBXScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanView.h; sourceTree = "<group>"; };
 		B816E876221DABF200F024D5 /* LBXScanNetAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanNetAnimation.h; sourceTree = "<group>"; };
@@ -886,6 +901,7 @@
 		B816EA70221DABF300F024D5 /* LBXZXCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXZXCapture.m; sourceTree = "<group>"; };
 		B816EA71221DABF300F024D5 /* ZXingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXingWrapper.h; sourceTree = "<group>"; };
 		B816EA72221DABF300F024D5 /* LBXScanTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanTypes.h; sourceTree = "<group>"; };
+		B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetalCell.swift; sourceTree = "<group>"; };
 		B81C2F762215B60E00A887AF /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		B81C2F782215BBFB00A887AF /* FileUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUpload.swift; sourceTree = "<group>"; };
 		B821E34C23070907009A11A3 /* HCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLocationManager.swift; sourceTree = "<group>"; };
@@ -1092,11 +1108,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B816E86F221DABA100F024D5 /* Home */ = {
+		B806B12C24797850000CC720 /* ConsultDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B806B12D24797850000CC720 /* HCConsultDetailController.swift */,
 			);
-			path = Home;
+			path = ConsultDetail;
+			sourceTree = "<group>";
+		};
+		B806B12F2479789A000CC720 /* ConsultDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B806B1302479789A000CC720 /* HCConsultDetailStatusHeaderView.swift */,
+				B806B1312479789A000CC720 /* HCConsultDetailStatusHeaderView.xib */,
+			);
+			path = ConsultDetail;
+			sourceTree = "<group>";
+		};
+		B806B134247978B2000CC720 /* ConsultDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B806B13724797A7E000CC720 /* HCConsultDetailSectionHeader.swift */,
+				B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */,
+				B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */,
+			);
+			path = ConsultDetail;
 			sourceTree = "<group>";
 		};
 		B816E872221DABF200F024D5 /* LBXScan */ = {
@@ -2164,7 +2200,7 @@
 		C421330C22056B84006C10C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B816E86F221DABA100F024D5 /* Home */,
+				B806B12C24797850000CC720 /* ConsultDetail */,
 				B8BE34F92214704300EF16F1 /* Mine */,
 				C421336422058F8C006C10C4 /* Login */,
 				C421333B220586B0006C10C4 /* Main */,
@@ -2185,6 +2221,7 @@
 		C421330E22056B84006C10C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B806B12F2479789A000CC720 /* ConsultDetail */,
 				C43BC44E233B10F200194539 /* Picker */,
 				B86993D423373A5300086A77 /* TYSearchBar */,
 				B8BE34F022145DF000EF16F1 /* Custom */,
@@ -2267,6 +2304,7 @@
 				B8D700BC246D96200024DE3E /* Mine */,
 				B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */,
 				B8D700AD246C40100024DE3E /* HCConsultViewModel.swift */,
+				B806B12824796E61000CC720 /* HCConsultDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2291,6 +2329,7 @@
 				C497E9672344658D00328B47 /* HCHome.swift */,
 				B8D700AF246C42480024DE3E /* HCConsult.swift */,
 				B8D700C3246D96720024DE3E /* HCPatient.swift */,
+				B806B12A2479728E000CC720 /* HCConsultDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2424,6 +2463,7 @@
 		C43F09B722142DEA00910437 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B806B134247978B2000CC720 /* ConsultDetail */,
 				B8D700C5246D98200024DE3E /* Patient */,
 				B8D700B1246C49750024DE3E /* Consult */,
 				B8BE1AE723A7E36B00DF472A /* Base */,
@@ -2555,6 +2595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D700AA246B98170024DE3E /* HCHomeNotificationCell.xib in Resources */,
+				B806B1332479789B000CC720 /* HCConsultDetailStatusHeaderView.xib in Resources */,
 				B8D700B5246C49A40024DE3E /* HCConsultListCell.xib in Resources */,
 				B8D700C9246D98380024DE3E /* HCPatientListCell.xib in Resources */,
 				B816EA73221DABF400F024D5 /* CodeScan.bundle in Resources */,
@@ -2665,6 +2706,7 @@
 				B8508EAC23421EEC008C24BA /* HCListSwitchCell.swift in Sources */,
 				C421334B220587DC006C10C4 /* Response+ModelMapper.swift in Sources */,
 				B816EAB8221DABF400F024D5 /* ZXGlobalHistogramBinarizer.m in Sources */,
+				B806B13824797A7E000CC720 /* HCConsultDetailSectionHeader.swift in Sources */,
 				C41A12C122BCF49100214216 /* String+Operation.swift in Sources */,
 				B816EA7A221DABF400F024D5 /* LBXScanTypes.m in Sources */,
 				B816EB28221DABF400F024D5 /* ZXEAN8Writer.m in Sources */,
@@ -2693,6 +2735,7 @@
 				B816EAD3221DABF400F024D5 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
+				B806B1322479789A000CC720 /* HCConsultDetailStatusHeaderView.swift in Sources */,
 				C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */,
 				C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */,
 				B8D700E0246DC8F50024DE3E /* HCPatientHealthArchivesHeaderView.swift in Sources */,
@@ -2760,6 +2803,7 @@
 				B816EAC6221DABF400F024D5 /* ZXIntArray.m in Sources */,
 				B816EAE3221DABF400F024D5 /* ZXDataMatrixEdifactEncoder.m in Sources */,
 				B816EB4A221DABF400F024D5 /* ZXTelParsedResult.m in Sources */,
+				B806B12924796E61000CC720 /* HCConsultDetailViewModel.swift in Sources */,
 				B816EABA221DABF400F024D5 /* ZXMonochromeRectangleDetector.m in Sources */,
 				B816EAEB221DABF400F024D5 /* ZXDataMatrixDefaultPlacement.m in Sources */,
 				B821E34D23070907009A11A3 /* HCLocationManager.swift in Sources */,
@@ -2768,6 +2812,7 @@
 				B8D700AE246C40100024DE3E /* HCConsultViewModel.swift in Sources */,
 				B816EAAA221DABF400F024D5 /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				C42133582205883D006C10C4 /* BaseViewModel.swift in Sources */,
+				B806B13C24797CBB000CC720 /* HCBoxPhotoView.swift in Sources */,
 				B8D700C0246D96200024DE3E /* AccountViewModel.swift in Sources */,
 				B816EAEC221DABF400F024D5 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				B816EAFD221DABF400F024D5 /* ZXOneDReader.m in Sources */,
@@ -2880,6 +2925,7 @@
 				B816EAF1221DABF400F024D5 /* ZXDataMatrixDecoder.m in Sources */,
 				B816EA91221DABF400F024D5 /* ZXAztecEncoder.m in Sources */,
 				C42133712205961D006C10C4 /* UIControl+_Rx.swift in Sources */,
+				B806B12B2479728E000CC720 /* HCConsultDetail.swift in Sources */,
 				B816EB00221DABF400F024D5 /* ZXMultiFormatUPCEANReader.m in Sources */,
 				C4213343220586E6006C10C4 /* HCMineViewController.swift in Sources */,
 				C449FA5B2298021D00B7803E /* AppAbout.swift in Sources */,
@@ -2924,6 +2970,7 @@
 				B816EAE5221DABF400F024D5 /* ZXDataMatrixC40Encoder.m in Sources */,
 				B816EAE0221DABF400F024D5 /* ZXPDF417ResultMetadata.m in Sources */,
 				B816EB3F221DABF400F024D5 /* ZXAddressBookParsedResult.m in Sources */,
+				B81761F724798FB3005E91A0 /* HCConsultDetalCell.swift in Sources */,
 				B816EAA2221DABF400F024D5 /* ZXQRCodeDecoder.m in Sources */,
 				B816EAEF221DABF400F024D5 /* ZXDataMatrixBitMatrixParser.m in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
@@ -3012,6 +3059,7 @@
 				B816EB19221DABF400F024D5 /* ZXBitArrayBuilder.m in Sources */,
 				B816EAE1221DABF400F024D5 /* ZXDataMatrixReader.m in Sources */,
 				C421331A22056E55006C10C4 /* BaseViewController.swift in Sources */,
+				B806B12E24797850000CC720 /* HCConsultDetailController.swift in Sources */,
 				C4F3B8EA235B320A00A6539A /* HCListDetailInputCell.swift in Sources */,
 				B816EAAE221DABF400F024D5 /* ZXQRCodeFinderPatternFinder.m in Sources */,
 				B816EAD1221DABF400F024D5 /* ZXModulusPoly.m in Sources */,

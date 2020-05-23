@@ -14,8 +14,6 @@ class HCConsultViewModel: RefreshVM<HCConsultModel>, VMNavigation {
     
     private var order: Int = 1
     
-    public let cellDidSelected = PublishSubject<HCConsultModel>()
-
     init(orderDriver: Driver<Bool>) {
         super.init()
 
@@ -23,12 +21,6 @@ class HCConsultViewModel: RefreshVM<HCConsultModel>, VMNavigation {
             .drive(onNext: { [weak self] in
                 self?.order = $0 ? 0 : 1
                 self?.requestData(true)
-            })
-            .disposed(by: disposeBag)
-
-        cellDidSelected
-            .subscribe(onNext: {
-                HCConsultViewModel.sbPush("HCMain","patientDetailController", parameters: ["id": $0.memberId])
             })
             .disposed(by: disposeBag)
     }

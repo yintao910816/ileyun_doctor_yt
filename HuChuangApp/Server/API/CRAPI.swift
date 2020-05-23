@@ -129,6 +129,8 @@ enum API{
     case selectBanner
     /// 咨询列表 sort - 0顺序1倒叙
     case consultList(sort: Int, pageNum: Int, pageSize: Int)
+    /// 咨询详情
+    case getConsultDetail(memberId: String, id: String)
     /// 患者管理-分组
     case groupTagMemberList
     /// 患者搜索
@@ -220,6 +222,8 @@ extension API: TargetType{
             return "index/bannerList"
         case .consultList(_):
             return "api/patientConsult/getConsultList"
+        case .getConsultDetail(_):
+            return "api/patientConsult/getConsultDetailWx"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
         case .getHealthArchives:
@@ -379,6 +383,9 @@ extension API {
             params["sort"] = sort
             params["pageNum"] = pageNum
             params["pageSize"] = pageSize
+        case .getConsultDetail(let memberId, let id):
+            params["memberId"] = memberId
+            params["id"] = id
         case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
             params["year"] = year
             params["month"] = month
