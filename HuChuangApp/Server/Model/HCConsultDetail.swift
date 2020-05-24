@@ -143,11 +143,17 @@ class HCConsultDetailConsultListModel: HJModel {
     var fileList: [String] = []
     var bak: String = ""
     
+    /// 新加参数
+    var timeString: String = ""
+    var cellIdentifier: String = HCConsultDetalCell_identifier
+    
     private var avatarFrame: CGRect = .zero
     private var nameFrame: CGRect = .zero
     private var contentBgFrame: CGRect = .zero
     private var contentTextFrame: CGRect = .zero
 
+    private var timeFrame: CGRect = .zero
+    
     private var cellHeight: CGFloat = 0
     
     public lazy var isMine: Bool = {
@@ -217,10 +223,24 @@ class HCConsultDetailConsultListModel: HJModel {
         }
     }
    
+    public var getTimeFrame: CGRect {
+        get {
+            if timeFrame == .zero {
+                let w = timeString.ty_textSize(font: .font(fontSize: 12, fontName: .PingFMedium), width: CGFloat(MAXFLOAT), height: 18).width + 30
+                timeFrame = .init(x: (PPScreenW - w) / 2.0, y: 15, width: w, height: 18)
+            }
+            return timeFrame
+        }
+    }
+    
     public var getCellHeight: CGFloat {
         get {
             if cellHeight == 0 {
-                cellHeight = getContentBgFrame.maxY + 10
+                if cellIdentifier == HCConsultDetalCell_identifier {
+                    cellHeight = getContentBgFrame.maxY + 10
+                }else {
+                    cellHeight = 47
+                }
             }
             return cellHeight
         }

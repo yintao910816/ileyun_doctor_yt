@@ -21,14 +21,19 @@ class HCConsultDetailController: BaseViewController {
     override func setupUI() {
         tableView.register(HCConsultDetailSectionHeader.self, forHeaderFooterViewReuseIdentifier: HCConsultDetailSectionHeader_identifier)
         tableView.register(HCConsultDetalCell.self, forCellReuseIdentifier: HCConsultDetalCell_identifier)
+        tableView.register(HCConsultDetailTimeCell.self, forCellReuseIdentifier: HCConsultDetailTimeCell_identifier)
     }
     
     override func rxBind() {
         viewModel = HCConsultDetailViewModel.init(memberId: memberId, id: id)
 
         let datasource = RxTableViewSectionedReloadDataSource<SectionModel<HCConsultDetailItemModel, HCConsultDetailConsultListModel>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
-            let cell = (tb.dequeueReusableCell(withIdentifier: HCConsultDetalCell_identifier) as! HCConsultDetalCell)
-            cell.model = model
+            let cell = tb.dequeueReusableCell(withIdentifier: model.cellIdentifier)!
+            if model.cellIdentifier == HCConsultDetalCell_identifier {
+                (cell as! HCConsultDetalCell).model = model
+            }else if model.cellIdentifier == HCConsultDetailTimeCell_identifier {
+                (cell as! HCConsultDetailTimeCell).model = model
+            }
             return cell
         })
 

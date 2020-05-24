@@ -34,7 +34,28 @@ class HCConsultDetailViewModel: RefreshVM<SectionModel<HCConsultDetailItemModel,
     private func dealRequestData(refresh: Bool, data: HCConsultDetailModel) {
         var sectionDatas: [SectionModel<HCConsultDetailItemModel, HCConsultDetailConsultListModel>] = []
         for item in data.records {
-            sectionDatas.append(SectionModel.init(model: item, items: item.consultList))
+            var consultsList: [HCConsultDetailConsultListModel] = []
+            consultsList.append(contentsOf: item.consultList)
+
+            if item.content == item.consultList.first?.content {
+                consultsList.remove(at: 0)
+            }
+
+            if item.startDate.count > 0 {
+                let starDateModel = HCConsultDetailConsultListModel()
+                starDateModel.cellIdentifier = HCConsultDetailTimeCell_identifier
+                starDateModel.timeString = "开始回复 \(item.startDate)"
+                consultsList.insert(starDateModel, at: 0)
+            }
+            
+            if item.endDate.count > 0 {
+                let endDateModel = HCConsultDetailConsultListModel()
+                endDateModel.cellIdentifier = HCConsultDetailTimeCell_identifier
+                endDateModel.timeString = "结束回复 \(item.endDate)"
+                consultsList.append(endDateModel)
+            }
+            
+            sectionDatas.append(SectionModel.init(model: item, items: consultsList))
         }
         updateRefresh(refresh, sectionDatas, data.pages)
     }

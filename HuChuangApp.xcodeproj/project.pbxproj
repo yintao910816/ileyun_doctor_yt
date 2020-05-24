@@ -324,6 +324,7 @@
 		B8D700E5246EE5240024DE3E /* HCPatientCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */; };
 		B8D700E6246EE5240024DE3E /* HCPatientCycleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */; };
 		B8D700E8246FDA740024DE3E /* HCDoctorProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D700E7246FDA740024DE3E /* HCDoctorProfileController.swift */; };
+		B8DBE7AB247AB92300566A5F /* HCConsultDetailTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */; };
 		B8DE187724782BC5004EC3CE /* HCPatientSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE187624782BC5004EC3CE /* HCPatientSearchViewModel.swift */; };
 		B8F8FBA823572B5700784442 /* TYData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8FBA723572B5700784442 /* TYData.swift */; };
 		B8FC3F8D239AA626006EB478 /* HCSettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */; };
@@ -981,6 +982,7 @@
 		B8D700E3246EE5230024DE3E /* HCPatientCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientCycleCell.swift; sourceTree = "<group>"; };
 		B8D700E4246EE5240024DE3E /* HCPatientCycleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCPatientCycleCell.xib; sourceTree = "<group>"; };
 		B8D700E7246FDA740024DE3E /* HCDoctorProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCDoctorProfileController.swift; sourceTree = "<group>"; };
+		B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailTimeCell.swift; sourceTree = "<group>"; };
 		B8DE187624782BC5004EC3CE /* HCPatientSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientSearchViewModel.swift; sourceTree = "<group>"; };
 		B8F8FBA723572B5700784442 /* TYData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYData.swift; sourceTree = "<group>"; };
 		B8FC3F8C239AA626006EB478 /* HCSettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCSettingFooterView.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				B806B13724797A7E000CC720 /* HCConsultDetailSectionHeader.swift */,
 				B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */,
 				B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */,
+				B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */,
 			);
 			path = ConsultDetail;
 			sourceTree = "<group>";
@@ -2879,6 +2882,7 @@
 				B8D700D6246DA6550024DE3E /* TYSlideMenuController.swift in Sources */,
 				B816EAF7221DABF400F024D5 /* ZXMaxiCodeBitMatrixParser.m in Sources */,
 				B816EAF3221DABF400F024D5 /* ZXDataMatrixDetector.m in Sources */,
+				B8DBE7AB247AB92300566A5F /* HCConsultDetailTimeCell.swift in Sources */,
 				B816EB03221DABF400F024D5 /* ZXEAN13Reader.m in Sources */,
 				B83562BF2473BEBA001942BD /* TYFiliterLayout.swift in Sources */,
 				B816EB3E221DABF400F024D5 /* ZXISBNResultParser.m in Sources */,
