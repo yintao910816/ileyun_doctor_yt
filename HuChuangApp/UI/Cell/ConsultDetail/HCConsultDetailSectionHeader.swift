@@ -34,7 +34,8 @@ class HCConsultDetailSectionHeader: UITableViewHeaderFooterView {
         avatarButton.backgroundColor = RGB(240, 240, 240)
         
         textBgView = UIImageView()
-        textBgView.backgroundColor = RGB(240, 240, 240)
+        textBgView.image = UIImage(named: "灰色" )
+        textBgView.backgroundColor = .clear
         
         contentLabel = UILabel()
         contentLabel.numberOfLines = 0
@@ -65,7 +66,6 @@ class HCConsultDetailSectionHeader: UITableViewHeaderFooterView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         timeLabel.frame = sectionModel.getTimeFrame
         avatarButton.frame = sectionModel.getAvatarFrame
         textBgView.frame = sectionModel.getContentBgFrame

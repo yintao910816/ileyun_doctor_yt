@@ -34,7 +34,7 @@ class HCConsultDetalCell: UITableViewCell {
         avatarButton.backgroundColor = RGB(240, 240, 240)
 
         contentBgView = UIImageView()
-        contentBgView.backgroundColor = RGB(240, 240, 240)
+        contentBgView.backgroundColor = .clear//RGB(240, 240, 240)
 
         contentTextLabel = UILabel()
         contentTextLabel.numberOfLines = 0
@@ -53,6 +53,7 @@ class HCConsultDetalCell: UITableViewCell {
     
     public var model: HCConsultDetailConsultListModel! {
         didSet {
+            contentBgView.image = UIImage(named: model.isMine ? "绿框" : "灰色")
             nameLabel.text = model.displayName
             avatarButton.setImage(model.avatarURL)
             contentTextLabel.text = model.content
@@ -61,7 +62,6 @@ class HCConsultDetalCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         avatarButton.frame = model.getAvatarFrame
         nameLabel.frame = model.getNameFrame
         contentBgView.frame = model.getContentBgFrame
