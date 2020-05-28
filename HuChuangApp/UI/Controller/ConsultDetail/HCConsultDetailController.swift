@@ -28,12 +28,8 @@ class HCConsultDetailController: BaseViewController {
         viewModel = HCConsultDetailViewModel.init(memberId: memberId, id: id)
 
         let datasource = RxTableViewSectionedReloadDataSource<SectionModel<HCConsultDetailItemModel, HCConsultDetailConsultListModel>>.init(configureCell: { _,tb,indexPath,model ->UITableViewCell in
-            let cell = tb.dequeueReusableCell(withIdentifier: model.cellIdentifier)!
-            if model.cellIdentifier == HCConsultDetalCell_identifier {
-                (cell as! HCConsultDetalCell).model = model
-            }else if model.cellIdentifier == HCConsultDetailTimeCell_identifier {
-                (cell as! HCConsultDetailTimeCell).model = model
-            }
+            let cell = tb.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseConsultCell
+            cell.model = model
             return cell
         })
 

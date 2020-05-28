@@ -168,7 +168,7 @@
         <!--Consult Detail Controller-->
         <scene sceneID="Zaw-Yl-Jho">
             <objects>
-                <viewController id="DqJ-KY-WZA" customClass="HCConsultDetailController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsultDetailCtrl" id="DqJ-KY-WZA" customClass="HCConsultDetailController" customModule="爱乐孕医生" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YMK-6T-0L1"/>
                         <viewControllerLayoutGuide type="bottom" id="yTW-W1-c0r"/>

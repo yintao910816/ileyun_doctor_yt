@@ -12,11 +12,12 @@ import RxDataSources
 
 class HCPatientDetailViewModel: BaseViewModel {
     
+    public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, Any>]())
+    public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
+    public let consultRecordData = PublishSubject<[HCConsultDetailItemModel]>()
     public let manageData = Variable([HCListCellItem]())
     
     private var healthArchivesOriginalData: [[Any]] = []
-    public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, Any>]())
-    public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
     // 健康档案数据
     private var healthArchivesModel = HCHealthArchivesModel()
     // 周期档案数据
@@ -52,13 +53,14 @@ class HCPatientDetailViewModel: BaseViewModel {
         
         reloadSubject
             .subscribe(onNext: { [weak self] in
-                self?.requestListData()
+                self?.requestConsultRecords()
                 self?.requestHealthArchives()
+                self?.requestPatientData()
             })
             .disposed(by: disposeBag)
     }
     
-    private func requestListData() {
+    private func requestPatientData() {
         manageData.value = [HCListCellItem(title: "备注", detailTitle: "请输入", titleColor: .black,cellIdentifier: HCListDetailCell_identifier),
                             HCListCellItem(title: "年龄", detailTitle: "31岁", titleColor: .black, showArrow: false, cellIdentifier: HCListDetailCell_identifier),
                             HCListCellItem(title: "分组",
@@ -69,6 +71,41 @@ class HCPatientDetailViewModel: BaseViewModel {
                             HCListCellItem(title: "屏蔽该患者", titleColor: .black, cellIdentifier: HCListSwitchCell_identifier)]
     }
 
+    // 咨询记录
+    private func requestConsultRecords() {
+        HCProvider.request(.getConsultDetail(memberId: memberId, id: ""))
+            .map(model: HCConsultDetailModel.self)
+            .map({ [weak self] data -> [HCConsultDetailItemModel] in
+                guard let strongSelf = self else { return [HCConsultDetailItemModel]() }
+                return strongSelf.dealConsultRecords(data: data)
+            })
+            .asObservable()
+            .bind(to: consultRecordData)
+            .disposed(by: disposeBag)
+    }
+    
+    private func dealConsultRecords(data: HCConsultDetailModel) ->[HCConsultDetailItemModel]{
+        var tempData: [HCConsultDetailItemModel] = []
+        for item in data.records {
+            var consultList: [HCConsultDetailConsultListModel] = []
+            for consultItem in item.consultList {
+                let m = HCConsultDetailConsultListModel()
+                m.cellIdentifier = HCConsultDetailTimeCell_identifier
+                m.timeString = consultItem.createDate.timeSeprate3()
+                consultList.append(m)
+                consultList.append(consultItem)
+                // 咨询类型是0的咨询,内容加回复全显示，咨询类型为1的只显示咨询内容
+                if let type = HCConsultType(rawValue: item.type), type != .picAndText {
+                    break
+                }
+            }
+            item.calculateFooterUI()
+            item.consultList = consultList
+            tempData.append(item);
+        }
+        return tempData
+    }
+    
     private func requestHealthArchives() {
         let archivesSignal = HCProvider.request(.getHealthArchives(memberId: memberId))
             .map(model: HCHealthArchivesModel.self)

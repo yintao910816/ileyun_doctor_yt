@@ -10,7 +10,7 @@ import UIKit
 
 public let HCConsultDetailTimeCell_identifier = "HCConsultDetailTimeCell_identifier"
 
-class HCConsultDetailTimeCell: UITableViewCell {
+class HCConsultDetailTimeCell: HCBaseConsultCell {
 
     private var titleLabel: UILabel!
     
@@ -31,7 +31,7 @@ class HCConsultDetailTimeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public var model: HCConsultDetailConsultListModel! {
+    override public var model: HCConsultDetailConsultListModel! {
         didSet {
             titleLabel.text = model.timeString
         }

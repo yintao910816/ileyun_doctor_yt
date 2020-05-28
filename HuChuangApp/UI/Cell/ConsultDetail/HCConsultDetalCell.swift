@@ -10,7 +10,7 @@ import UIKit
 
 public let HCConsultDetalCell_identifier = "HCConsultDetalCell_identifier"
 
-class HCConsultDetalCell: UITableViewCell {
+class HCConsultDetalCell: HCBaseConsultCell {
 
     private var nameLabel: UILabel!
     private var avatarButton: UIButton!
@@ -28,6 +28,7 @@ class HCConsultDetalCell: UITableViewCell {
 
         avatarButton = UIButton.init(type: .custom)
         avatarButton.layer.cornerRadius = 5
+        avatarButton.clipsToBounds = true
         avatarButton.imageView?.contentMode = .scaleAspectFill
         avatarButton.imageView?.clipsToBounds = true
         avatarButton.isUserInteractionEnabled = false
@@ -51,7 +52,7 @@ class HCConsultDetalCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public var model: HCConsultDetailConsultListModel! {
+    override public var model: HCConsultDetailConsultListModel! {
         didSet {
             contentBgView.image = UIImage(named: model.isMine ? "绿框" : "灰色")
             nameLabel.text = model.displayName

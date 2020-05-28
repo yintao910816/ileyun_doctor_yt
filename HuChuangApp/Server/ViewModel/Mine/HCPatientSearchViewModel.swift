@@ -21,7 +21,7 @@ class HCPatientSearchViewModel: BaseViewModel, VMNavigation {
         
         modelSelectedAction
             .subscribe(onNext: {
-                HCPatientSearchViewModel.sbPush("HCMain", "patientDetailController", parameters: ["id":$0.memberId])
+                HCPatientSearchViewModel.sbPush("HCMain", "patientDetailController", parameters: ["id":$0.memberId,"title":$0.memberName])
             })
             .disposed(by: disposeBag)
         

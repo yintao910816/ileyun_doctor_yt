@@ -256,6 +256,9 @@
 		B83562BE2473BEBA001942BD /* TYFiliterViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83562BB2473BEBA001942BD /* TYFiliterViewData.swift */; };
 		B83562BF2473BEBA001942BD /* TYFiliterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83562BC2473BEBA001942BD /* TYFiliterLayout.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
+		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
+		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
+		B844BB10247F80460087BEA5 /* HCBaseConsultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0F247F80460087BEA5 /* HCBaseConsultCell.swift */; };
 		B8454ED323A3EF5200E88BAD /* TYDateCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */; };
 		B8508EA42342149B008C24BA /* HCBaseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EA32342149B008C24BA /* HCBaseListCell.swift */; };
 		B8508EA623421700008C24BA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8508EA523421700008C24BA /* DataModel.swift */; };
@@ -914,6 +917,9 @@
 		B83562BC2473BEBA001942BD /* TYFiliterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYFiliterLayout.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
+		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
+		B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordFooter.swift; sourceTree = "<group>"; };
+		B844BB0F247F80460087BEA5 /* HCBaseConsultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseConsultCell.swift; sourceTree = "<group>"; };
 		B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYDateCalculate.swift; sourceTree = "<group>"; };
 		B8508EA32342149B008C24BA /* HCBaseListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseListCell.swift; sourceTree = "<group>"; };
 		B8508EA523421700008C24BA /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -1134,6 +1140,7 @@
 				B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */,
 				B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */,
 				B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */,
+				B844BB0F247F80460087BEA5 /* HCBaseConsultCell.swift */,
 			);
 			path = ConsultDetail;
 			sourceTree = "<group>";
@@ -1912,6 +1919,15 @@
 			path = TYFiliterView;
 			sourceTree = "<group>";
 		};
+		B844BB06247F5CD00087BEA5 /* ConsultRecord */ = {
+			isa = PBXGroup;
+			children = (
+				B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */,
+				B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */,
+			);
+			path = ConsultRecord;
+			sourceTree = "<group>";
+		};
 		B8508EA223421486008C24BA /* HCCellItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -2466,6 +2482,7 @@
 		C43F09B722142DEA00910437 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B844BB06247F5CD00087BEA5 /* ConsultRecord */,
 				B806B134247978B2000CC720 /* ConsultDetail */,
 				B8D700C5246D98200024DE3E /* Patient */,
 				B8D700B1246C49750024DE3E /* Consult */,
@@ -2730,6 +2747,7 @@
 				B816EAC4221DABF400F024D5 /* ZXReedSolomonEncoder.m in Sources */,
 				B816EA9F221DABF400F024D5 /* ZXQRCodeMultiReader.m in Sources */,
 				B81C2F792215BBFB00A887AF /* FileUpload.swift in Sources */,
+				B844BB10247F80460087BEA5 /* HCBaseConsultCell.swift in Sources */,
 				B816EAB7221DABF400F024D5 /* ZXCharacterSetECI.m in Sources */,
 				B816EACD221DABF400F024D5 /* ZXPDF417HighLevelEncoder.m in Sources */,
 				B86993E3233754B100086A77 /* HomeLayout.swift in Sources */,
@@ -2759,12 +2777,14 @@
 				B8D700B7246C5F2C0024DE3E /* HCMonthBillController.swift in Sources */,
 				B816EAF4221DABF400F024D5 /* ZXDataMatrixWriter.m in Sources */,
 				B83562BD2473BEBA001942BD /* TYFiliterView.swift in Sources */,
+				B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */,
 				C454C01F234E00A8005CBC0B /* TYSearchRecordData.swift in Sources */,
 				B816EA9A221DABF400F024D5 /* ZXQRCodeEncoder.m in Sources */,
 				B89AA656246FFEAF006BBAF4 /* HCListTextViewCell.swift in Sources */,
 				B816EB49221DABF400F024D5 /* ZXProductParsedResult.m in Sources */,
 				B89AA658247014D4006BBAF4 /* HCConsultSettingController.swift in Sources */,
 				B89C397123A141B200CAB651 /* TYMarkString.swift in Sources */,
+				B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */,
 				C4213351220587F6006C10C4 /* CRAPI.swift in Sources */,
 				B816EA92221DABF400F024D5 /* ZXAztecSimpleToken.m in Sources */,
 				B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */,

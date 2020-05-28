@@ -42,10 +42,8 @@ class HCConsultViewController: BaseViewController, VMNavigation {
         }
         .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(HCConsultModel.self)
-            .subscribe(onNext: { [unowned self] in
-                self.performSegue(withIdentifier: "consultDetailSegue", sender: $0)
-            })
+        tableView.rx.modelSelected(HCConsultModel.self).asDriver()
+            .drive(viewModel.modelSelected)
             .disposed(by: disposeBag)
         
         tableView.prepare(viewModel)
