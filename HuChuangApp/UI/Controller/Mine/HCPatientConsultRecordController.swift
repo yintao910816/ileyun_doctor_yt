@@ -12,13 +12,17 @@ class HCPatientConsultRecordController: HCSlideItemController {
 
     private var datasource: [HCConsultDetailItemModel] = []
     private var tableView: UITableView!
+    private var textInputView: TYChatKeyBoardView!
+    private var keyboardManager = KeyboardManager()
     
-    public var operationCallBack:((HCPatientConsultRecordFooterOperation, HCConsultDetailItemModel)->())?
+    public var operationCallBack:(((HCPatientConsultRecordFooterOperation, HCConsultDetailItemModel))->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
+        
+        textInputView = TYChatKeyBoardView()
         
         tableView = UITableView.init(frame: view.bounds, style: .grouped)
         tableView.delegate = self
@@ -27,16 +31,35 @@ class HCPatientConsultRecordController: HCSlideItemController {
         tableView.backgroundColor = .white
         view.addSubview(tableView)
         
+        view.addSubview(textInputView)
+        
         tableView.register(HCConsultDetailTimeCell.self, forCellReuseIdentifier: HCConsultDetailTimeCell_identifier)
         tableView.register(HCConsultDetalCell.self, forCellReuseIdentifier: HCConsultDetalCell_identifier)
         tableView.register(HCPatientConsultRecordHeader.self, forHeaderFooterViewReuseIdentifier: HCPatientConsultRecordHeader_identifier)
         tableView.register(HCPatientConsultRecordFooter.self, forHeaderFooterViewReuseIdentifier: HCPatientConsultRecordFooter_identifier)
+        
+        keyboardManager.registerNotification()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keyboardManager.registerNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboardManager.removeNotification()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         tableView.frame = view.bounds
+        textInputView.frame = .init(x: 0, y: view.height + 49, width: view.width, height: 49)
+        
+        keyboardManager.move(coverView: textInputView, moveView: textInputView)
     }
     
     override func reloadData(data: Any?) {
@@ -92,7 +115,8 @@ extension HCPatientConsultRecordController: UITableViewDelegate, UITableViewData
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: HCPatientConsultRecordFooter_identifier) as! HCPatientConsultRecordFooter
         footer.model = datasource[section]
         footer.operationCallBack = { [weak self] in
-            self?.operationCallBack?($0, $1)
+            self?.operationCallBack?($0)
+            self?.textInputView.tf_becomeFirstResponder()
         }
         return footer
     }

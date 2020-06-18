@@ -38,10 +38,12 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
     
     private var bottomView: UIView!
     
-    public var operationCallBack:((HCPatientConsultRecordFooterOperation,HCConsultDetailItemModel)->())?
+    public var operationCallBack:(((HCPatientConsultRecordFooterOperation,HCConsultDetailItemModel))->())?
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
+        isUserInteractionEnabled = true
         
         backButton = UIButton(type: .system)
         backButton.titleLabel?.font = .font(fontSize: 13, fontName: .PingFRegular)
@@ -52,6 +54,7 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
         backButton.layer.borderColor = RGB(236, 236, 236).cgColor
         backButton.setTitle("退回", for: .normal)
         backButton.setTitleColor(RGB(53, 53, 53), for: .normal)
+        backButton.addTarget(self, action: #selector(actions(button:)), for: .touchUpInside)
 
         supplementAskButton = UIButton(type: .system)
         supplementAskButton.titleLabel?.font = .font(fontSize: 13, fontName: .PingFRegular)
@@ -62,6 +65,7 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
         supplementAskButton.layer.borderColor = RGB(236, 236, 236).cgColor
         supplementAskButton.setTitle("补充问题", for: .normal)
         supplementAskButton.setTitleColor(RGB(53, 53, 53), for: .normal)
+        supplementAskButton.addTarget(self, action: #selector(actions(button:)), for: .touchUpInside)
 
         replyButton = UIButton(type: .system)
         replyButton.titleLabel?.font = .font(fontSize: 13, fontName: .PingFRegular)
@@ -71,6 +75,7 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
         replyButton.layer.borderColor = RGB(236, 236, 236).cgColor
         replyButton.setTitle("回复", for: .normal)
         replyButton.setTitleColor(.white, for: .normal)
+        replyButton.addTarget(self, action: #selector(actions(button:)), for: .touchUpInside)
 
         supplementReplyButton = UIButton(type: .system)
         supplementReplyButton.titleLabel?.font = .font(fontSize: 13, fontName: .PingFRegular)
@@ -81,6 +86,7 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
         supplementReplyButton.layer.borderColor = HC_MAIN_COLOR.cgColor
         supplementReplyButton.setTitle("补充回复", for: .normal)
         supplementReplyButton.setTitleColor(HC_MAIN_COLOR, for: .normal)
+        supplementReplyButton.addTarget(self, action: #selector(actions(button:)), for: .touchUpInside)
 
         viewButton = UIButton(type: .system)
         viewButton.titleLabel?.font = .font(fontSize: 13, fontName: .PingFRegular)
@@ -91,6 +97,7 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
         viewButton.layer.borderColor = HC_MAIN_COLOR.cgColor
         viewButton.setTitle("查看", for: .normal)
         viewButton.setTitleColor(HC_MAIN_COLOR, for: .normal)
+        viewButton.addTarget(self, action: #selector(actions(button:)), for: .touchUpInside)
 
         bottomView = UIView()
         bottomView.backgroundColor = RGB(249, 249, 249)
@@ -109,15 +116,15 @@ class HCPatientConsultRecordFooter: UITableViewHeaderFooterView {
     
     @objc private func actions(button: UIButton) {
         if button == backButton {
-            operationCallBack?(.back, model)
+            operationCallBack?((.back, model))
         }else if button == supplementAskButton {
-            operationCallBack?(.supplementAsk, model)
+            operationCallBack?((.supplementAsk, model))
         }else if button == replyButton {
-            operationCallBack?(.reply, model)
+            operationCallBack?((.reply, model))
         }else if button == supplementReplyButton {
-            operationCallBack?(.supplementReply, model)
+            operationCallBack?((.supplementReply, model))
         }else if button == viewButton {
-            operationCallBack?(.view, model)
+            operationCallBack?((.view, model))
         }
     }
     

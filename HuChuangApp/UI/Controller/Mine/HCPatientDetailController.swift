@@ -67,8 +67,9 @@ class HCPatientDetailController: BaseViewController {
             })
             .disposed(by: disposeBag)
 
+        
         consultRecordCtrl.operationCallBack = { [unowned self] in
-            switch $0 {
+            switch $0.0 {
             case .back:
                 break
             case .supplementAsk:

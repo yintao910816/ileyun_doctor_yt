@@ -255,6 +255,18 @@
 		B83562BD2473BEBA001942BD /* TYFiliterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83562BA2473BEBA001942BD /* TYFiliterView.swift */; };
 		B83562BE2473BEBA001942BD /* TYFiliterViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83562BB2473BEBA001942BD /* TYFiliterViewData.swift */; };
 		B83562BF2473BEBA001942BD /* TYFiliterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83562BC2473BEBA001942BD /* TYFiliterLayout.swift */; };
+		B83883D4249B868500287019 /* TYTextInputMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883D3249B868500287019 /* TYTextInputMediaView.swift */; };
+		B83883D6249B869E00287019 /* TYTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883D5249B869E00287019 /* TYTextInputView.swift */; };
+		B83883D9249B870000287019 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883D8249B870000287019 /* PlaceholderTextView.swift */; };
+		B83883DB249B888900287019 /* TYChatKeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883DA249B888900287019 /* TYChatKeyBoardView.swift */; };
+		B83883EA249B897200287019 /* chatBar_recordSelectedBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B83883DE249B897200287019 /* chatBar_recordSelectedBg@2x.png */; };
+		B83883EB249B897200287019 /* chatBar_recordBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B83883DF249B897200287019 /* chatBar_recordBg@2x.png */; };
+		B83883EC249B897200287019 /* ChatToolBarAudioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E0249B897200287019 /* ChatToolBarAudioButton.m */; };
+		B83883ED249B897200287019 /* DPAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E3249B897200287019 /* DPAudioPlayer.m */; };
+		B83883EE249B897200287019 /* JX_GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E7249B897200287019 /* JX_GCDTimerManager.m */; };
+		B83883EF249B897200287019 /* amr_wav_converter.c in Sources */ = {isa = PBXBuildFile; fileRef = B83883E8249B897200287019 /* amr_wav_converter.c */; };
+		B83883F0249B897200287019 /* DPAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E9249B897200287019 /* DPAudioRecorder.m */; };
+		B83883F2249B900E00287019 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B83883F1249B900D00287019 /* libopencore-amrnb.a */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -915,6 +927,23 @@
 		B83562BA2473BEBA001942BD /* TYFiliterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYFiliterView.swift; sourceTree = "<group>"; };
 		B83562BB2473BEBA001942BD /* TYFiliterViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYFiliterViewData.swift; sourceTree = "<group>"; };
 		B83562BC2473BEBA001942BD /* TYFiliterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYFiliterLayout.swift; sourceTree = "<group>"; };
+		B83883D3249B868500287019 /* TYTextInputMediaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYTextInputMediaView.swift; sourceTree = "<group>"; };
+		B83883D5249B869E00287019 /* TYTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYTextInputView.swift; sourceTree = "<group>"; };
+		B83883D8249B870000287019 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		B83883DA249B888900287019 /* TYChatKeyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYChatKeyBoardView.swift; sourceTree = "<group>"; };
+		B83883DE249B897200287019 /* chatBar_recordSelectedBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_recordSelectedBg@2x.png"; sourceTree = "<group>"; };
+		B83883DF249B897200287019 /* chatBar_recordBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_recordBg@2x.png"; sourceTree = "<group>"; };
+		B83883E0249B897200287019 /* ChatToolBarAudioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatToolBarAudioButton.m; sourceTree = "<group>"; };
+		B83883E1249B897200287019 /* ChatToolBarAudioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatToolBarAudioButton.h; sourceTree = "<group>"; };
+		B83883E2249B897200287019 /* JX_GCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JX_GCDTimerManager.h; sourceTree = "<group>"; };
+		B83883E3249B897200287019 /* DPAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAudioPlayer.m; sourceTree = "<group>"; };
+		B83883E4249B897200287019 /* DPAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAudioRecorder.h; sourceTree = "<group>"; };
+		B83883E5249B897200287019 /* amr_wav_converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amr_wav_converter.h; sourceTree = "<group>"; };
+		B83883E6249B897200287019 /* DPAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAudioPlayer.h; sourceTree = "<group>"; };
+		B83883E7249B897200287019 /* JX_GCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JX_GCDTimerManager.m; sourceTree = "<group>"; };
+		B83883E8249B897200287019 /* amr_wav_converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amr_wav_converter.c; sourceTree = "<group>"; };
+		B83883E9249B897200287019 /* DPAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAudioRecorder.m; sourceTree = "<group>"; };
+		B83883F1249B900D00287019 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -1093,6 +1122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A08398CF7D2F1A7EC078368A /* Pods_HuChuangApp.framework in Frameworks */,
+				B83883F2249B900E00287019 /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1919,6 +1949,62 @@
 			path = TYFiliterView;
 			sourceTree = "<group>";
 		};
+		B83883CF249B80B700287019 /* TYChatKeyBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				B83883DA249B888900287019 /* TYChatKeyBoardView.swift */,
+				B83883DC249B897200287019 /* Record&Player */,
+				B83883D7249B870000287019 /* PlaceholderTextView */,
+				B83883D0249B84FA00287019 /* TYTextInputView */,
+			);
+			path = TYChatKeyBoardView;
+			sourceTree = "<group>";
+		};
+		B83883D0249B84FA00287019 /* TYTextInputView */ = {
+			isa = PBXGroup;
+			children = (
+				B83883D3249B868500287019 /* TYTextInputMediaView.swift */,
+				B83883D5249B869E00287019 /* TYTextInputView.swift */,
+			);
+			path = TYTextInputView;
+			sourceTree = "<group>";
+		};
+		B83883D7249B870000287019 /* PlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				B83883D8249B870000287019 /* PlaceholderTextView.swift */,
+			);
+			path = PlaceholderTextView;
+			sourceTree = "<group>";
+		};
+		B83883DC249B897200287019 /* Record&Player */ = {
+			isa = PBXGroup;
+			children = (
+				B83883DD249B897200287019 /* AudioButton */,
+				B83883E2249B897200287019 /* JX_GCDTimerManager.h */,
+				B83883E3249B897200287019 /* DPAudioPlayer.m */,
+				B83883E4249B897200287019 /* DPAudioRecorder.h */,
+				B83883E5249B897200287019 /* amr_wav_converter.h */,
+				B83883E6249B897200287019 /* DPAudioPlayer.h */,
+				B83883E7249B897200287019 /* JX_GCDTimerManager.m */,
+				B83883E8249B897200287019 /* amr_wav_converter.c */,
+				B83883E9249B897200287019 /* DPAudioRecorder.m */,
+			);
+			path = "Record&Player";
+			sourceTree = "<group>";
+		};
+		B83883DD249B897200287019 /* AudioButton */ = {
+			isa = PBXGroup;
+			children = (
+				B83883F1249B900D00287019 /* libopencore-amrnb.a */,
+				B83883DE249B897200287019 /* chatBar_recordSelectedBg@2x.png */,
+				B83883DF249B897200287019 /* chatBar_recordBg@2x.png */,
+				B83883E0249B897200287019 /* ChatToolBarAudioButton.m */,
+				B83883E1249B897200287019 /* ChatToolBarAudioButton.h */,
+			);
+			path = AudioButton;
+			sourceTree = "<group>";
+		};
 		B844BB06247F5CD00087BEA5 /* ConsultRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -2172,6 +2258,7 @@
 			isa = PBXGroup;
 			children = (
 				B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */,
+				B83883CF249B80B700287019 /* TYChatKeyBoardView */,
 				B83562B92473BEBA001942BD /* TYFiliterView */,
 				B8D700D2246DA6550024DE3E /* SlideMenu */,
 				C4F139AE235419EF00D777F6 /* Others */,
@@ -2624,7 +2711,9 @@
 				C4213338220572C6006C10C4 /* HCMain.storyboard in Resources */,
 				B89AA65C2470166C006BBAF4 /* HCConsultSettingContentView.xib in Resources */,
 				B8D700E2246DC8FF0024DE3E /* HCPatientHealthArchivesHeaderView.xib in Resources */,
+				B83883EB249B897200287019 /* chatBar_recordBg@2x.png in Resources */,
 				C42132F622054463006C10C4 /* Assets.xcassets in Resources */,
+				B83883EA249B897200287019 /* chatBar_recordSelectedBg@2x.png in Resources */,
 				B8D700CF246D9AA20024DE3E /* HCPatientListHeaderView.xib in Resources */,
 				B8D700E6246EE5240024DE3E /* HCPatientCycleCell.xib in Resources */,
 			);
@@ -2756,6 +2845,7 @@
 				B816EAD3221DABF400F024D5 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				B8BE350B221478A900EF16F1 /* VCServer.swift in Sources */,
 				C421332722056F24006C10C4 /* HUDIndicatorView.swift in Sources */,
+				B83883F0249B897200287019 /* DPAudioRecorder.m in Sources */,
 				B806B1322479789A000CC720 /* HCConsultDetailStatusHeaderView.swift in Sources */,
 				C42133932205B1E9006C10C4 /* KeyboardManager.swift in Sources */,
 				C4193D8422A7649F007A9E07 /* TYClickedButton.swift in Sources */,
@@ -2870,6 +2960,7 @@
 				B816EADA221DABF400F024D5 /* ZXPDF417Codeword.m in Sources */,
 				B816EAD9221DABF400F024D5 /* ZXPDF417DetectionResultColumn.m in Sources */,
 				B816EAB3221DABF400F024D5 /* ZXGridSampler.m in Sources */,
+				B83883D4249B868500287019 /* TYTextInputMediaView.swift in Sources */,
 				B8699401233794A700086A77 /* UIView+Layer.swift in Sources */,
 				B816EAC2221DABF400F024D5 /* ZXGenericGF.m in Sources */,
 				B816EAEE221DABF400F024D5 /* ZXDataMatrixDecodedBitStreamParser.m in Sources */,
@@ -2889,10 +2980,13 @@
 				B816EB55221DABF400F024D5 /* ZXCapture.m in Sources */,
 				B816EB45221DABF400F024D5 /* ZXSMTPResultParser.m in Sources */,
 				B89AA6622473A6E0006BBAF4 /* HCEditViewModel.swift in Sources */,
+				B83883EE249B897200287019 /* JX_GCDTimerManager.m in Sources */,
 				C421339D2205B224006C10C4 /* ImageRx.swift in Sources */,
 				C421338822059B8C006C10C4 /* DB+Extension.swift in Sources */,
 				C42133952205B1E9006C10C4 /* CarouselDatasource.swift in Sources */,
+				B83883ED249B897200287019 /* DPAudioPlayer.m in Sources */,
 				B816EAE6221DABF400F024D5 /* ZXDataMatrixEncoderContext.m in Sources */,
+				B83883DB249B888900287019 /* TYChatKeyBoardView.swift in Sources */,
 				B816EB14221DABF400F024D5 /* ZXAbstractExpandedDecoder.m in Sources */,
 				B816EB1A221DABF400F024D5 /* ZXRSSExpandedReader.m in Sources */,
 				B8BE350D2214794900EF16F1 /* Bundle+Extension.swift in Sources */,
@@ -2998,10 +3092,12 @@
 				B816EAA2221DABF400F024D5 /* ZXQRCodeDecoder.m in Sources */,
 				B816EAEF221DABF400F024D5 /* ZXDataMatrixBitMatrixParser.m in Sources */,
 				C421330B22056B59006C10C4 /* HCAppDelegate.swift in Sources */,
+				B83883EC249B897200287019 /* ChatToolBarAudioButton.m in Sources */,
 				B816EB4E221DABF400F024D5 /* ZXSMSTOMMSTOResultParser.m in Sources */,
 				B816EB1B221DABF400F024D5 /* ZXRSS14Reader.m in Sources */,
 				B8BE1AE423A698C300DF472A /* HCAccountManager.swift in Sources */,
 				B89AA6642473A9A6006BBAF4 /* HCEditNickNameViewController.swift in Sources */,
+				B83883EF249B897200287019 /* amr_wav_converter.c in Sources */,
 				B816EB3D221DABF400F024D5 /* ZXVINResultParser.m in Sources */,
 				B816EB51221DABF400F024D5 /* ZXCalendarParsedResult.m in Sources */,
 				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,
@@ -3054,6 +3150,7 @@
 				B816EAC3221DABF400F024D5 /* ZXReedSolomonDecoder.m in Sources */,
 				B816EB23221DABF400F024D5 /* ZXUPCAWriter.m in Sources */,
 				B816EB32221DABF400F024D5 /* ZXURIResultParser.m in Sources */,
+				B83883D9249B870000287019 /* PlaceholderTextView.swift in Sources */,
 				B816EAD5221DABF400F024D5 /* ZXPDF417BoundingBox.m in Sources */,
 				B816EA7D221DABF400F024D5 /* ZXBinarizer.m in Sources */,
 				B83562B82473B9D5001942BD /* HCPatientGroupManageController.swift in Sources */,
@@ -3092,6 +3189,7 @@
 				C421333222056F96006C10C4 /* UIKit+Extension.swift in Sources */,
 				B816EAE7221DABF400F024D5 /* ZXDataMatrixSymbolInfo144.m in Sources */,
 				B816EAFE221DABF400F024D5 /* ZXUPCAReader.m in Sources */,
+				B83883D6249B869E00287019 /* TYTextInputView.swift in Sources */,
 				B8D700D5246DA6550024DE3E /* TYSlideDatasource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3222,20 +3320,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = HuChuangApp/HuChuangApp.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GMPPSEQW73;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HuChuangApp/Utils/TYChatKeyBoardView/Record&Player/AudioButton",
+				);
 				MARKETING_VERSION = 2.1.001;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jclick.doctor;
 				PRODUCT_NAME = "爱乐孕医生";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = ailuyun_doctor_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3253,16 +3356,21 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GMPPSEQW73;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HuChuangApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HuChuangApp/Utils/TYChatKeyBoardView/Record&Player/AudioButton",
+				);
 				MARKETING_VERSION = 2.1.001;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jclick.doctor;
 				PRODUCT_NAME = "爱乐孕医生";
-				PROVISIONING_PROFILE_SPECIFIER = aleyun_user_old_hoc_pro;
+				PROVISIONING_PROFILE_SPECIFIER = aleyun_doctor_hoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HuChuangApp/Main/Config/HcChuangApp-Bridge-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
