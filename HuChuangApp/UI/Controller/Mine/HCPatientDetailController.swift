@@ -68,19 +68,23 @@ class HCPatientDetailController: BaseViewController {
             .disposed(by: disposeBag)
 
         
-        consultRecordCtrl.operationCallBack = { [unowned self] in
-            switch $0.0 {
-            case .back:
-                break
-            case .supplementAsk:
-                break
-            case .reply:
-                break
-            case .supplementReply:
-                break
-            case .view:
-                break
-            }
+//        consultRecordCtrl.operationCallBack = { [unowned self] in
+//            switch $0.0 {
+//            case .back:
+//                break
+//            case .supplementAsk:
+//                break
+//            case .reply:
+//                break
+//            case .supplementReply:
+//                break
+//            case .view:
+//                break
+//            }
+//        }
+        
+        consultRecordCtrl.gotoChatConsultRoomCallBack = { [weak self] in
+            self?.performSegue(withIdentifier: "consultDetailSegue", sender: $0)
         }
         
         viewModel.reloadSubject.onNext(Void())
@@ -89,5 +93,12 @@ class HCPatientDetailController: BaseViewController {
     override func prepare(parameters: [String : Any]?) {
         memberId = parameters!["id"] as! String
         navTitle = parameters!["title"] as? String
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "consultDetailSegue", let model = sender as? HCConsultDetailItemModel {
+            segue.destination.title = model.memberName
+            segue.destination.prepare(parameters: ["memberId":model.memberId, "id": model.id])
+        }
     }
 }

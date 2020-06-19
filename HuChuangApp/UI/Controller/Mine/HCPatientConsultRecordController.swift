@@ -12,9 +12,10 @@ class HCPatientConsultRecordController: HCSlideItemController {
 
     private var datasource: [HCConsultDetailItemModel] = []
     private var tableView: UITableView!
-    private var textInputView: TYChatKeyBoardView!
+    private var inputMaskView: HCConsultKeyboardMaskView!
     private var keyboardManager = KeyboardManager()
     
+    public var gotoChatConsultRoomCallBack: ((HCConsultDetailItemModel)->())?
     public var operationCallBack:(((HCPatientConsultRecordFooterOperation, HCConsultDetailItemModel))->())?
     
     override func viewDidLoad() {
@@ -22,7 +23,8 @@ class HCPatientConsultRecordController: HCSlideItemController {
         
         view.backgroundColor = .clear
         
-        textInputView = TYChatKeyBoardView()
+        inputMaskView = HCConsultKeyboardMaskView()
+        inputMaskView.isHidden = true
         
         tableView = UITableView.init(frame: view.bounds, style: .grouped)
         tableView.delegate = self
@@ -31,7 +33,7 @@ class HCPatientConsultRecordController: HCSlideItemController {
         tableView.backgroundColor = .white
         view.addSubview(tableView)
         
-        view.addSubview(textInputView)
+        view.addSubview(inputMaskView)
         
         tableView.register(HCConsultDetailTimeCell.self, forCellReuseIdentifier: HCConsultDetailTimeCell_identifier)
         tableView.register(HCConsultDetalCell.self, forCellReuseIdentifier: HCConsultDetalCell_identifier)
@@ -57,9 +59,9 @@ class HCPatientConsultRecordController: HCSlideItemController {
         super.viewDidLayoutSubviews()
         
         tableView.frame = view.bounds
-        textInputView.frame = .init(x: 0, y: view.height + 49, width: view.width, height: 49)
+        inputMaskView.frame = view.bounds
         
-        keyboardManager.move(coverView: textInputView, moveView: textInputView)
+        keyboardManager.move(coverView: inputMaskView.coverView, moveView: inputMaskView.coverView)
     }
     
     override func reloadData(data: Any?) {
@@ -115,8 +117,12 @@ extension HCPatientConsultRecordController: UITableViewDelegate, UITableViewData
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: HCPatientConsultRecordFooter_identifier) as! HCPatientConsultRecordFooter
         footer.model = datasource[section]
         footer.operationCallBack = { [weak self] in
-            self?.operationCallBack?($0)
-            self?.textInputView.tf_becomeFirstResponder()
+//            self?.operationCallBack?($0)
+            if $0.1.isChatConsult {
+                self?.gotoChatConsultRoomCallBack?($0.1)
+            }else {
+                self?.inputMaskView.beginEdit()
+            }
         }
         return footer
     }

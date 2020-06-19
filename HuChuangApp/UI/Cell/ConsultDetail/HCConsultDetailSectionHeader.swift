@@ -57,7 +57,7 @@ class HCConsultDetailSectionHeader: UITableViewHeaderFooterView {
     
     public var sectionModel: HCConsultDetailItemModel! {
         didSet {
-            timeLabel.text = sectionModel.startDate
+            timeLabel.text = sectionModel.createDate
             avatarButton.setImage(sectionModel.headPath)
             contentLabel.text = sectionModel.content
             boxPhotoView.filles = sectionModel.fileList

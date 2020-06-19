@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 
 class HCConsultDetailStatusHeaderView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var timeOutlet: UILabel!
+    @IBOutlet weak var questionOutlet: UILabel!
+    
+    private let disposeBag = DisposeBag()
+    
+    public let timeObser = Variable("30:00")
+    public let questionObser = Variable("1/1")
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +26,14 @@ class HCConsultDetailStatusHeaderView: UIView {
         contentView = (Bundle.main.loadNibNamed("HCConsultDetailStatusHeaderView", owner: self, options: nil)?.first as! UIView)
         contentView.backgroundColor = .clear
         addSubview(contentView)
+        
+        timeObser.asDriver()
+            .drive(timeOutlet.rx.text)
+            .disposed(by: disposeBag)
+        
+        questionObser.asDriver()
+            .drive(questionOutlet.rx.text)
+            .disposed(by: disposeBag)
     }
     
     override func layoutSubviews() {

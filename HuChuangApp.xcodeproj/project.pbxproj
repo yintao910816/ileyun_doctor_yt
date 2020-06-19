@@ -267,6 +267,7 @@
 		B83883EF249B897200287019 /* amr_wav_converter.c in Sources */ = {isa = PBXBuildFile; fileRef = B83883E8249B897200287019 /* amr_wav_converter.c */; };
 		B83883F0249B897200287019 /* DPAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E9249B897200287019 /* DPAudioRecorder.m */; };
 		B83883F2249B900E00287019 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B83883F1249B900D00287019 /* libopencore-amrnb.a */; };
+		B83883F4249C72D600287019 /* HCConsultKeyboardMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883F3249C72D600287019 /* HCConsultKeyboardMaskView.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -944,6 +945,7 @@
 		B83883E8249B897200287019 /* amr_wav_converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amr_wav_converter.c; sourceTree = "<group>"; };
 		B83883E9249B897200287019 /* DPAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAudioRecorder.m; sourceTree = "<group>"; };
 		B83883F1249B900D00287019 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		B83883F3249C72D600287019 /* HCConsultKeyboardMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultKeyboardMaskView.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -1159,6 +1161,7 @@
 			children = (
 				B806B1302479789A000CC720 /* HCConsultDetailStatusHeaderView.swift */,
 				B806B1312479789A000CC720 /* HCConsultDetailStatusHeaderView.xib */,
+				B83883F3249C72D600287019 /* HCConsultKeyboardMaskView.swift */,
 			);
 			path = ConsultDetail;
 			sourceTree = "<group>";
@@ -3081,6 +3084,7 @@
 				C4F139B9235419EF00D777F6 /* TYIcon.swift in Sources */,
 				C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */,
 				B816EAC1221DABF400F024D5 /* ZXBitSource.m in Sources */,
+				B83883F4249C72D600287019 /* HCConsultKeyboardMaskView.swift in Sources */,
 				B816EB26221DABF400F024D5 /* ZXMultiFormatOneDReader.m in Sources */,
 				B816EA78221DABF400F024D5 /* LBXScanView.m in Sources */,
 				B816EB30221DABF400F024D5 /* ZXEmailAddressResultParser.m in Sources */,

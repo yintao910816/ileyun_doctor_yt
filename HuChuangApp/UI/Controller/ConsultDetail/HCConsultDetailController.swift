@@ -13,11 +13,32 @@ class HCConsultDetailController: BaseViewController {
 
     @IBOutlet weak var statusOutlet: HCConsultDetailStatusHeaderView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var chatKeyboardView: TYChatKeyBoardView!
     
+    private var keyboardManager = KeyboardManager()
+
     private var memberId: String = ""
     private var id: String = ""
     private var viewModel: HCConsultDetailViewModel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keyboardManager.registerNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboardManager.removeNotification()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+                
+        keyboardManager.move(coverView: chatKeyboardView, moveView: chatKeyboardView)
+    }
+
     override func setupUI() {
         tableView.register(HCConsultDetailSectionHeader.self, forHeaderFooterViewReuseIdentifier: HCConsultDetailSectionHeader_identifier)
         tableView.register(HCConsultDetalCell.self, forCellReuseIdentifier: HCConsultDetalCell_identifier)
@@ -37,6 +58,14 @@ class HCConsultDetailController: BaseViewController {
             .drive(tableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
 
+        viewModel.timeObser.asDriver()
+            .drive(statusOutlet.timeObser)
+            .disposed(by: disposeBag)
+        
+        viewModel.questionObser.asDriver()
+            .drive(statusOutlet.questionObser)
+            .disposed(by: disposeBag)
+        
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         

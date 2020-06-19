@@ -15,6 +15,9 @@ class HCConsultDetailViewModel: RefreshVM<SectionModel<HCConsultDetailItemModel,
     private var memberId: String = ""
     private var id: String = ""
 
+    public let timeObser = Variable("30:00")
+    public let questionObser = Variable("1/1")
+
     init(memberId: String, id: String) {
         super.init()
         
@@ -57,6 +60,10 @@ class HCConsultDetailViewModel: RefreshVM<SectionModel<HCConsultDetailItemModel,
             
             sectionDatas.append(SectionModel.init(model: item, items: consultsList))
         }
+        
+        timeObser.value = "30:00"
+        questionObser.value = data.records.last?.question ?? "1/1"
+        
         updateRefresh(refresh, sectionDatas, data.pages)
     }
 }

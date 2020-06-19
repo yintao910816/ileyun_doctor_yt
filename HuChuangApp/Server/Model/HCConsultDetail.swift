@@ -203,6 +203,14 @@ class HCConsultDetailItemModel: HJModel {
     
     //MARK:
     //MARK: 咨询记录 - header
+    
+    public var isChatConsult: Bool {
+        if let t = HCConsultType.init(rawValue: type) {
+            return t == .chatConsult
+        }
+        return false
+    }
+    
     public var titleText: String {
         return "【\(userName)】"
     }

@@ -10,6 +10,16 @@ import UIKit
 
 class HCBaseConsultCell: UITableViewCell {
 
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     public var model: HCConsultDetailConsultListModel! {
         didSet {
 

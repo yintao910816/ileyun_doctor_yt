@@ -59,7 +59,8 @@ class HCLoginViewController: BaseViewController {
         #if DEBUG
 //        accountInputOutlet.text = "15517125269"
 //        passInputOutlet.text  = "8888"
-        accountInputOutlet.text = "18963973751"
+//        accountInputOutlet.text = "18963973751"
+        accountInputOutlet.text = "18627844751"
         passInputOutlet.text  = "8888"
         #else
         accountInputOutlet.text = userDefault.loginPhone

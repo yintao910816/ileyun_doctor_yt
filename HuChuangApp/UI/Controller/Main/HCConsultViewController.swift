@@ -48,12 +48,5 @@ class HCConsultViewController: BaseViewController, VMNavigation {
         
         tableView.prepare(viewModel)
         tableView.headerRefreshing()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "consultDetailSegue", let model = sender as? HCConsultModel {
-            segue.destination.navigationItem.title = model.memberName
-            segue.destination.prepare(parameters: ["memberId":model.memberId, "id":model.id])
-        }
-    }
+    }    
 }
