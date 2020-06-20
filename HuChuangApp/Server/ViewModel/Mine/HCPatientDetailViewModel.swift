@@ -64,24 +64,37 @@ class HCPatientDetailViewModel: BaseViewModel {
             .subscribe(onNext: { [weak self] in
                 self?.requestConsultRecords()
                 self?.requestHealthArchives()
-                self?.requestPatientData()
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(NotificationName.Patient.changedTagName)
+            .subscribe(onNext: { [weak self]  in
+                if let strongSelf = self {
+                    var tempManageData = strongSelf.manageData.value
+                    if let data = $0.object as? (Bool, String) {
+                        if data.0 == false {
+                            tempManageData[2] = HCListCellItem(title: "分组",
+                                                               detailTitle: data.1,
+                                                               titleColor: .black,
+                                                               cellIdentifier: HCListDetailCell_identifier,
+                                                               segue: "patientGroupSegue")
+                        }else if tempManageData[2].detailTitle == data.1 {
+                            tempManageData[2] = HCListCellItem(title: "分组",
+                                                               detailTitle: "请选择",
+                                                               titleColor: .black,
+                                                               cellIdentifier: HCListDetailCell_identifier,
+                                                               segue: "patientGroupSegue")
+                        }
+                        
+                        strongSelf.manageData.value = tempManageData
+                    }
+                }
             })
             .disposed(by: disposeBag)
         
         prepareReply()
     }
     
-    private func requestPatientData() {
-        manageData.value = [HCListCellItem(title: "备注", detailTitle: "请输入", titleColor: .black,cellIdentifier: HCListDetailCell_identifier),
-                            HCListCellItem(title: "年龄", detailTitle: "31岁", titleColor: .black, showArrow: false, cellIdentifier: HCListDetailCell_identifier),
-                            HCListCellItem(title: "分组",
-                                           detailTitle: "默认分组",
-                                           titleColor: .black,
-                                           cellIdentifier: HCListDetailCell_identifier,
-                                           segue: "patientGroupSegue"),
-                            HCListCellItem(title: "屏蔽该患者", titleColor: .black, cellIdentifier: HCListSwitchCell_identifier)]
-    }
-
     // 咨询记录
     private func requestConsultRecords() {
         HCProvider.request(.getConsultDetail(memberId: memberId, id: ""))
@@ -95,32 +108,7 @@ class HCPatientDetailViewModel: BaseViewModel {
             .bind(to: consultRecordData)
             .disposed(by: disposeBag)
     }
-    
-    private func dealConsultRecords(data: HCConsultDetailModel) ->[HCConsultDetailItemModel]{
-        var tempData: [HCConsultDetailItemModel] = []
-        for item in data.records {
-            var consultList: [HCConsultDetailConsultListModel] = []
-            // 时间cell
-            let m = HCConsultDetailConsultListModel()
-            m.cellIdentifier = HCConsultDetailTimeCell_identifier
-            m.timeString = item.createDate.timeSeprate3()
-            consultList.append(m)
-            // 单次图文：内容加回复全显示，其它只显示咨询内容
-            if let type = HCConsultType(rawValue: item.type), type == .picAndText {
-                consultList.append(contentsOf: item.consultList)
-            }else {
-                if let firstConsult = item.consultList.first {
-                    consultList.append(firstConsult)
-                }
-            }
-
-            item.calculateFooterUI()
-            item.consultList = consultList
-            tempData.append(item)
-        }
-        return tempData
-    }
-    
+        
     private func requestHealthArchives() {
         let archivesSignal = HCProvider.request(.getHealthArchives(memberId: memberId))
             .map(model: HCHealthArchivesModel.self)
@@ -144,6 +132,33 @@ class HCPatientDetailViewModel: BaseViewModel {
 
 extension HCPatientDetailViewModel {
     
+    private func dealConsultRecords(data: HCConsultDetailModel) ->[HCConsultDetailItemModel]{
+        refreshPatientData(model: data.records.first)
+        
+        var tempData: [HCConsultDetailItemModel] = []
+        for item in data.records {
+            var consultList: [HCConsultDetailConsultListModel] = []
+            // 时间cell
+            let m = HCConsultDetailConsultListModel()
+            m.cellIdentifier = HCConsultDetailTimeCell_identifier
+            m.timeString = item.createDate.timeSeprate3()
+            consultList.append(m)
+            // 单次图文：内容加回复全显示，其它只显示咨询内容
+            if let type = HCConsultType(rawValue: item.type), type == .picAndText {
+                consultList.append(contentsOf: item.consultList)
+            }else {
+                if let firstConsult = item.consultList.first {
+                    consultList.append(firstConsult)
+                }
+            }
+
+            item.calculateFooterUI()
+            item.consultList = consultList
+            tempData.append(item)
+        }
+        return tempData
+    }
+
     private func prepareHealthArchivesOriginalData() {
         let firstSectionTitles = ["女方健康信息", "基本信息", "姓名", "身高", "体重", "月经史", "月经量", "是否痛经", "经期天数", "月经周期", "婚育史", "婚姻情况", "初/再婚几年", "未避孕未孕(年)", "是否有过怀孕", "人工流产", "宫外孕", "男方健康信息", "基本信息", "姓名", "身高", "体重"]
         let memberInfo = healthArchivesModel.memberInfo
@@ -188,6 +203,48 @@ extension HCPatientDetailViewModel {
                                     SectionModel.init(model: HCPatientDetailSectionModel(title: "周期档案", isExpand: false),
                                                       items: secondData)]
     }
+    
+    private func refreshPatientData(model: HCConsultDetailItemModel?) {
+        if let tempM = model {
+            manageData.value = [HCListCellItem(title: "备注",
+                                               detailTitle: tempM.bak.count > 0 ? tempM.bak : "请输入",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListDetailCell_identifier),
+                                HCListCellItem(title: "年龄",
+                                               detailTitle: tempM.age,
+                                               titleColor: .black,
+                                               showArrow: false,
+                                               cellIdentifier: HCListDetailCell_identifier),
+                                HCListCellItem(title: "分组",
+                                               detailTitle: tempM.tagName.count > 0 ? tempM.tagName : "请选择",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListDetailCell_identifier,
+                                               segue: "patientGroupSegue"),
+                                HCListCellItem(title: "屏蔽该患者",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListSwitchCell_identifier,
+                                               isOn: tempM.black)]
+        }else {
+            manageData.value = [HCListCellItem(title: "备注",
+                                               detailTitle: "请输入",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListDetailCell_identifier),
+                                HCListCellItem(title: "年龄",
+                                               detailTitle: "0",
+                                               titleColor: .black,
+                                               showArrow: false,
+                                               cellIdentifier: HCListDetailCell_identifier),
+                                HCListCellItem(title: "分组",
+                                               detailTitle: "请选择",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListDetailCell_identifier,
+                                               segue: "patientGroupSegue"),
+                                HCListCellItem(title: "屏蔽该患者",
+                                               titleColor: .black,
+                                               cellIdentifier: HCListSwitchCell_identifier)]
+        }
+    }
+
 }
 
 //MARK: - 单次图文回复

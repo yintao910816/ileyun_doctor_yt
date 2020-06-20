@@ -58,6 +58,9 @@ struct HCListCellItem {
     
     var showBottomLine: Bool = true
     
+    /// 开关是否打开
+    var isOn: Bool = false
+    
     mutating func change(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
     }

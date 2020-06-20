@@ -1126,7 +1126,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="选择分组" id="4HZ-MK-0uZ"/>
                     <connections>
+                        <outlet property="addTagOutlet" destination="g33-lL-znl" id="W1B-ii-FUf"/>
                         <outlet property="contentView" destination="fV6-QM-R8y" id="bvu-Dr-SJG"/>
+                        <outlet property="tagTfOutlet" destination="0W7-ir-p9l" id="gl2-CJ-I02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apV-HT-wrb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

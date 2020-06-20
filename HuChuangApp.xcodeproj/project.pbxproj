@@ -275,6 +275,8 @@
 		B83883FF249DD59300287019 /* AudioPlayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883FE249DD59300287019 /* AudioPlayHelper.swift */; };
 		B8388401249DD8BF00287019 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388400249DD8BF00287019 /* FileManager.swift */; };
 		B8388403249DDA8600287019 /* FileDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388402249DDA8600287019 /* FileDown.swift */; };
+		B8388405249E5AC500287019 /* HCPatientGroupManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388404249E5AC500287019 /* HCPatientGroupManageViewModel.swift */; };
+		B8388407249E5D1000287019 /* HCTagName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388406249E5D1000287019 /* HCTagName.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -960,6 +962,8 @@
 		B83883FE249DD59300287019 /* AudioPlayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayHelper.swift; sourceTree = "<group>"; };
 		B8388400249DD8BF00287019 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		B8388402249DDA8600287019 /* FileDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDown.swift; sourceTree = "<group>"; };
+		B8388404249E5AC500287019 /* HCPatientGroupManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientGroupManageViewModel.swift; sourceTree = "<group>"; };
+		B8388406249E5D1000287019 /* HCTagName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTagName.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -2442,6 +2446,7 @@
 				B8D700A1246B10680024DE3E /* HCHomeViewModel.swift */,
 				B8D700AD246C40100024DE3E /* HCConsultViewModel.swift */,
 				B806B12824796E61000CC720 /* HCConsultDetailViewModel.swift */,
+				B8388404249E5AC500287019 /* HCPatientGroupManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2468,6 +2473,7 @@
 				B8D700C3246D96720024DE3E /* HCPatient.swift */,
 				B806B12A2479728E000CC720 /* HCConsultDetail.swift */,
 				B83883F5249C8B1900287019 /* HCFileUpload.swift */,
+				B8388406249E5D1000287019 /* HCTagName.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2899,6 +2905,7 @@
 				B816EB24221DABF400F024D5 /* ZXITFReader.m in Sources */,
 				B8D700B7246C5F2C0024DE3E /* HCMonthBillController.swift in Sources */,
 				B816EAF4221DABF400F024D5 /* ZXDataMatrixWriter.m in Sources */,
+				B8388407249E5D1000287019 /* HCTagName.swift in Sources */,
 				B83562BD2473BEBA001942BD /* TYFiliterView.swift in Sources */,
 				B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */,
 				C454C01F234E00A8005CBC0B /* TYSearchRecordData.swift in Sources */,
@@ -2979,6 +2986,7 @@
 				B8388403249DDA8600287019 /* FileDown.swift in Sources */,
 				B816EB3B221DABF400F024D5 /* ZXWifiResultParser.m in Sources */,
 				B816EAB5221DABF400F024D5 /* ZXBitArray.m in Sources */,
+				B8388405249E5AC500287019 /* HCPatientGroupManageViewModel.swift in Sources */,
 				B816EAC8221DABF400F024D5 /* ZXPDF417Writer.m in Sources */,
 				B816EAED221DABF400F024D5 /* ZXDataMatrixTextEncoder.m in Sources */,
 				B816EA79221DABF400F024D5 /* LBXScanNetAnimation.m in Sources */,

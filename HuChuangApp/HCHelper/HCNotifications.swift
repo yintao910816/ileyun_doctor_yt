@@ -38,4 +38,9 @@ extension Notification.Name {
         /// 首页顶部红色背景点击跳转记录界面
         static let gotoRecord = Notification.Name(rawValue: "org.UILogic.notification.name.gotoRecord")
     }
+    
+    public struct Patient {
+        /// 患者管理 - 修改分组
+        static let changedTagName = Notification.Name(rawValue: "org.UILogic.notification.name.changedTagName")
+    }
 }

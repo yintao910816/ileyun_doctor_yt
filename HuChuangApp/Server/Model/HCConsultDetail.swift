@@ -112,9 +112,11 @@ class HCConsultDetailItemModel: HJModel {
     var unit: String = ""
     var withDrawReason: String = ""
     var question: String = ""
+    // 患者所在分组
     var tagName: String = ""
+    // 患者备注
     var bak: String = ""
-    var black: String = ""
+    var black: Bool = false
     var age: String = ""
     var consultAgain: String = ""
     var startDate: String = ""

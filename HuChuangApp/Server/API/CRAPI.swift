@@ -153,6 +153,19 @@ enum API{
     
     /// 患者管理-分组
     case groupTagMemberList
+    /// 添加标签
+    case addUserTag(tagName: String, clinicId: String)
+    /// 获取已有标签
+    case getUserTagList(memberId: String)
+    /// 设置患者标签
+    case addUserMemberTags(memberId: String, tagName: String, id: String)
+    /// 删除患者标签
+    case removeUserTag(memberId: String, id: String)
+//    /// 患者标签列表
+//    case getUserMemberTags(memberId: String, clinicId: String)
+//    /// 添加患者标签
+//    case addUserMemberTags(memberId: String)
+    
     /// 患者搜索
     case searchData(searchWords: String)
     /// 患者健康档案
@@ -221,8 +234,18 @@ extension API: TargetType{
             return "api/patientConsult/getHealthArchives"
         case .getPatientCoupleInfo(_):
             return "api/patientConsult/getPatientCoupleInfo"
+            
+        case .addUserTag(_, _):
+            return "api/patientConsult/addUserTag"
+        case .getUserTagList(_):
+            return "api/patientConsult/getUserTagList"
+        case .addUserMemberTags(_):
+            return "api/patientConsult/addUserMemberTags"
+        case .removeUserTag(_, _):
+            return "api/patientConsult/removeUserTag"
         case .groupTagMemberList:
             return "api/patientInfo/groupTagMemberList"
+            
         case .searchData(_):
             return "api/search/searchData"
             
@@ -338,6 +361,19 @@ extension API {
             params["consultId"] = consultId
         case .withdrawConsult(let orderSn):
             params["orderSn"] = orderSn
+
+        case .addUserTag(let tagName, let clinicId):
+            params["tagName"] = tagName
+            params["clinicId"] = clinicId
+        case .getUserTagList(let memberId):
+            params["memberId"] = memberId
+        case .addUserMemberTags(let memberId, let tagName, let id):
+            params["memberId"] = memberId
+            params["tagName"] = tagName
+            params["id"] = id
+        case .removeUserTag(let memberId, let id):
+            params["memberId"] = memberId
+            params["id"] = id
 
         case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
             params["year"] = year

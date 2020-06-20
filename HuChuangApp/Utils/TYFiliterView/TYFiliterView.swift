@@ -12,7 +12,10 @@ class TYFiliterView: UIView {
 
     private var contentView: UIView!
     private var collectionView: UICollectionView!
-        
+    
+    public var cellDidSelected: ((TYFiliterModel)->())?
+    public var deleteCallBack: ((TYFiliterModel)->())?
+
     public var datasource: [TYFiliterSectionModel] = [] {
         didSet {
             collectionView.reloadData()
@@ -61,8 +64,6 @@ class TYFiliterView: UIView {
         collectionView.snp.makeConstraints {
             $0.right.top.left.bottom.equalTo(0)
         }
-        
-        datasource = TYFiliterSectionModel.createData()
     }
     
 }
@@ -89,6 +90,7 @@ extension TYFiliterView: UICollectionViewDataSource, UICollectionViewDelegateFlo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: TYFiliterViewCell_identifier, for: indexPath) as! TYFiliterViewCell)
         cell.model = datasource[indexPath.section].datas[indexPath.row]
+        cell.deleteCallBack = { [unowned self] in self.deleteCallBack?($0) }
         return cell
     }
     
@@ -107,7 +109,8 @@ extension TYFiliterView: UICollectionViewDataSource, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellModel = datasource[indexPath.section].datas[indexPath.row]
-        cellModel.isSelected = !cellModel.isSelected
+//        cellModel.isSelected = !cellModel.isSelected
+        cellDidSelected?(cellModel)
     }
 }
 
@@ -142,6 +145,13 @@ class TYFiliterViewCell: UICollectionViewCell {
     
     private var contentLabel: UILabel!
     private var deleteIcon: UIButton!
+    private var longPress: UILongPressGestureRecognizer!
+    
+    public var deleteCallBack: ((TYFiliterModel)->())?
+    
+    deinit {
+        PrintLog("释放了：\(self)")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)        
@@ -155,8 +165,24 @@ class TYFiliterViewCell: UICollectionViewCell {
         contentView.addSubview(contentLabel)
         
         deleteIcon = UIButton(type: .custom)
+        deleteIcon.isHidden = true
+        deleteIcon.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
         deleteIcon.setImage(UIImage(named: "group_icon_cross"), for: .normal)
         contentView.addSubview(deleteIcon)
+        
+        longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(longPressedAction(long:)))
+        contentView.addGestureRecognizer(longPress)
+    }
+    
+    @objc private func longPressedAction(long: UILongPressGestureRecognizer) {
+        if longPress.state == .began, model.id != "1" {
+            model.isHiddenDelete = !model.isHiddenDelete
+            deleteIcon.isHidden = model.isHiddenDelete
+        }
+    }
+    
+    @objc private func deleteAction() {
+        deleteCallBack?(model)
     }
     
     required init?(coder: NSCoder) {
@@ -168,6 +194,7 @@ class TYFiliterViewCell: UICollectionViewCell {
             contentLabel.text = model.title
             backgroundColor = model.bgColor
             contentLabel.textColor = model.titleColor
+            deleteIcon.isHidden = model.isHiddenDelete
         }
     }
     

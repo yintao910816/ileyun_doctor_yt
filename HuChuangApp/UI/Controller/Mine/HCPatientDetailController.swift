@@ -104,6 +104,8 @@ class HCPatientDetailController: BaseViewController {
         if segue.identifier == "consultDetailSegue", let model = sender as? HCConsultDetailItemModel {
             segue.destination.title = model.memberName
             segue.destination.prepare(parameters: ["memberId":model.memberId, "id": model.id])
+        }else if segue.identifier == "patientGroupSegue" {
+            segue.destination.prepare(parameters: ["id": memberId])
         }
     }
 }

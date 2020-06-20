@@ -11,12 +11,15 @@ import Foundation
 class TYFiliterModel {
     
     public var title: String = ""
+    public var id: String = ""
+    
     public var normalBGColor: UIColor = .clear
     public var selectedBGColor: UIColor = .clear
     public var normalTextColor: UIColor = RGB(61, 55, 68)
     public var selectedTextColor: UIColor = HC_MAIN_COLOR
     
     public var isSelected: Bool = false
+    public var isHiddenDelete: Bool = true
 
     init() { }
         
@@ -46,17 +49,23 @@ class TYFiliterSectionModel {
 
     public var datas: [TYFiliterModel] = []
     
-    public class func createData() ->[TYFiliterSectionModel] {
-        let titles_1 = ["默认分组", "不孕不育"]
-
-        let section_1 = TYFiliterSectionModel()
-        section_1.sectionTitle = ""
-        for item in titles_1 {
+    public class func createData(datas: [HCTagNameModel]) ->[TYFiliterSectionModel] {
+        let section = TYFiliterSectionModel()
+        section.sectionTitle = ""
+        for item in datas {
             let m = TYFiliterModel()
-            m.title = item
-            section_1.datas.append(m)
+            m.title = item.tagName
+            m.id = item.id
+            section.datas.append(m)
         }
                 
-        return [section_1]
+        return [section]
+    }
+    
+    public class func transform(of model: HCTagNameModel) ->TYFiliterModel {
+        let m = TYFiliterModel()
+        m.title = model.tagName
+        m.id = model.id
+        return m
     }
 }
