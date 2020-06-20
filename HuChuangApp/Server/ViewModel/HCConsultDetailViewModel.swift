@@ -29,7 +29,12 @@ class HCConsultDetailViewModel: RefreshVM<SectionModel<HCConsultDetailItemModel,
     public let sendAudioSubject = PublishSubject<(Data, UInt)>()
     /// 文字回复
     public let sendTextSubject = PublishSubject<String>()
-
+    
+    public func customDeinit() {
+        timer.timerRemove()
+        timer = nil
+    }
+    
     init(memberId: String, id: String) {
         super.init()
         

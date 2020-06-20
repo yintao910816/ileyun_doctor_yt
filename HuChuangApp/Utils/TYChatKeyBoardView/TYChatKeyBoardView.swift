@@ -26,6 +26,10 @@ class TYChatKeyBoardView: UIView {
     public var sendAudioCallBack:(((Data, UInt))->())?
     public var sendTextCallBack:((String)->())?
 
+    deinit {
+        PrintLog("释放了：\(self)")
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -29,7 +29,7 @@ class HCConsultDetailSectionHeader: UITableViewHeaderFooterView {
         avatarButton = UIButton.init(type: .custom)
         avatarButton.layer.cornerRadius = 5
         avatarButton.imageView?.contentMode = .scaleAspectFill
-        avatarButton.imageView?.clipsToBounds = true
+        avatarButton.clipsToBounds = true
         avatarButton.isUserInteractionEnabled = false
         avatarButton.backgroundColor = RGB(240, 240, 240)
         

@@ -22,6 +22,11 @@ class HCConsultDetailController: BaseViewController {
     private var id: String = ""
     private var viewModel: HCConsultDetailViewModel!
     
+    deinit {
+        viewModel.customDeinit()
+        viewModel = nil
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

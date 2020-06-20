@@ -613,10 +613,14 @@ class HCConsultDetailConsultListModel: HJModel {
     public var getCellHeight: CGFloat {
         get {
             if cellHeight == 0 {
-                if contentType == .image || contentType == .textAndImage {
-                    cellHeight = getImageBoxFrame.maxY + 10
+                if cellIdentifier == HCConsultDetailTimeCell_identifier {
+                    cellHeight = getTimeFrame.maxY + 15
                 }else {
-                    cellHeight = getContentBgFrame.maxY + 10
+                    if contentType == .image || contentType == .textAndImage {
+                        cellHeight = getImageBoxFrame.maxY + 10
+                    }else {
+                        cellHeight = getContentBgFrame.maxY + 10
+                    }
                 }
             }
             return cellHeight
