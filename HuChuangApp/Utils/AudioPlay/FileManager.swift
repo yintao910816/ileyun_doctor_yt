@@ -50,20 +50,20 @@ extension TYFileManager {
     
     @discardableResult
     public func saveAudio(fileName: String, data :Data) -> String {
-        let path  = audioFolderPath + "\(fileName).mp3"
+        let path  = audioFolderPath + "\(fileName)"
         try? data.write(to: URL.init(fileURLWithPath: path))
         PrintLog("audio save success")
         return path
     }
     
     public func url(forAudio fileName: String) ->URL {
-        let path  = audioFolderPath + "\(fileName).mp3"
+        let path  = audioFolderPath + "\(fileName)"
         return URL(fileURLWithPath: path)
     }
 
     @discardableResult
     public func moveAudio(at url: URL, fileName: String) ->Bool {
-        let path  = audioFolderPath + "\(fileName).mp3"
+        let path  = audioFolderPath + "\(fileName)"
         let destination = URL(fileURLWithPath: path)
         do {
             if exist(of: path) {
@@ -83,7 +83,7 @@ extension TYFileManager {
     }
     
     public func exist(audio fileName: String) ->Bool {
-        let path  = audioFolderPath + "\(fileName).mp3"
+        let path  = audioFolderPath + "\(fileName)"
         return exist(of: path)
     }
 }
