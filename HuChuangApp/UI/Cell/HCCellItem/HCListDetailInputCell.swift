@@ -19,8 +19,12 @@ class HCListDetailInputCell: HCBaseListCell {
         arrowImgV.isHidden = true
         
         inputTf = UITextField()
+        inputTf.returnKeyType = .done
+        inputTf.textAlignment = .right
+        inputTf.placeholder = "请输入"
         inputTf.font = .font(fontSize: 14)
         inputTf.textColor = .black
+        inputTf.delegate = self
         
         contentView.addSubview(inputTf)
         
@@ -35,6 +39,7 @@ class HCListDetailInputCell: HCBaseListCell {
         didSet {
             super.model = model
             
+            inputTf.text = model.detailTitle
             inputTf.placeholder = model.placeholder
             
             if model.showArrow && arrowImgV.isHidden {
@@ -48,5 +53,14 @@ class HCListDetailInputCell: HCBaseListCell {
                 }
             }
         }
+    }
+}
+
+extension HCListDetailInputCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didEndEditCallBack?(textField.text ?? "")
+        textField.resignFirstResponder()
+        return true
     }
 }

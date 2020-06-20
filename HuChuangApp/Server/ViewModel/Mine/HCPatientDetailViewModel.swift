@@ -25,7 +25,12 @@ class HCPatientDetailViewModel: BaseViewModel {
     public let sendTextSubject = PublishSubject<(String, String)>()
     /// 退回
     public let sendBackSubject = PublishSubject<String>()
-
+    
+    /// 编辑备注
+    public let didEndEditMakrSubject = PublishSubject<String>()
+    /// 屏蔽患者
+    public let blackPatientSubject = PublishSubject<Bool>()
+    
     private var healthArchivesOriginalData: [[Any]] = []
     // 健康档案数据
     private var healthArchivesModel = HCHealthArchivesModel()
@@ -60,6 +65,14 @@ class HCPatientDetailViewModel: BaseViewModel {
         })
             .disposed(by: disposeBag)
         
+        didEndEditMakrSubject
+            .subscribe(onNext: { [unowned self] in self.updateConsultBlack(mark: $0) })
+            .disposed(by: disposeBag)
+        
+        blackPatientSubject
+            .subscribe(onNext: { [unowned self] in self.updateConsultBlack(black: $0) })
+            .disposed(by: disposeBag)
+
         reloadSubject
             .subscribe(onNext: { [weak self] in
                 self?.requestConsultRecords()
@@ -94,6 +107,31 @@ class HCPatientDetailViewModel: BaseViewModel {
         
         prepareReply()
     }
+    
+    private func updateConsultBlack(mark: String) {
+        if let item = consultRecordData.value.first {
+            HCProvider.request(.updateConsultBlack(memberId: memberId, userId: item.userId, bak: mark, black: item.black))
+                .mapResponse()
+                .subscribe(onSuccess: { [weak self] res in
+                    self?.consultRecordData.value.first?.bak = mark
+                    PrintLog("修改备注结果：\(res.message)")
+                }) { _ in }
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    private func updateConsultBlack(black: Bool) {
+        if let item = consultRecordData.value.first {
+            HCProvider.request(.updateConsultBlack(memberId: memberId, userId: item.userId, bak: item.bak, black: black))
+                .mapResponse()
+                .subscribe(onSuccess: { [weak self] res in
+                    self?.consultRecordData.value.first?.black = black
+                    PrintLog("屏蔽患者结果：\(res.message)")
+                }) { _ in }
+                .disposed(by: disposeBag)
+        }
+    }
+
     
     // 咨询记录
     private func requestConsultRecords() {
@@ -207,9 +245,11 @@ extension HCPatientDetailViewModel {
     private func refreshPatientData(model: HCConsultDetailItemModel?) {
         if let tempM = model {
             manageData.value = [HCListCellItem(title: "备注",
-                                               detailTitle: tempM.bak.count > 0 ? tempM.bak : "请输入",
+                                               detailTitle: tempM.bak,
                                                titleColor: .black,
-                                               cellIdentifier: HCListDetailCell_identifier),
+                                               placeholder: "请输入",
+                                               showArrow: false,
+                                               cellIdentifier: HCListDetailInputCell_identifier),
                                 HCListCellItem(title: "年龄",
                                                detailTitle: tempM.age,
                                                titleColor: .black,
@@ -226,9 +266,11 @@ extension HCPatientDetailViewModel {
                                                isOn: tempM.black)]
         }else {
             manageData.value = [HCListCellItem(title: "备注",
-                                               detailTitle: "请输入",
+                                               detailTitle: "",
                                                titleColor: .black,
-                                               cellIdentifier: HCListDetailCell_identifier),
+                                               placeholder: "请输入",
+                                               showArrow: false,
+                                               cellIdentifier: HCListDetailInputCell_identifier),
                                 HCListCellItem(title: "年龄",
                                                detailTitle: "0",
                                                titleColor: .black,

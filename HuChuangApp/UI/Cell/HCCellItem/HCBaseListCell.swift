@@ -17,6 +17,9 @@ class HCBaseListCell: UITableViewCell {
     public var arrowImgV: UIImageView!
     public var bottomLine: UIView!
     
+    public var didEndEditCallBack: ((String)->())?
+    public var switchCallBack: ((Bool)->())?
+
     deinit {
         print("释放了：\(self)")
     }

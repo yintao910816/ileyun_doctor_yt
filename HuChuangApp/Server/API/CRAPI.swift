@@ -161,10 +161,9 @@ enum API{
     case addUserMemberTags(memberId: String, tagName: String, id: String)
     /// 删除患者标签
     case removeUserTag(memberId: String, id: String)
-//    /// 患者标签列表
-//    case getUserMemberTags(memberId: String, clinicId: String)
-//    /// 添加患者标签
-//    case addUserMemberTags(memberId: String)
+
+    /// 编辑患者备注
+    case updateConsultBlack(memberId: String, userId: String, bak: String, black: Bool)
     
     /// 患者搜索
     case searchData(searchWords: String)
@@ -245,6 +244,9 @@ extension API: TargetType{
             return "api/patientConsult/removeUserTag"
         case .groupTagMemberList:
             return "api/patientInfo/groupTagMemberList"
+            
+        case .updateConsultBlack(_, _, _, _):
+            return "api/patientConsult/updateConsultBlackWx"
             
         case .searchData(_):
             return "api/search/searchData"
@@ -374,6 +376,12 @@ extension API {
         case .removeUserTag(let memberId, let id):
             params["memberId"] = memberId
             params["id"] = id
+
+        case .updateConsultBlack(let memberId, let userId, let bak, let black):
+            params["memberId"] = memberId
+            params["userId"] = userId
+            params["bak"] = bak
+            params["black"] = black
 
         case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
             params["year"] = year

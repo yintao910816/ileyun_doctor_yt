@@ -14,7 +14,9 @@ class HCPatientManageController: HCSlideItemController {
     private var datasource: [HCListCellItem] = []
     
     public var cellDidSelected:((HCListCellItem)->())?
-    
+    public var didEndEditCallBack: ((String)->())?
+    public var switchCallBack: ((Bool)->())?
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -27,6 +29,7 @@ class HCPatientManageController: HCSlideItemController {
         
         tableView.register(HCListDetailCell.self, forCellReuseIdentifier: HCListDetailCell_identifier)
         tableView.register(HCListSwitchCell.self, forCellReuseIdentifier: HCListSwitchCell_identifier)
+        tableView.register(HCListDetailInputCell.self, forCellReuseIdentifier: HCListDetailInputCell_identifier)
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +63,8 @@ extension HCPatientManageController: UITableViewDelegate, UITableViewDataSource 
         let model = datasource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseListCell
         cell.model = model
+        cell.didEndEditCallBack = { [unowned self] in self.didEndEditCallBack?($0) }
+        cell.switchCallBack = { [unowned self] in self.switchCallBack?($0) }
         return cell
     }
     

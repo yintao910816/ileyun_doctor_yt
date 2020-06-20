@@ -39,7 +39,9 @@ class HCPatientDetailController: BaseViewController {
             guard $0.segue.count > 0 else { return }
             self.performSegue(withIdentifier: $0.segue, sender: nil)
         }
-        
+        manageCtrl.didEndEditCallBack = { [unowned self] in self.viewModel.didEndEditMakrSubject.onNext($0) }
+        manageCtrl.switchCallBack = { [unowned self] in self.viewModel.blackPatientSubject.onNext($0) }
+
         slideCtrl.menuItems = TYSlideItemModel.creatSimple(for: ["咨询记录", "健康档案", "患者管理"])
         slideCtrl.menuCtrls = [consultRecordCtrl,
                                healthArchivesCtrl,

@@ -16,6 +16,7 @@ class HCListSwitchCell: HCBaseListCell {
     
     override func loadView() {
         switchView = UISwitch()
+        switchView.addTarget(self, action: #selector(changeValue(s:)), for: .valueChanged)
         switchView.onTintColor = HC_MAIN_COLOR
         
         contentView.addSubview(switchView)
@@ -32,4 +33,15 @@ class HCListSwitchCell: HCBaseListCell {
         }
     }
     
+    @objc private func changeValue(s: UISwitch) {
+        switchCallBack?(s.isOn)
+    }
+    
+    override var model: HCListCellItem! {
+        didSet {
+            super.model = model
+            
+            switchView.isOn = model.isOn
+        }
+    }
 }
