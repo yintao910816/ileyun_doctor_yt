@@ -48,11 +48,16 @@ struct APIAssistance {
     public static let baseImage = "https://www.ivfcn.com"
     public static let base    = "https://ileyun.ivfcn.com/hc-doctor/"
 
-    public static let fileBase = "https://www.ivfcn.com/doctor/attach/upload.do"
+    public static let fileBase = "https://ileyun.ivfcn.com/hc-files/"
     public static let baseH5Host = ""
 
     static public func baseURL(API: API) ->URL{
-        return URL(string: base)!
+        switch API {
+        case .uploadFile(_):
+            return URL(string: fileBase)!
+        default:
+            return URL(string: base)!
+        }
     }
     
     /**

@@ -116,6 +116,21 @@ enum HCsearchModule: String {
     case all = ""
 }
 
+/// 文件类型
+enum HCFileUploadType: String {
+    case image = "image/jpeg"
+    case audio = "audio/mp3"
+    
+    public var getSuffix: String {
+        switch self {
+        case .image:
+            return ".jpg"
+        case .audio:
+            return ".mp3"
+        }
+    }
+}
+
 //MARK:
 //MARK: 接口定义
 enum API{
@@ -131,6 +146,8 @@ enum API{
     case consultList(sort: Int, pageNum: Int, pageSize: Int)
     /// 咨询详情
     case getConsultDetail(memberId: String, id: String)
+    /// 咨询回复 - filePath：图片或录音文件地址  bak：录音时长
+    case replyConsult(content: String, filePath: String, bak: String, consultId: String)
     /// 患者管理-分组
     case groupTagMemberList
     /// 患者搜索
@@ -151,8 +168,6 @@ enum API{
     case bindAuthMember(userInfo: UMSocialUserInfoResponse, mobile: String, smsCode: String)
     /// 修改用户信息
     case updateInfo(param: [String: String])
-    /// 上传头像
-    case uploadIcon(image: UIImage)
     /// 首页功能列表
     case functionList
     /// 好消息
@@ -171,39 +186,8 @@ enum API{
     /// 检查版本更新
     case version
     
-    //MARK:--爱乐孕治疗四期接口
-    /// 怀孕几率查询
-    case probability
-    /// 首页好孕课堂
-    case allChannelArticle(cmsType: HCWebCmsType, pageNum: Int, pageSize: Int)
-    /// 名医推荐
-    case recommendDoctor(areaCode: String, lat: String, lng: String)
-    /// 课堂
-    case column(cmsType: HCWebCmsType)
-    /// 栏目文章列表
-    case articlePage(id: Int, pageNum: Int, pageSize: Int)
-    /// 专家问诊医生列表
-    case consultSelectListPage(pageNum: Int, pageSize: Int, searchName: String, areaCode: String, opType: [String: Any], sceen: [String: Any])
-    /// 咨询医生信息
-    case getUserInfo(userId: String)
-    /// 最近三个周期信息
-    case getLast2This2NextWeekInfo
-    /// 获取月经周期基础数据
-    case getMenstruationBaseInfo
-    /// 微信授权登录---获取绑定信息
-    case getAuthMember(openId: String)
-    /// 搜索
-    case search(pageNum: Int, pageSize: Int, searchModule: HCsearchModule, searchName: String)
-    /// 文章当前收藏数量
-    case storeAndStatus(articleId: String)
-    /// 文章收藏取消
-    case articelStore(articleId: String, status: Bool)
-    /// 区域城市
-    case allCity
-    /// 添加标记排卵日,添加同房记录
-    case mergePro(opType: HCMergeProOpType, date: String, data: [String: Any])
-    /// 添加/修改/删除,月经周期
-    case mergeWeekInfo(id: Int, startDate: String, keepDays: Int, next: Int)
+    /// 文件上传
+    case uploadFile(data: Data, fileType: HCFileUploadType)
 }
 
 //MARK:
@@ -224,6 +208,8 @@ extension API: TargetType{
             return "api/patientConsult/getConsultList"
         case .getConsultDetail(_):
             return "api/patientConsult/getConsultDetailWx"
+        case .replyConsult(_, _, _, _):
+            return "api/patientConsult/replyConsult"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
         case .getHealthArchives:
@@ -235,6 +221,9 @@ extension API: TargetType{
         case .searchData(_):
             return "api/search/searchData"
             
+        case .uploadFile(_):
+            return "api/upload/fileSingle"
+            
         case .UMAdd(_):
             return "api/umeng/add"
         case .validateCode(_):
@@ -243,8 +232,6 @@ extension API: TargetType{
             return "api/login/bindAuthMember"
         case .updateInfo(_):
             return "api/member/updateInfo"
-        case .uploadIcon(_):
-            return "api/upload/imgSingle"
         case .functionList:
             return "api/index/select"
         case .noticeList(_):
@@ -262,38 +249,6 @@ extension API: TargetType{
         case .version:
             return "api/apk/version"
             
-        case .column(_):
-            return "api/index/column"
-        case .allChannelArticle(_):
-            return "api/index/allChannelArticle"
-        case .recommendDoctor(_):
-            return "api/doctor/recommendDoctor"
-        case .articlePage(_):
-            return "api/index/articlePage"
-        case .consultSelectListPage(_):
-            return "api/consult/selectListPage"
-        case .getUserInfo(_):
-            return "api/consult/getUserInfo"
-        case .probability:
-            return "api/physiology/probability"
-        case .getLast2This2NextWeekInfo:
-            return "api/physiology/getLast2This2NextWeekInfo"
-        case .getMenstruationBaseInfo:
-            return "api/physiology/getMenstruationBaseInfo"
-        case .getAuthMember(_):
-            return "api/login/getAuthMember"
-        case .search(_):
-            return "api/search/search"
-        case .storeAndStatus(_):
-            return "api/cms/storeAndStatus"
-        case .articelStore(_):
-            return "api/cms/store"
-        case .allCity:
-            return "api/area/allCity"
-        case .mergePro(_):
-            return "api/physiology/mergePro"
-        case .mergeWeekInfo(_):
-            return "api/physiology/mergeWeekInfo"
         }
     }
     
@@ -301,15 +256,11 @@ extension API: TargetType{
     
     var task: Task {
         switch self {
-        case .uploadIcon(let image):
-            let data = image.jpegData(compressionQuality: 0.6)!
+        case .uploadFile(let data, let fileType):
             //根据当前时间设置图片上传时候的名字
-            let date:Date = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
-            let dateStr:String = formatter.string(from: date)
-            
-            let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: "image/jpeg")
+            let timeInterval: TimeInterval = Date().timeIntervalSince1970
+            let dateStr = "\(Int(timeInterval))\(fileType.getSuffix)"
+            let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: fileType.rawValue)
             return .uploadMultipart([formData])
         case .version:
             return .requestParameters(parameters: ["type": "ios", "packageName": "com.huchuang.guangsanuser"],
@@ -334,13 +285,13 @@ extension API: TargetType{
     
     var headers: [String : String]? {
         var contentType: String = "application/json; charset=utf-8"
-//        switch self {
-//        case .uploadIcon(_):
-//            contentType = "image/jpeg"
-//        default:
-//            break
-//        }
-//
+        switch self {
+        case .uploadFile(_, let fileType):
+            contentType = fileType.rawValue
+        default:
+            break
+        }
+
         let userAgent: String = "\(Bundle.main.bundleIdentifier),\(Bundle.main.version),\(UIDevice.iosVersion),\(UIDevice.modelName)"
 
 
@@ -351,7 +302,6 @@ extension API: TargetType{
                                                "Accept": "application/json"]
         PrintLog("request headers -- \(customHeaders)")
         return customHeaders
-//        return nil
     }
     
 }
@@ -362,16 +312,6 @@ extension API {
     
     private var parameters: [String: Any]? {
         var params = [String: Any]()
-//        params["token"] = userDefault.token
-//        params["deviceType"] = "iOS"
-//        params["version"] = Bundle.main.version
-//        params["packageName"] = Bundle.main.bundleIdentifier
-        
-//        let sysVersion = UIDevice.current.systemVersion
-//        let deviceModel = UIDevice.modelName
-//        let info = sysVersion + "," + deviceModel + ",apple," + Bundle.main.version
-//        params["deviceInfo"] = info
-
         switch self {
         case .login(let mobile, let smsCode):
             params["mobile"] = mobile
@@ -386,6 +326,12 @@ extension API {
         case .getConsultDetail(let memberId, let id):
             params["memberId"] = memberId
             params["id"] = id
+        case .replyConsult(let content, let filePath, let bak, let consultId):
+            params["content"] = content
+            params["filePath"] = filePath
+            params["bak"] = bak
+            params["consultId"] = consultId
+
         case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
             params["year"] = year
             params["month"] = month

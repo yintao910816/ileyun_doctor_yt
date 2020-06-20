@@ -45,7 +45,7 @@ class HCEditUserIconViewModel: BaseViewModel {
     }
 
     private func requestEditIcon(icon: UIImage) ->Observable<UpLoadIconModel>{
-        return HCProvider.request(.uploadIcon(image: icon))
+        return HCProvider.request(.uploadFile(data: icon.jpegData(compressionQuality: 0.5) ?? Data(), fileType: .image))
             .map(model: UpLoadIconModel.self)
             .asObservable()
     }

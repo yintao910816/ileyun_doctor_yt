@@ -16,6 +16,8 @@ class HCConsultKeyboardMaskView: UIView {
     
     private var disposeBag = DisposeBag()
 
+    public var mediaClickedCallBack:((Int)->())?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = RGB(10, 10, 10, 0.2)
@@ -23,6 +25,8 @@ class HCConsultKeyboardMaskView: UIView {
         
         textInputView = TYChatKeyBoardView()
         addSubview(textInputView)
+        
+        textInputView.mediaClickedCallBack = { [unowned self] in self.mediaClickedCallBack?($0) }
         
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         

@@ -379,9 +379,20 @@ class HCConsultDetailItemModel: HJModel {
 class HCConsultDetailFileModel: HJModel {
     var filePath: String = ""
     
+    var tempImage: UIImage?
     //    var photoItemSize: CGSize = .init(width: 0, height: 0)
 }
+extension HCConsultDetailFileModel: HCPhotoBoxProtocol {
+    var imageURL: String? { return filePath }
+    var image: UIImage? { return tempImage }
+}
 
+enum HCConsultContentType {
+    case text
+    case image
+    case audio
+    case textAndImage
+}
 class HCConsultDetailConsultListModel: HJModel {
     var id: String = ""
     var userType: String = ""
@@ -400,19 +411,76 @@ class HCConsultDetailConsultListModel: HJModel {
     
     /// 新加参数
     var timeString: String = ""
-    var cellIdentifier: String = HCConsultDetalCell_identifier
+    
+    /// 发送图片时，临时存储
+    var images: [UIImage] = []
     
     private var avatarFrame: CGRect = .zero
     private var nameFrame: CGRect = .zero
     private var contentBgFrame: CGRect = .zero
     private var contentTextFrame: CGRect = .zero
-    
+    private var imageBoxFrame: CGRect = .zero
+    private var audioIconFrame: CGRect = .zero
+    private var audioDurationFrame: CGRect = .zero
+
     private var timeFrame: CGRect = .zero
     
     private var cellHeight: CGFloat = 0
     
     public lazy var isMine: Bool = {
         return self.userType == "user"
+    }()
+    
+    public lazy var cellIdentifier: String = {
+        if self.contentType == .audio {
+            return HCConsultDetailAudioCell_identifier
+        }else if self.contentType == .image {
+            return HCConsultDetailPhotoCell_identifier
+        }else if self.contentType == .textAndImage {
+            return HCConsultDetailTextPhotoCell_identifier
+        }else {
+            return HCConsultDetalCell_identifier
+        }
+    }()
+
+    
+    public lazy var imageModels: [HCConsultDetailFileModel] = {
+        var datas: [HCConsultDetailFileModel] = []
+        if self.fileList.count > 0 {
+            for path in self.fileList {
+                let m = HCConsultDetailFileModel()
+                m.filePath = path
+                datas.append(m)
+            }
+        }else if self.images.count > 0 {
+            for image in self.images {
+                let m = HCConsultDetailFileModel()
+                m.tempImage = image
+                datas.append(m)
+            }
+        }
+        return datas
+    }()
+    
+    public lazy var contentType: HCConsultContentType = {
+        if self.fileList.count > 0, let type = self.fileList.last?.components(separatedBy: ".").last {
+            if type == "mp3" || type == "amr" {
+                return .audio
+            }
+            
+            if type == "jpg" || type == "png" {
+                if self.content.count > 0 {
+                    return .textAndImage
+                }
+                
+                return .image
+            }
+        }
+        return .text
+    }()
+    
+    public lazy var audioDurationText: String = {
+        return "\(self.bak)″"
     }()
     
     public lazy var displayName: String = {
@@ -438,7 +506,7 @@ class HCConsultDetailConsultListModel: HJModel {
     
     public var getNameFrame: CGRect {
         get {
-            if nameFrame == .zero && isMine {
+            if nameFrame == .zero {
                 let nameSize = displayName.ty_textSize(font: .font(fontSize: 13, fontName: .PingFRegular),
                                                        width: CGFloat(MAXFLOAT),
                                                        height: 13)
@@ -455,7 +523,12 @@ class HCConsultDetailConsultListModel: HJModel {
     public var getContentBgFrame: CGRect {
         get {
             if contentBgFrame == .zero {
-                let bgSize = CGSize.init(width: getContentTextFrame.size.width + 20, height: getContentTextFrame.size.height + 26)
+                var bgSize = CGSize.zero
+                if contentType == .text || contentType == .textAndImage {
+                    bgSize = CGSize.init(width: getContentTextFrame.size.width + 20, height: getContentTextFrame.size.height + 26)
+                }else if contentType == .audio {
+                    bgSize = CGSize.init(width: 100, height: 40)
+                }
                 if isMine {
                     contentBgFrame = .init(x: PPScreenW - bgSize.width - 66, y: getNameFrame.maxY + 10, width: bgSize.width, height: bgSize.height)
                 }else {
@@ -466,6 +539,55 @@ class HCConsultDetailConsultListModel: HJModel {
         }
     }
     
+    public var getImageBoxFrame: CGRect {
+        get {
+            if imageBoxFrame == .zero {
+                let size = HCBoxPhotoView.itemSize(with: fileList.count)
+                let y = contentType == .textAndImage ? getContentBgFrame.maxY + 10 : getNameFrame.maxY + 10;
+                if isMine {
+                    imageBoxFrame = .init(x: PPScreenW - size.width - 66, y: y, width: size.width, height: size.height)
+                }else {
+                    imageBoxFrame = .init(x: 66, y: y, width: size.width, height: size.height)
+                }
+            }
+            return imageBoxFrame
+        }
+    }
+    
+    public var getAudioIconFrame: CGRect {
+        get {
+            if audioIconFrame == .zero {
+                if isMine {
+                    audioIconFrame = .init(x: getContentBgFrame.width - 12 - 13, y: (getContentBgFrame.height - 15) / 2.0, width: 13, height: 15)
+                }else {
+                    audioIconFrame = .init(x: 12, y: (getContentBgFrame.height - 15) / 2.0, width: 13, height: 15)
+                }
+            }
+            return audioIconFrame
+        }
+    }
+    
+    public var getAudioDurationFrame: CGRect {
+        get {
+            if audioDurationFrame == .zero {
+                let audioSize = audioDurationText.ty_textSize(font: .font(fontSize: 13, fontName: .PingFRegular),
+                                                              width: CGFloat(MAXFLOAT),
+                                                              height: 13)
+                if isMine {
+                    audioDurationFrame = .init(x: getAudioIconFrame.minX - audioSize.width - 5,
+                                               y: (getContentBgFrame.height - 13) / 2.0,
+                                               width: audioSize.width, height: 13)
+                }else {
+                    audioDurationFrame = .init(x: getAudioIconFrame.maxX + 5,
+                                               y: (getContentBgFrame.height - 13) / 2.0,
+                                               width: audioSize.width, height: 13)
+                }
+            }
+            return audioDurationFrame
+        }
+    }
+
+
     public var getContentTextFrame: CGRect {
         get {
             if contentTextFrame == .zero {
@@ -491,10 +613,10 @@ class HCConsultDetailConsultListModel: HJModel {
     public var getCellHeight: CGFloat {
         get {
             if cellHeight == 0 {
-                if cellIdentifier == HCConsultDetalCell_identifier {
-                    cellHeight = getContentBgFrame.maxY + 10
+                if contentType == .image || contentType == .textAndImage {
+                    cellHeight = getImageBoxFrame.maxY + 10
                 }else {
-                    cellHeight = 47
+                    cellHeight = getContentBgFrame.maxY + 10
                 }
             }
             return cellHeight

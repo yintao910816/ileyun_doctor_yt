@@ -268,6 +268,13 @@
 		B83883F0249B897200287019 /* DPAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83883E9249B897200287019 /* DPAudioRecorder.m */; };
 		B83883F2249B900E00287019 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B83883F1249B900D00287019 /* libopencore-amrnb.a */; };
 		B83883F4249C72D600287019 /* HCConsultKeyboardMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883F3249C72D600287019 /* HCConsultKeyboardMaskView.swift */; };
+		B83883F6249C8B1900287019 /* HCFileUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883F5249C8B1900287019 /* HCFileUpload.swift */; };
+		B83883F8249C9B5400287019 /* HCConsultDetailPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883F7249C9B5400287019 /* HCConsultDetailPhotoCell.swift */; };
+		B83883FA249CA99F00287019 /* HCConsultDetailAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883F9249CA99F00287019 /* HCConsultDetailAudioCell.swift */; };
+		B83883FC249CB49200287019 /* HCConsultDetailTextPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883FB249CB49200287019 /* HCConsultDetailTextPhotoCell.swift */; };
+		B83883FF249DD59300287019 /* AudioPlayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83883FE249DD59300287019 /* AudioPlayHelper.swift */; };
+		B8388401249DD8BF00287019 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388400249DD8BF00287019 /* FileManager.swift */; };
+		B8388403249DDA8600287019 /* FileDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388402249DDA8600287019 /* FileDown.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -946,6 +953,13 @@
 		B83883E9249B897200287019 /* DPAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAudioRecorder.m; sourceTree = "<group>"; };
 		B83883F1249B900D00287019 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
 		B83883F3249C72D600287019 /* HCConsultKeyboardMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultKeyboardMaskView.swift; sourceTree = "<group>"; };
+		B83883F5249C8B1900287019 /* HCFileUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCFileUpload.swift; sourceTree = "<group>"; };
+		B83883F7249C9B5400287019 /* HCConsultDetailPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailPhotoCell.swift; sourceTree = "<group>"; };
+		B83883F9249CA99F00287019 /* HCConsultDetailAudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailAudioCell.swift; sourceTree = "<group>"; };
+		B83883FB249CB49200287019 /* HCConsultDetailTextPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConsultDetailTextPhotoCell.swift; sourceTree = "<group>"; };
+		B83883FE249DD59300287019 /* AudioPlayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayHelper.swift; sourceTree = "<group>"; };
+		B8388400249DD8BF00287019 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		B8388402249DDA8600287019 /* FileDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDown.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -1171,9 +1185,12 @@
 			children = (
 				B806B13724797A7E000CC720 /* HCConsultDetailSectionHeader.swift */,
 				B806B13B24797CBA000CC720 /* HCBoxPhotoView.swift */,
-				B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */,
-				B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */,
 				B844BB0F247F80460087BEA5 /* HCBaseConsultCell.swift */,
+				B81761F624798FB3005E91A0 /* HCConsultDetalCell.swift */,
+				B83883FB249CB49200287019 /* HCConsultDetailTextPhotoCell.swift */,
+				B83883F7249C9B5400287019 /* HCConsultDetailPhotoCell.swift */,
+				B83883F9249CA99F00287019 /* HCConsultDetailAudioCell.swift */,
+				B8DBE7AA247AB92300566A5F /* HCConsultDetailTimeCell.swift */,
 			);
 			path = ConsultDetail;
 			sourceTree = "<group>";
@@ -2008,6 +2025,16 @@
 			path = AudioButton;
 			sourceTree = "<group>";
 		};
+		B83883FD249DD57C00287019 /* AudioPlay */ = {
+			isa = PBXGroup;
+			children = (
+				B83883FE249DD59300287019 /* AudioPlayHelper.swift */,
+				B8388400249DD8BF00287019 /* FileManager.swift */,
+				B8388402249DDA8600287019 /* FileDown.swift */,
+			);
+			path = AudioPlay;
+			sourceTree = "<group>";
+		};
 		B844BB06247F5CD00087BEA5 /* ConsultRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -2261,6 +2288,7 @@
 			isa = PBXGroup;
 			children = (
 				B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */,
+				B83883FD249DD57C00287019 /* AudioPlay */,
 				B83883CF249B80B700287019 /* TYChatKeyBoardView */,
 				B83562B92473BEBA001942BD /* TYFiliterView */,
 				B8D700D2246DA6550024DE3E /* SlideMenu */,
@@ -2439,6 +2467,7 @@
 				B8D700AF246C42480024DE3E /* HCConsult.swift */,
 				B8D700C3246D96720024DE3E /* HCPatient.swift */,
 				B806B12A2479728E000CC720 /* HCConsultDetail.swift */,
+				B83883F5249C8B1900287019 /* HCFileUpload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2833,6 +2862,7 @@
 				B816EB16221DABF400F024D5 /* ZXAI01392xDecoder.m in Sources */,
 				B816EB56221DABF400F024D5 /* ZXCGImageLuminanceSource.m in Sources */,
 				B816EA93221DABF400F024D5 /* ZXAztecDecoder.m in Sources */,
+				B83883F6249C8B1900287019 /* HCFileUpload.swift in Sources */,
 				C421331822056D5E006C10C4 /* MainNavigationController.swift in Sources */,
 				C47E067923588FCD003A3320 /* TYCalendarView.swift in Sources */,
 				B816EB06221DABF400F024D5 /* ZXAnyAIDecoder.m in Sources */,
@@ -2920,7 +2950,9 @@
 				B816EAE3221DABF400F024D5 /* ZXDataMatrixEdifactEncoder.m in Sources */,
 				B816EB4A221DABF400F024D5 /* ZXTelParsedResult.m in Sources */,
 				B806B12924796E61000CC720 /* HCConsultDetailViewModel.swift in Sources */,
+				B83883FA249CA99F00287019 /* HCConsultDetailAudioCell.swift in Sources */,
 				B816EABA221DABF400F024D5 /* ZXMonochromeRectangleDetector.m in Sources */,
+				B83883F8249C9B5400287019 /* HCConsultDetailPhotoCell.swift in Sources */,
 				B816EAEB221DABF400F024D5 /* ZXDataMatrixDefaultPlacement.m in Sources */,
 				B821E34D23070907009A11A3 /* HCLocationManager.swift in Sources */,
 				C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */,
@@ -2944,6 +2976,7 @@
 				B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */,
 				C421332A22056F24006C10C4 /* BackgroundView.swift in Sources */,
 				B83562B62473B50F001942BD /* HCPatientSearchController.swift in Sources */,
+				B8388403249DDA8600287019 /* FileDown.swift in Sources */,
 				B816EB3B221DABF400F024D5 /* ZXWifiResultParser.m in Sources */,
 				B816EAB5221DABF400F024D5 /* ZXBitArray.m in Sources */,
 				B816EAC8221DABF400F024D5 /* ZXPDF417Writer.m in Sources */,
@@ -2957,6 +2990,7 @@
 				B816EADF221DABF400F024D5 /* ZXPDF417Reader.m in Sources */,
 				B816EA9D221DABF400F024D5 /* ZXMultiFinderPatternFinder.m in Sources */,
 				B816EAB0221DABF400F024D5 /* ZXQRCodeReader.m in Sources */,
+				B83883FC249CB49200287019 /* HCConsultDetailTextPhotoCell.swift in Sources */,
 				B8D700DC246DA8AA0024DE3E /* HCPatientManageController.swift in Sources */,
 				B816EABF221DABF400F024D5 /* ZXDecoderResult.m in Sources */,
 				B816EB0B221DABF400F024D5 /* ZXAI013103decoder.m in Sources */,
@@ -3104,6 +3138,7 @@
 				B83883EF249B897200287019 /* amr_wav_converter.c in Sources */,
 				B816EB3D221DABF400F024D5 /* ZXVINResultParser.m in Sources */,
 				B816EB51221DABF400F024D5 /* ZXCalendarParsedResult.m in Sources */,
+				B83883FF249DD59300287019 /* AudioPlayHelper.swift in Sources */,
 				C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */,
 				B816EAD0221DABF400F024D5 /* ZXPDF417CodewordDecoder.m in Sources */,
 				B816EB34221DABF400F024D5 /* ZXVCardResultParser.m in Sources */,
@@ -3136,6 +3171,7 @@
 				B816EB15221DABF400F024D5 /* ZXRSSExpandedDecodedNumeric.m in Sources */,
 				C421335D220588B7006C10C4 /* BaseModel.swift in Sources */,
 				B816EB38221DABF400F024D5 /* ZXAddressBookDoCoMoResultParser.m in Sources */,
+				B8388401249DD8BF00287019 /* FileManager.swift in Sources */,
 				C421333422056FB8006C10C4 /* UIDevice+Extension.swift in Sources */,
 				B8D700A4246B13A30024DE3E /* HCHomeBannerCell.swift in Sources */,
 				B816EA9E221DABF400F024D5 /* ZXMultiDetector.m in Sources */,

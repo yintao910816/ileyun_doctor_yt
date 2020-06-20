@@ -12,6 +12,8 @@ class TYTextInputView: PlaceholderTextView {
 
     private var mediaView: TYTextInputMediaView!
 
+    public var mediaClickedCallBack:((Int)->())?
+    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
@@ -37,12 +39,12 @@ extension TYTextInputView {
         if inputView == mediaView {
             inputView = nil
             reloadInputViews()
+            if isFirstResponder == true { resignFirstResponder() }
         }else {
             inputView = mediaView
             reloadInputViews()
+            if isFirstResponder == false { becomeFirstResponder() }
         }
-        
-        if isFirstResponder == false { becomeFirstResponder() }
     }
     
     public func mediaHidden() {
@@ -63,6 +65,6 @@ extension TYTextInputView {
 extension TYTextInputView: MediaProtocol {
     
     func mediaItem(selected idx: Int) {
-//        mediaDelegate?.mediaSelected(idx: idx)
+        mediaClickedCallBack?(idx)
     }
 }

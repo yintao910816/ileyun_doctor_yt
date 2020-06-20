@@ -22,6 +22,10 @@ class TYChatKeyBoardView: UIView {
     private var audioButton: ChatToolBarAudioButton!
     fileprivate var inputTf: TYTextInputView!
 
+    public var mediaClickedCallBack:((Int)->())?
+    public var sendAudioCallBack:(((Data, UInt))->())?
+    public var sendTextCallBack:((String)->())?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -57,6 +61,9 @@ class TYChatKeyBoardView: UIView {
         inputTf = TYTextInputView()
         inputTf.placeholder = "请输入..."
         inputTf.returnKeyType = .send
+        inputTf.tvdelegate = self
+        inputTf.font = .font(fontSize: 14)
+        inputTf.mediaClickedCallBack = { [unowned self] in self.mediaClickedCallBack?($0) }
                 
         showSystemKeyboardButton = UIButton.init(type: .system)
         showSystemKeyboardButton.tintColor = UIColor.clear
@@ -81,6 +88,7 @@ class TYChatKeyBoardView: UIView {
     @objc private func exchangeRecordAudio() {
         exchangeVoiceButton.isSelected = !exchangeVoiceButton.isSelected
         audioButton.isHidden = !exchangeVoiceButton.isSelected
+        audioButton.isHidden ? tf_becomeFirstResponder() : tf_resignFirstResponder()
     }
 
     @objc private func showSystemKeyboardAction() {
@@ -116,6 +124,12 @@ extension TYChatKeyBoardView {
             inputTf.becomeFirstResponder()
         }
     }
+    
+    public func tf_resignFirstResponder() {
+        if inputTf.isFirstResponder == true {
+            inputTf.resignFirstResponder()
+        }
+    }
 }
 
 //MARK:
@@ -133,6 +147,11 @@ extension TYChatKeyBoardView: PlaceholderTextViewDelegate {
     func tv_textView(_ textView: PlaceholderTextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             inputTf.mediaHidden()
+            tf_resignFirstResponder()
+            if inputTf.text.count > 0 {
+                sendTextCallBack?(inputTf.text)
+                inputTf.text = ""
+            }
         }
         return true
     }
@@ -142,8 +161,8 @@ extension TYChatKeyBoardView: PlaceholderTextViewDelegate {
 extension TYChatKeyBoardView: DPChatToolBarAudioDelegate {
     
     func dpAudioRecordingFinish(with audioData: Data!, withDuration duration: UInt) {
-//        delegate?.recordFinish(with: audioData, duration: Int(duration))
         progressView.setProgress(0, animated: true)
+        sendAudioCallBack?((audioData, duration))
     }
     
     func dpAudioSpeakPower(_ power: Float) {

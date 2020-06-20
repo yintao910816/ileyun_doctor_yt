@@ -1,19 +1,20 @@
 //
-//  HCConsultDetalMineCell.swift
+//  HCConsultDetailTextPhotoCell.swift
 //  HuChuangApp
 //
-//  Created by yintao on 2020/5/24.
+//  Created by yintao on 2020/6/19.
 //  Copyright © 2020 sw. All rights reserved.
 //
 
 import UIKit
 
-public let HCConsultDetalCell_identifier = "HCConsultDetalCell_identifier"
+public let HCConsultDetailTextPhotoCell_identifier = "HCConsultDetailTextPhotoCell_identifier"
 
-class HCConsultDetalCell: HCConsultDetailBaseCell {
+class HCConsultDetailTextPhotoCell: HCConsultDetailBaseCell {
 
     private var contentTextLabel: UILabel!
-    
+    private var boxPhotoView: HCBoxPhotoView!
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -21,7 +22,10 @@ class HCConsultDetalCell: HCConsultDetailBaseCell {
         contentTextLabel.numberOfLines = 0
         contentTextLabel.font = .font(fontSize: 13, fontName: .PingFRegular)
         contentTextLabel.textColor = RGB(53, 53, 53)
-        
+
+        boxPhotoView = HCBoxPhotoView()
+
+        contentView.addSubview(boxPhotoView)
         contentBgView.addSubview(contentTextLabel)
     }
     
@@ -33,11 +37,14 @@ class HCConsultDetalCell: HCConsultDetailBaseCell {
         didSet {
             super.model = model
             contentTextLabel.text = model.content
+            boxPhotoView.filles = model.imageModels
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         contentTextLabel.frame = model.getContentTextFrame
+        boxPhotoView.frame = model.getImageBoxFrame
     }
+
 }

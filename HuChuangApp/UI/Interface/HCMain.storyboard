@@ -187,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="76" width="375" height="542"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-yS-PL6" customClass="TYChatKeyBoardView" customModule="爱乐孕医生" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-yS-PL6" customClass="TYChatKeyBoardView" customModule="爱乐孕医生" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -211,6 +211,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5aY-5J-nil"/>
                     <connections>
+                        <outlet property="chatKeyBoardHeightCns" destination="qv5-xk-UPU" id="hWy-gA-Y5S"/>
                         <outlet property="chatKeyboardView" destination="1ZY-yS-PL6" id="h3E-sA-LJH"/>
                         <outlet property="statusOutlet" destination="I0h-qF-14S" id="Xee-Dd-8cg"/>
                         <outlet property="tableView" destination="YT3-6p-ddN" id="HGJ-js-2lp"/>

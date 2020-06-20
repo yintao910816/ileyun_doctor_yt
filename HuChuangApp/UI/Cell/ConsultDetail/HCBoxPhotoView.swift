@@ -37,7 +37,7 @@ class HCBoxPhotoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public var filles: [HCConsultDetailFileModel] = [] {
+    public var filles: [HCPhotoBoxProtocol] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -66,11 +66,9 @@ extension HCBoxPhotoView {
         let itemSize = HCBoxPhotoView.itemSize(with: dataCount)
         if dataCount == 1 {
             return itemSize
-        }else if dataCount == 2 {
-            return .init(width: itemSize.width * 2 + 5, height: itemSize.height)
-        }else if dataCount < 5 {
-            return .init(width: itemSize.width * 2 + 5, height: itemSize.height * 2 + 5)
-        }else if dataCount < 6 {
+        }else if dataCount <= 3 {
+            return .init(width: itemSize.width * CGFloat(dataCount) + 5 * CGFloat(dataCount - 1), height: itemSize.height)
+        }else if dataCount <= 6 {
             return .init(width: itemSize.width * 3 + 5 * 2, height: itemSize.height * 2 + 5)
         }else {
             return .init(width: itemSize.width * 3 + 5 * 2, height: itemSize.height * 3 + 5 * 2)
@@ -113,9 +111,13 @@ class HCPhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public var photo: HCConsultDetailFileModel! {
+    public var photo: HCPhotoBoxProtocol! {
         didSet {
-            imageView.setImage(photo.filePath)
+            if let url = photo.imageURL {
+                imageView.setImage(url)
+            }else {
+                imageView.image = photo.image
+            }
         }
     }
     
@@ -124,4 +126,14 @@ class HCPhotoCell: UICollectionViewCell {
         
         imageView.frame = bounds
     }
+}
+
+protocol HCPhotoBoxProtocol {
+    var imageURL: String? { get }
+    var image: UIImage? { get }
+}
+
+extension HCPhotoBoxProtocol {
+    var imageURL: String? { return nil }
+    var image: UIImage? { return nil }
 }

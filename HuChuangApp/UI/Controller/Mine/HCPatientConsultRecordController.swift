@@ -18,6 +18,8 @@ class HCPatientConsultRecordController: HCSlideItemController {
     public var gotoChatConsultRoomCallBack: ((HCConsultDetailItemModel)->())?
     public var operationCallBack:(((HCPatientConsultRecordFooterOperation, HCConsultDetailItemModel))->())?
     
+    public var mediaClickedCallBack:((Int)->())?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +27,8 @@ class HCPatientConsultRecordController: HCSlideItemController {
         
         inputMaskView = HCConsultKeyboardMaskView()
         inputMaskView.isHidden = true
+        
+        inputMaskView.mediaClickedCallBack = { [unowned self] in self.mediaClickedCallBack?($0) }
         
         tableView = UITableView.init(frame: view.bounds, style: .grouped)
         tableView.delegate = self
@@ -37,6 +41,10 @@ class HCPatientConsultRecordController: HCSlideItemController {
         
         tableView.register(HCConsultDetailTimeCell.self, forCellReuseIdentifier: HCConsultDetailTimeCell_identifier)
         tableView.register(HCConsultDetalCell.self, forCellReuseIdentifier: HCConsultDetalCell_identifier)
+        tableView.register(HCConsultDetailTextPhotoCell.self, forCellReuseIdentifier: HCConsultDetailTextPhotoCell_identifier)
+        tableView.register(HCConsultDetailPhotoCell.self, forCellReuseIdentifier: HCConsultDetailPhotoCell_identifier)
+        tableView.register(HCConsultDetailAudioCell.self, forCellReuseIdentifier: HCConsultDetailAudioCell_identifier)
+
         tableView.register(HCPatientConsultRecordHeader.self, forHeaderFooterViewReuseIdentifier: HCPatientConsultRecordHeader_identifier)
         tableView.register(HCPatientConsultRecordFooter.self, forHeaderFooterViewReuseIdentifier: HCPatientConsultRecordFooter_identifier)
         
