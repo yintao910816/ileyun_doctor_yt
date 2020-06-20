@@ -66,5 +66,6 @@ extension TYTextInputView: MediaProtocol {
     
     func mediaItem(selected idx: Int) {
         mediaClickedCallBack?(idx)
+        resignFirstResponder()
     }
 }

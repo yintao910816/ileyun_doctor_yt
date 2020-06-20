@@ -49,8 +49,8 @@ class HCPatientDetailController: BaseViewController {
     override func rxBind() {
         viewModel = HCPatientDetailViewModel(memberId: memberId)
         
-        viewModel.consultRecordData
-            .subscribe(onNext: { [weak self] in
+        viewModel.consultRecordData.asDriver()
+            .drive(onNext: { [weak self] in
                 self?.consultRecordCtrl.reloadData(data: $0)
             })
             .disposed(by: disposeBag)
@@ -86,6 +86,11 @@ class HCPatientDetailController: BaseViewController {
         consultRecordCtrl.gotoChatConsultRoomCallBack = { [weak self] in
             self?.performSegue(withIdentifier: "consultDetailSegue", sender: $0)
         }
+        
+        consultRecordCtrl.sendImageCallBack = { [unowned self] in self.viewModel.sendImageSubject.onNext($0) }
+        consultRecordCtrl.sendAudioCallBack = { [unowned self] in self.viewModel.sendAudioSubject.onNext($0) }
+        consultRecordCtrl.sendTextCallBack = { [unowned self] in self.viewModel.sendTextSubject.onNext($0) }
+        consultRecordCtrl.sendBackCallBack = { [unowned self] in self.viewModel.sendBackSubject.onNext($0) }
         
         viewModel.reloadSubject.onNext(Void())
     }

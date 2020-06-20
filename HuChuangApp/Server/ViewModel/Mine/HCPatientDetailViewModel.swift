@@ -14,9 +14,18 @@ class HCPatientDetailViewModel: BaseViewModel {
     
     public let healthArchivesData = Variable([SectionModel<HCPatientDetailSectionModel, Any>]())
     public let healthArchivesExpand = PublishSubject<(Bool, Int)>()
-    public let consultRecordData = PublishSubject<[HCConsultDetailItemModel]>()
+    public let consultRecordData = Variable([HCConsultDetailItemModel]())
     public let manageData = Variable([HCListCellItem]())
     
+    /// 图片回复
+    public let sendImageSubject = PublishSubject<(UIImage, String)>()
+    /// 语音回复
+    public let sendAudioSubject = PublishSubject<(Data, UInt, String)>()
+    /// 文字回复
+    public let sendTextSubject = PublishSubject<(String, String)>()
+    /// 退回
+    public let sendBackSubject = PublishSubject<String>()
+
     private var healthArchivesOriginalData: [[Any]] = []
     // 健康档案数据
     private var healthArchivesModel = HCHealthArchivesModel()
@@ -58,6 +67,8 @@ class HCPatientDetailViewModel: BaseViewModel {
                 self?.requestPatientData()
             })
             .disposed(by: disposeBag)
+        
+        prepareReply()
     }
     
     private func requestPatientData() {
@@ -77,6 +88,7 @@ class HCPatientDetailViewModel: BaseViewModel {
             .map(model: HCConsultDetailModel.self)
             .map({ [weak self] data -> [HCConsultDetailItemModel] in
                 guard let strongSelf = self else { return [HCConsultDetailItemModel]() }
+                strongSelf.hud.noticeHidden()
                 return strongSelf.dealConsultRecords(data: data)
             })
             .asObservable()
@@ -88,20 +100,23 @@ class HCPatientDetailViewModel: BaseViewModel {
         var tempData: [HCConsultDetailItemModel] = []
         for item in data.records {
             var consultList: [HCConsultDetailConsultListModel] = []
-            for consultItem in item.consultList {
-                let m = HCConsultDetailConsultListModel()
-                m.cellIdentifier = HCConsultDetailTimeCell_identifier
-                m.timeString = consultItem.createDate.timeSeprate3()
-                consultList.append(m)
-                consultList.append(consultItem)
-                // 咨询类型是0的咨询,内容加回复全显示，咨询类型为1的只显示咨询内容
-                if let type = HCConsultType(rawValue: item.type), type != .picAndText {
-                    break
+            // 时间cell
+            let m = HCConsultDetailConsultListModel()
+            m.cellIdentifier = HCConsultDetailTimeCell_identifier
+            m.timeString = item.createDate.timeSeprate3()
+            consultList.append(m)
+            // 单次图文：内容加回复全显示，其它只显示咨询内容
+            if let type = HCConsultType(rawValue: item.type), type == .picAndText {
+                consultList.append(contentsOf: item.consultList)
+            }else {
+                if let firstConsult = item.consultList.first {
+                    consultList.append(firstConsult)
                 }
             }
+
             item.calculateFooterUI()
             item.consultList = consultList
-            tempData.append(item);
+            tempData.append(item)
         }
         return tempData
     }
@@ -172,6 +187,101 @@ extension HCPatientDetailViewModel {
                                                       items: Array(firstSectionDatas[0..<5])),
                                     SectionModel.init(model: HCPatientDetailSectionModel(title: "周期档案", isExpand: false),
                                                       items: secondData)]
+    }
+}
+
+//MARK: - 单次图文回复
+extension HCPatientDetailViewModel {
+
+    private func prepareReply() {
+        sendImageSubject
+            ._doNext(forNotice: hud)
+            .flatMap { [unowned self] data -> Observable<(HCFileUploadModel, String)> in
+                if let imgData = data.0.jpegData(compressionQuality: 0.5) {
+                    return self.uploadFile(data: imgData, type: .image)
+                        .map{ ($0, data.1) }
+                }
+                return Observable.just((HCFileUploadModel(), data.1))
+        }
+        .concatMap { [weak self] data -> Observable<ResponseModel> in
+            guard let strongSelf = self else { return Observable.just(ResponseModel()) }
+            return strongSelf.submitReply(content: "", filePath: data.0.filePath, bak: "", id: data.1)
+        }
+        .subscribe(onNext: { [weak self] res in
+            PrintLog("图片回复结果：\(res.message)")
+            if RequestCode(rawValue: res.code) == RequestCode.success {
+                self?.requestConsultRecords()
+            }else {
+                self?.hud.failureHidden(res.message)
+            }
+        })
+            .disposed(by: disposeBag)
+        
+        sendAudioSubject
+            ._doNext(forNotice: hud)
+            .flatMap { [unowned self] data -> Observable<(HCFileUploadModel, UInt, String)> in
+                return self.uploadFile(data: data.0, type: .audio)
+                    .map{ ($0, data.1, data.2) }
+        }
+        .concatMap { [weak self] data -> Observable<ResponseModel> in
+            guard let strongSelf = self else { return Observable.just(ResponseModel()) }
+            return strongSelf.submitReply(content: "", filePath: data.0.filePath, bak: "\(data.1)", id: data.2)
+        }
+        .subscribe(onNext: { [weak self] res in
+            PrintLog("语音回复结果：\(res.message)")
+            if RequestCode(rawValue: res.code) == RequestCode.success {
+                self?.requestConsultRecords()
+            }else {
+                self?.hud.failureHidden(res.message)
+            }
+        })
+            .disposed(by: disposeBag)
+        
+        sendTextSubject
+            ._doNext(forNotice: hud)
+            .flatMap{ [unowned self] in self.submitReply(content: $0.0, filePath: "", bak: "", id: $0.1) }
+            .subscribe(onNext: { [weak self] res in
+                PrintLog("文字回复结果：\(res.message)")
+                if RequestCode(rawValue: res.code) == RequestCode.success {
+                    self?.requestConsultRecords()
+                }else {
+                    self?.hud.failureHidden(res.message)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        sendBackSubject
+            .subscribe(onNext: { [unowned self] in self.withdrawConsult(orderSn: $0) })
+            .disposed(by: disposeBag)
+    }
+    
+    /// 咨询退回
+    private func withdrawConsult(orderSn: String) {
+        hud.noticeLoading()
+        HCProvider.request(.withdrawConsult(orderSn: orderSn))
+            .mapResponse()
+            .subscribe(onSuccess: { [weak self] res in
+                if RequestCode(rawValue: res.code) == RequestCode.success {
+                    self?.requestConsultRecords()
+                }else {
+                    self?.hud.failureHidden(res.message)
+                }
+            }) { [weak self] in
+                self?.hud.failureHidden(self?.errorMessage($0))
+        }
+        .disposed(by: disposeBag)
+    }
+    
+    private func uploadFile(data: Data, type: HCFileUploadType) ->Observable<HCFileUploadModel> {
+        return HCProvider.request(.uploadFile(data: data, fileType: type))
+            .map(model: HCFileUploadModel.self)
+            .asObservable()
+    }
+
+    private func submitReply(content: String, filePath: String, bak: String, id: String) ->Observable<ResponseModel> {
+        return HCProvider.request(.replyConsult(content: content, filePath: filePath, bak: bak, consultId: id))
+            .mapResponse()
+            .asObservable()
     }
 }
 

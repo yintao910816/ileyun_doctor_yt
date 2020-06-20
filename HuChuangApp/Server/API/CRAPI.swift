@@ -148,6 +148,9 @@ enum API{
     case getConsultDetail(memberId: String, id: String)
     /// 咨询回复 - filePath：图片或录音文件地址  bak：录音时长
     case replyConsult(content: String, filePath: String, bak: String, consultId: String)
+    /// 咨询退回
+    case withdrawConsult(orderSn: String)
+    
     /// 患者管理-分组
     case groupTagMemberList
     /// 患者搜索
@@ -210,6 +213,8 @@ extension API: TargetType{
             return "api/patientConsult/getConsultDetailWx"
         case .replyConsult(_, _, _, _):
             return "api/patientConsult/replyConsult"
+        case .withdrawConsult(_):
+            return "api/patientConsult/withdrawConsult"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
         case .getHealthArchives:
@@ -331,6 +336,8 @@ extension API {
             params["filePath"] = filePath
             params["bak"] = bak
             params["consultId"] = consultId
+        case .withdrawConsult(let orderSn):
+            params["orderSn"] = orderSn
 
         case .getMonthBillInfo(let year, let month, let pageNum, let pageSize):
             params["year"] = year

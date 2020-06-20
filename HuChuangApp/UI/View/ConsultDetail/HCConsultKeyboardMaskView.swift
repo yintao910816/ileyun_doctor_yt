@@ -17,6 +17,8 @@ class HCConsultKeyboardMaskView: UIView {
     private var disposeBag = DisposeBag()
 
     public var mediaClickedCallBack:((Int)->())?
+    public var sendAudioCallBack:(((Data, UInt))->())?
+    public var sendTextCallBack:((String)->())?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,8 @@ class HCConsultKeyboardMaskView: UIView {
         addSubview(textInputView)
         
         textInputView.mediaClickedCallBack = { [unowned self] in self.mediaClickedCallBack?($0) }
+        textInputView.sendTextCallBack = { [unowned self] in self.sendTextCallBack?($0) }
+        textInputView.sendAudioCallBack = { [unowned self] in self.sendAudioCallBack?($0) }
         
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         
@@ -61,7 +65,7 @@ extension HCConsultKeyboardMaskView {
     
     public func endEdit() {
         isHidden = true
-        textInputView.resignFirstResponder()
+        textInputView.tf_resignFirstResponder()
     }
     
     public var coverView: UIView! {

@@ -11,6 +11,8 @@ import UIKit
 class HCPatientConsultRecordController: HCSlideItemController {
 
     private var datasource: [HCConsultDetailItemModel] = []
+    private var currentReplyId: String = ""
+    
     private var tableView: UITableView!
     private var inputMaskView: HCConsultKeyboardMaskView!
     private var keyboardManager = KeyboardManager()
@@ -18,7 +20,11 @@ class HCPatientConsultRecordController: HCSlideItemController {
     public var gotoChatConsultRoomCallBack: ((HCConsultDetailItemModel)->())?
     public var operationCallBack:(((HCPatientConsultRecordFooterOperation, HCConsultDetailItemModel))->())?
     
-    public var mediaClickedCallBack:((Int)->())?
+    public var sendImageCallBack:(((UIImage, String))->())?
+    public var sendAudioCallBack:(((Data, UInt, String))->())?
+    public var sendTextCallBack:(((String, String))->())?
+    /// 退回
+    public var sendBackCallBack:((String)->())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +34,14 @@ class HCPatientConsultRecordController: HCSlideItemController {
         inputMaskView = HCConsultKeyboardMaskView()
         inputMaskView.isHidden = true
         
-        inputMaskView.mediaClickedCallBack = { [unowned self] in self.mediaClickedCallBack?($0) }
+        inputMaskView.mediaClickedCallBack = { [unowned self] _ in self.systemPic() }
+        
+        inputMaskView.sendAudioCallBack = { [unowned self] in
+            self.sendAudioCallBack?(($0.0, $0.1, self.currentReplyId))
+        }
+        inputMaskView.sendTextCallBack = { [unowned self] in
+            self.sendTextCallBack?(($0, self.currentReplyId))
+        }
         
         tableView = UITableView.init(frame: view.bounds, style: .grouped)
         tableView.delegate = self
@@ -104,6 +117,9 @@ extension HCPatientConsultRecordController: UITableViewDelegate, UITableViewData
         let model = datasource[indexPath.section].consultList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as! HCBaseConsultCell
         cell.model = model
+        cell.contentBgTagCallBack = {
+            AudioPlayHelper.share.prepare(with: $0.fileList.first ?? "")
+        }
         return cell
     }
     
@@ -128,10 +144,36 @@ extension HCPatientConsultRecordController: UITableViewDelegate, UITableViewData
 //            self?.operationCallBack?($0)
             if $0.1.isChatConsult {
                 self?.gotoChatConsultRoomCallBack?($0.1)
-            }else {
+            }else if $0.0 == .back {
+                self?.sendBackCallBack?($0.1.code)
+            }else if $0.0 == .reply || $0.0 == .supplementReply {
+                self?.currentReplyId = $0.1.id
                 self?.inputMaskView.beginEdit()
             }
         }
         return footer
+    }
+}
+
+//MARK: - 选择图片
+extension HCPatientConsultRecordController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func systemPic(){
+        let systemPicVC = UIImagePickerController()
+        systemPicVC.sourceType = UIImagePickerController.SourceType.photoLibrary
+        systemPicVC.delegate = self
+        systemPicVC.allowsEditing = true
+        UIApplication.shared.keyWindow?.rootViewController?.present(systemPicVC, animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            sendImageCallBack?((img, currentReplyId))
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

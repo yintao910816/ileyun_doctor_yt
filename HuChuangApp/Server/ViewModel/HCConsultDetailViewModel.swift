@@ -31,8 +31,10 @@ class HCConsultDetailViewModel: RefreshVM<SectionModel<HCConsultDetailItemModel,
     public let sendTextSubject = PublishSubject<String>()
     
     public func customDeinit() {
-        timer.timerRemove()
-        timer = nil
+        if timer != nil {
+            timer.timerRemove()
+            timer = nil
+        }
     }
     
     init(memberId: String, id: String) {
