@@ -242,8 +242,8 @@ extension API: TargetType{
             return "api/patientConsult/getConsultDetailWx"
         case .replyConsult(_, _, _, _):
             return "api/patientConsult/replyConsult"
-        case .withdrawConsult(_):
-            return "api/patientConsult/withdrawConsult"
+        case .withdrawConsult(let orderSn):
+            return "api/patientConsult/withdrawConsult/\(orderSn)"
         case .getMonthBillInfo(_):
             return "patientConsult/getMonthBillInfo"
         case .getHealthArchives:
@@ -384,8 +384,6 @@ extension API {
             params["filePath"] = filePath
             params["bak"] = bak
             params["consultId"] = consultId
-        case .withdrawConsult(let orderSn):
-            params["orderSn"] = orderSn
 
         case .addUserTag(let tagName, let clinicId):
             params["tagName"] = tagName

@@ -140,14 +140,15 @@ extension HCPatientConsultRecordController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: HCPatientConsultRecordFooter_identifier) as! HCPatientConsultRecordFooter
         footer.model = datasource[section]
-        footer.operationCallBack = { [weak self] in
-//            self?.operationCallBack?($0)
-            if $0.1.isChatConsult {
-                self?.gotoChatConsultRoomCallBack?($0.1)
-            }else if $0.0 == .back {
-                self?.sendBackCallBack?($0.1.code)
-            }else if $0.0 == .reply || $0.0 == .supplementReply {
-                self?.currentReplyId = $0.1.id
+        footer.operationCallBack = { [weak self] data in
+            if data.0 == .back {
+                NoticesCenter.alert(title: "退回", message: "退回之后不能再回复此条消息", cancleTitle: "取消", okTitle: "确定") {
+                    self?.sendBackCallBack?(data.1.code)
+                }
+            }else if data.1.isChatConsult {
+                self?.gotoChatConsultRoomCallBack?(data.1)
+            }else if data.0 == .reply || data.0 == .supplementReply {
+                self?.currentReplyId = data.1.id
                 self?.inputMaskView.beginEdit()
             }
         }
