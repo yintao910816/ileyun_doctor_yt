@@ -61,7 +61,20 @@ struct HCListCellItem {
     /// 开关是否打开
     var isOn: Bool = false
     
+    /// 提交请求的参数key
+    var key: String = ""
+    var idKey: String = ""
+    var id: String = ""
+    
     mutating func change(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
+    }
+    
+    mutating func change(id: String) {
+        self.id = id
+    }
+
+    mutating func change(detailTitle: String) {
+        self.detailTitle = detailTitle
     }
 }

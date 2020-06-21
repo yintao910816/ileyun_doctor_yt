@@ -41,6 +41,7 @@ class HCListDetailInputCell: HCBaseListCell {
             
             inputTf.text = model.detailTitle
             inputTf.placeholder = model.placeholder
+            inputTf.textColor = model.detailTitleColor
             
             if model.showArrow && arrowImgV.isHidden {
                 inputTf.snp.updateConstraints {
@@ -59,7 +60,9 @@ class HCListDetailInputCell: HCBaseListCell {
 extension HCListDetailInputCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        model.detailTitle = textField.text ?? ""
         didEndEditCallBack?(textField.text ?? "")
+        didEndEditWithModel?(model)
         textField.resignFirstResponder()
         return true
     }

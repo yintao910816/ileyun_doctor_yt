@@ -22,7 +22,7 @@ class HCUserModel: HJModel {
     var consultPrice: String = ""
     var createDate: String = ""
     var creates: String = ""
-    var departmentId: Int = 0
+    var departmentId: String = ""
     var departmentName: String = ""
     var email: String = ""
     var enable: Bool = false

@@ -277,6 +277,11 @@
 		B8388403249DDA8600287019 /* FileDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388402249DDA8600287019 /* FileDown.swift */; };
 		B8388405249E5AC500287019 /* HCPatientGroupManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388404249E5AC500287019 /* HCPatientGroupManageViewModel.swift */; };
 		B8388407249E5D1000287019 /* HCTagName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388406249E5D1000287019 /* HCTagName.swift */; };
+		B8388409249EFB0100287019 /* HCDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388408249EFB0100287019 /* HCDepartment.swift */; };
+		B838840E249F00CC00287019 /* HCDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838840B249F00CC00287019 /* HCDatePickerViewController.swift */; };
+		B8388410249F00CC00287019 /* HCPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838840D249F00CC00287019 /* HCPickerController.swift */; };
+		B8388412249F013A00287019 /* HCPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388411249F013A00287019 /* HCPickerData.swift */; };
+		B8388414249F049C00287019 /* HCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388413249F049B00287019 /* HCPickerView.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -413,7 +418,6 @@
 		C421339D2205B224006C10C4 /* ImageRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133992205B224006C10C4 /* ImageRx.swift */; };
 		C421339E2205B224006C10C4 /* HttpImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C421339A2205B224006C10C4 /* HttpImage.swift */; };
 		C42133A12205B41C006C10C4 /* BaseFilesOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */; };
-		C43BC450233B111000194539 /* HCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43BC44F233B111000194539 /* HCPickerView.swift */; };
 		C43F09BE22143B5200910437 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09BD22143B5200910437 /* BaseWebViewController.swift */; };
 		C43F09C3221448B000910437 /* HCNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F09C2221448B000910437 /* HCNotifications.swift */; };
 		C4481E2422154D66007F4B0C /* BaseWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */; };
@@ -425,8 +429,6 @@
 		C47E067923588FCD003A3320 /* TYCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E067823588FCD003A3320 /* TYCalendarView.swift */; };
 		C47E067B23589355003A3320 /* TYCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E067A23589355003A3320 /* TYCalendarDayCell.swift */; };
 		C497E9682344658D00328B47 /* HCHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497E9672344658D00328B47 /* HCHome.swift */; };
-		C4AA410A233C648C00144400 /* HCDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA4109233C648C00144400 /* HCDatePickerViewController.swift */; };
-		C4AEA71923ACB35F00DD7AC1 /* HCPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEA71823ACB35F00DD7AC1 /* HCPickerController.swift */; };
 		C4C3257B2205B8490091783C /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257A2205B8490091783C /* ScrollTextView.swift */; };
 		C4C3257D2205C3AD0091783C /* UIView+XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3257C2205C3AC0091783C /* UIView+XIB.swift */; };
 		C4F139B6235419EF00D777F6 /* AppLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F139AF235419EF00D777F6 /* AppLaunchView.swift */; };
@@ -964,6 +966,11 @@
 		B8388402249DDA8600287019 /* FileDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDown.swift; sourceTree = "<group>"; };
 		B8388404249E5AC500287019 /* HCPatientGroupManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientGroupManageViewModel.swift; sourceTree = "<group>"; };
 		B8388406249E5D1000287019 /* HCTagName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTagName.swift; sourceTree = "<group>"; };
+		B8388408249EFB0100287019 /* HCDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCDepartment.swift; sourceTree = "<group>"; };
+		B838840B249F00CC00287019 /* HCDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCDatePickerViewController.swift; sourceTree = "<group>"; };
+		B838840D249F00CC00287019 /* HCPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCPickerController.swift; sourceTree = "<group>"; };
+		B8388411249F013A00287019 /* HCPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPickerData.swift; sourceTree = "<group>"; };
+		B8388413249F049B00287019 /* HCPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCPickerView.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -1105,7 +1112,6 @@
 		C421339A2205B224006C10C4 /* HttpImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpImage.swift; sourceTree = "<group>"; };
 		C421339F2205B366006C10C4 /* HcChuangApp-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HcChuangApp-Bridge-Header.h"; sourceTree = "<group>"; };
 		C42133A02205B41C006C10C4 /* BaseFilesOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilesOwner.swift; sourceTree = "<group>"; };
-		C43BC44F233B111000194539 /* HCPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPickerView.swift; sourceTree = "<group>"; };
 		C43F09BD22143B5200910437 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		C43F09C2221448B000910437 /* HCNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNotifications.swift; sourceTree = "<group>"; };
 		C4481E2322154D66007F4B0C /* BaseWKWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewViewController.swift; sourceTree = "<group>"; };
@@ -1117,8 +1123,6 @@
 		C47E067823588FCD003A3320 /* TYCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYCalendarView.swift; sourceTree = "<group>"; };
 		C47E067A23589355003A3320 /* TYCalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYCalendarDayCell.swift; sourceTree = "<group>"; };
 		C497E9672344658D00328B47 /* HCHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHome.swift; sourceTree = "<group>"; };
-		C4AA4109233C648C00144400 /* HCDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCDatePickerViewController.swift; sourceTree = "<group>"; };
-		C4AEA71823ACB35F00DD7AC1 /* HCPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPickerController.swift; sourceTree = "<group>"; };
 		C4C3257A2205B8490091783C /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		C4C3257C2205C3AC0091783C /* UIView+XIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XIB.swift"; sourceTree = "<group>"; };
 		C4F139AF235419EF00D777F6 /* AppLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLaunchView.swift; sourceTree = "<group>"; };
@@ -2039,6 +2043,17 @@
 			path = AudioPlay;
 			sourceTree = "<group>";
 		};
+		B838840A249F00CC00287019 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				B838840B249F00CC00287019 /* HCDatePickerViewController.swift */,
+				B8388413249F049B00287019 /* HCPickerView.swift */,
+				B838840D249F00CC00287019 /* HCPickerController.swift */,
+				B8388411249F013A00287019 /* HCPickerData.swift */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
 		B844BB06247F5CD00087BEA5 /* ConsultRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -2292,6 +2307,7 @@
 			isa = PBXGroup;
 			children = (
 				B8454ED223A3EF5200E88BAD /* TYDateCalculate.swift */,
+				B838840A249F00CC00287019 /* Picker */,
 				B83883FD249DD57C00287019 /* AudioPlay */,
 				B83883CF249B80B700287019 /* TYChatKeyBoardView */,
 				B83562B92473BEBA001942BD /* TYFiliterView */,
@@ -2363,7 +2379,6 @@
 			isa = PBXGroup;
 			children = (
 				B806B12F2479789A000CC720 /* ConsultDetail */,
-				C43BC44E233B10F200194539 /* Picker */,
 				B86993D423373A5300086A77 /* TYSearchBar */,
 				B8BE34F022145DF000EF16F1 /* Custom */,
 				B8BE34EB2214597800EF16F1 /* Mine */,
@@ -2474,6 +2489,7 @@
 				B806B12A2479728E000CC720 /* HCConsultDetail.swift */,
 				B83883F5249C8B1900287019 /* HCFileUpload.swift */,
 				B8388406249E5D1000287019 /* HCTagName.swift */,
+				B8388408249EFB0100287019 /* HCDepartment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2592,16 +2608,6 @@
 				C421339A2205B224006C10C4 /* HttpImage.swift */,
 			);
 			path = ImageUtls;
-			sourceTree = "<group>";
-		};
-		C43BC44E233B10F200194539 /* Picker */ = {
-			isa = PBXGroup;
-			children = (
-				C43BC44F233B111000194539 /* HCPickerView.swift */,
-				C4AA4109233C648C00144400 /* HCDatePickerViewController.swift */,
-				C4AEA71823ACB35F00DD7AC1 /* HCPickerController.swift */,
-			);
-			path = Picker;
 			sourceTree = "<group>";
 		};
 		C43F09B722142DEA00910437 /* Cell */ = {
@@ -2825,6 +2831,7 @@
 			files = (
 				B816EAA9221DABF400F024D5 /* ZXQRCodeErrorCorrectionLevel.m in Sources */,
 				B816EB27221DABF400F024D5 /* ZXCodaBarWriter.m in Sources */,
+				B838840E249F00CC00287019 /* HCDatePickerViewController.swift in Sources */,
 				B816EB04221DABF400F024D5 /* ZXRSSExpandedRow.m in Sources */,
 				B83562BE2473BEBA001942BD /* TYFiliterViewData.swift in Sources */,
 				B8D700A9246B98170024DE3E /* HCHomeNotificationCell.swift in Sources */,
@@ -2846,7 +2853,6 @@
 				B816EA97221DABF400F024D5 /* ZXQRCodeWriter.m in Sources */,
 				B816EAF0221DABF400F024D5 /* ZXDataMatrixDataBlock.m in Sources */,
 				C454C01D234E007B005CBC0B /* TYSearchRecordLayout.swift in Sources */,
-				C4AEA71923ACB35F00DD7AC1 /* HCPickerController.swift in Sources */,
 				C421333D220586BD006C10C4 /* HCHomeViewController.swift in Sources */,
 				B8F8FBA823572B5700784442 /* TYData.swift in Sources */,
 				C4F3E87622201D1B008B143C /* H5.swift in Sources */,
@@ -2901,7 +2907,6 @@
 				B816EA88221DABF400F024D5 /* ZXMultiFormatWriter.m in Sources */,
 				B8D700BF246D96200024DE3E /* HCMineViewModel.swift in Sources */,
 				B8D700C8246D98380024DE3E /* HCPatientListCell.swift in Sources */,
-				C43BC450233B111000194539 /* HCPickerView.swift in Sources */,
 				B816EB24221DABF400F024D5 /* ZXITFReader.m in Sources */,
 				B8D700B7246C5F2C0024DE3E /* HCMonthBillController.swift in Sources */,
 				B816EAF4221DABF400F024D5 /* ZXDataMatrixWriter.m in Sources */,
@@ -2947,6 +2952,7 @@
 				B8BE350F2214797200EF16F1 /* FileManager+Extension.swift in Sources */,
 				C421332922056F24006C10C4 /* TYIndicatorBaseView.swift in Sources */,
 				C421331222056BD1006C10C4 /* BaseNavigationController.swift in Sources */,
+				B8388414249F049C00287019 /* HCPickerView.swift in Sources */,
 				B816EB29221DABF400F024D5 /* ZXCode128Reader.m in Sources */,
 				B86993D623373A6500086A77 /* TYSearchBar.swift in Sources */,
 				B816EA8A221DABF400F024D5 /* ZXByQuadrantReader.m in Sources */,
@@ -2978,6 +2984,7 @@
 				B8D700DE246DB5BC0024DE3E /* HCPatientDetailViewModel.swift in Sources */,
 				B816EACF221DABF400F024D5 /* ZXPDF417.m in Sources */,
 				B816EAA8221DABF400F024D5 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
+				B8388410249F00CC00287019 /* HCPickerController.swift in Sources */,
 				B8508EAE23422052008C24BA /* HCListButtonCell.swift in Sources */,
 				B89AA654246FF2FF006BBAF4 /* HCDoctorProfileViewModel.swift in Sources */,
 				B81C2F772215B60E00A887AF /* MineHeaderView.swift in Sources */,
@@ -2990,7 +2997,6 @@
 				B816EAC8221DABF400F024D5 /* ZXPDF417Writer.m in Sources */,
 				B816EAED221DABF400F024D5 /* ZXDataMatrixTextEncoder.m in Sources */,
 				B816EA79221DABF400F024D5 /* LBXScanNetAnimation.m in Sources */,
-				C4AA410A233C648C00144400 /* HCDatePickerViewController.swift in Sources */,
 				B816EA7F221DABF400F024D5 /* ZXResult.m in Sources */,
 				B816EAD4221DABF400F024D5 /* ZXPDF417DecodedBitStreamParser.m in Sources */,
 				B816EAF9221DABF400F024D5 /* ZXCode93Reader.m in Sources */,
@@ -3010,6 +3016,7 @@
 				B816EAC2221DABF400F024D5 /* ZXGenericGF.m in Sources */,
 				B816EAEE221DABF400F024D5 /* ZXDataMatrixDecodedBitStreamParser.m in Sources */,
 				B870E54B2390134B0085AFA3 /* TYListMenuData.swift in Sources */,
+				B8388409249EFB0100287019 /* HCDepartment.swift in Sources */,
 				B816EB37221DABF400F024D5 /* ZXProductResultParser.m in Sources */,
 				B816EB2B221DABF400F024D5 /* ZXUPCEANExtension2Support.m in Sources */,
 				B816EB39221DABF400F024D5 /* ZXEmailDoCoMoResultParser.m in Sources */,
@@ -3234,6 +3241,7 @@
 				B816EAD1221DABF400F024D5 /* ZXModulusPoly.m in Sources */,
 				B8D700D1246DA51C0024DE3E /* HCPatientDetailController.swift in Sources */,
 				B816EB40221DABF400F024D5 /* ZXExpandedProductResultParser.m in Sources */,
+				B8388412249F013A00287019 /* HCPickerData.swift in Sources */,
 				C421333222056F96006C10C4 /* UIKit+Extension.swift in Sources */,
 				B816EAE7221DABF400F024D5 /* ZXDataMatrixSymbolInfo144.m in Sources */,
 				B816EAFE221DABF400F024D5 /* ZXUPCAReader.m in Sources */,

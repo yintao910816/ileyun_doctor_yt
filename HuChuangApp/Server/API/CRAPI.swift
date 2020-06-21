@@ -15,6 +15,11 @@ enum HCWebCmsType: String {
     case webCms001 = "webCms001"
 }
 
+enum HCZPListParentCode: String {
+    /// 医生职称
+    case doctorRole = "doctor_role"
+}
+
 enum HCMergeProOpType: String {
     /// 标记月经
     case menstruationDate = "menstruationDate"
@@ -140,6 +145,12 @@ enum API{
     case loginTwo(account: String, psd: String)
     /// 获取用户信息
     case selectInfo
+    /// 修改医生资料
+    case updateExtInfo(params: [String: Any])
+    /// 获取所有科室
+    case allDepartment
+    /// 获取所有医生职称
+    case selectZPList(parentCode: HCZPListParentCode)
     /// 首页banner
     case selectBanner
     /// 咨询列表 sort - 0顺序1倒叙
@@ -217,6 +228,12 @@ extension API: TargetType{
             return "api/login/loginTwo"
         case .selectInfo:
             return "api/user/selectInfo"
+        case .updateExtInfo(_):
+            return "api/user/updateExtInfo"
+        case .allDepartment:
+            return "api/user/allDepartment"
+        case .selectZPList(_):
+            return "api/index/selectZPList"
         case .selectBanner:
             return "index/bannerList"
         case .consultList(_):
@@ -292,6 +309,9 @@ extension API: TargetType{
             let dateStr = "\(Int(timeInterval))\(fileType.getSuffix)"
             let formData = MultipartFormData(provider: .data(data), name: "file", fileName: dateStr, mimeType: fileType.rawValue)
             return .uploadMultipart([formData])
+        case .updateExtInfo(let params):
+            let jsonData = try? JSONSerialization.data(withJSONObject: params, options: [])
+            return .requestData(jsonData ?? Data())
         case .version:
             return .requestParameters(parameters: ["type": "ios", "packageName": "com.huchuang.guangsanuser"],
                                       encoding: URLEncoding.default)
@@ -343,6 +363,9 @@ extension API {
     private var parameters: [String: Any]? {
         var params = [String: Any]()
         switch self {
+        case .selectZPList(let parentCode):
+            params["parentCode"] = parentCode.rawValue
+
         case .login(let mobile, let smsCode):
             params["mobile"] = mobile
             params["smsCode"] = smsCode

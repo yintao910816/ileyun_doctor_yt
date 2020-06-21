@@ -18,6 +18,7 @@ class HCBaseListCell: UITableViewCell {
     public var bottomLine: UIView!
     
     public var didEndEditCallBack: ((String)->())?
+    public var didEndEditWithModel: ((HCListCellItem)->())?
     public var switchCallBack: ((Bool)->())?
 
     deinit {

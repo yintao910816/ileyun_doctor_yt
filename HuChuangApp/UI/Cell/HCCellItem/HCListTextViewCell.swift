@@ -37,6 +37,7 @@ class HCListTextViewCell: HCBaseListCell {
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 0.5
         textView.layer.borderColor = RGB(240, 240, 240).cgColor
+        textView.delegate = self
         contentView.addSubview(textView)
         
         saveButton = UIButton()
@@ -46,7 +47,21 @@ class HCListTextViewCell: HCBaseListCell {
         saveButton.backgroundColor = HC_MAIN_COLOR
         saveButton.layer.cornerRadius = 12.5
         saveButton.clipsToBounds = true
+        saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         contentView.addSubview(saveButton)
+    }
+    
+    @objc private func saveAction() {
+        model.detailTitle = textView.text
+        didEndEditWithModel?(model)
+    }
+    
+    override var model: HCListCellItem! {
+        didSet {
+            super.model = model
+            
+            textView.text = model.detailTitle
+        }
     }
     
     override func layoutSubviews() {
@@ -54,5 +69,15 @@ class HCListTextViewCell: HCBaseListCell {
         
         textView.frame = .init(x: 15, y: 0, width: width - 30, height: height - 5 - 25 - 10)
         saveButton.frame = .init(x: width - 15 - 70, y: textView.frame.maxY + 10, width: 70, height: 25)
+    }
+}
+
+extension HCListTextViewCell: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
     }
 }

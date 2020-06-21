@@ -11,5 +11,7 @@ import Foundation
 class HCFileUploadModel: HJModel {
     var fileName: String = ""
     var filePath: String = ""
+    var subFilePath: String = ""
+    
     var audioDuration: UInt = 0
 }

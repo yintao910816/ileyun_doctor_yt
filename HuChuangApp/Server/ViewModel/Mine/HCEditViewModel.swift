@@ -27,7 +27,7 @@ class HCEditUserIconViewModel: BaseViewModel {
             })
             ._doNext(forNotice: hud)
             .flatMap({ [unowned self] image -> Observable<HCUserModel> in
-                return self.requestEditIcon(icon: image!).concatMap{ self.requestUpdateUserInfo(iconPath: $0.filePath) }
+                return self.requestEditIcon(icon: image!).concatMap{ self.requestUpdateInfo(iconPath: $0.filePath) }
             })
             .subscribe(onNext: { [weak self] user in
                 HCHelper.saveLogin(user: user)
@@ -44,32 +44,30 @@ class HCEditUserIconViewModel: BaseViewModel {
             .disposed(by: disposeBag)
     }
 
-    private func requestEditIcon(icon: UIImage) ->Observable<UpLoadIconModel>{
+    private func requestEditIcon(icon: UIImage) ->Observable<HCFileUploadModel>{
         return HCProvider.request(.uploadFile(data: icon.jpegData(compressionQuality: 0.5) ?? Data(), fileType: .image))
-            .map(model: UpLoadIconModel.self)
+            .map(model: HCFileUploadModel.self)
             .asObservable()
     }
     
-    private func requestUpdateUserInfo(iconPath: String) ->Observable<HCUserModel> {
+    private func requestUpdateInfo(iconPath: String) ->Observable<HCUserModel> {
         guard let user = HCHelper.share.userInfoModel else {
             hud.failureHidden("用户信息获取失败，请重新登录") {
                 HCHelper.presentLogin()
             }
             return Observable.empty()
         }
+
+        if var params = user.toJSON() {
+            params["headPath"] = iconPath
+            return HCProvider.request(.updateExtInfo(params: params))
+                .map(model: HCUserModel.self)
+                .asObservable()
+        }
         
-        let params: [String: String] = ["patientId": user.id,
-                                        "name": user.name,
-                                        "sex": "\(user.sex)",
-                                        "headPath": iconPath,
-                                        "synopsis": user.departmentName,
-                                        "birthday": user.birthday,
-                                        "areaCode": user.areaCode]
-        
-        return HCProvider.request(.updateInfo(param: params))
-            .map(model: HCUserModel.self)
-            .asObservable()
+        return Observable.empty()
     }
+    
 }
 
 class HCEditNickNameViewModel: BaseViewModel {

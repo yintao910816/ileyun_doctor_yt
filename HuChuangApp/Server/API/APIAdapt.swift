@@ -65,7 +65,7 @@ struct APIAssistance {
      */
     static public func mothed(API: API) ->Moya.Method{
         switch API {
-        case .selectInfo:
+        case .selectInfo, .selectZPList(_):
             return .get
         default:
             return .post
