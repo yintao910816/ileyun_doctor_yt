@@ -282,6 +282,7 @@
 		B8388410249F00CC00287019 /* HCPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838840D249F00CC00287019 /* HCPickerController.swift */; };
 		B8388412249F013A00287019 /* HCPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388411249F013A00287019 /* HCPickerData.swift */; };
 		B8388414249F049C00287019 /* HCPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388413249F049B00287019 /* HCPickerView.swift */; };
+		B8388416249F2A5A00287019 /* HCOpenConsultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8388415249F2A5A00287019 /* HCOpenConsultStatus.swift */; };
 		B842D1FE22258CC000A4F8DF /* HCAppDelegate+UM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */; };
 		B844BB08247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */; };
 		B844BB0C247F5D1B0087BEA5 /* HCPatientConsultRecordFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844BB0B247F5D1A0087BEA5 /* HCPatientConsultRecordFooter.swift */; };
@@ -971,6 +972,7 @@
 		B838840D249F00CC00287019 /* HCPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCPickerController.swift; sourceTree = "<group>"; };
 		B8388411249F013A00287019 /* HCPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPickerData.swift; sourceTree = "<group>"; };
 		B8388413249F049B00287019 /* HCPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCPickerView.swift; sourceTree = "<group>"; };
+		B8388415249F2A5A00287019 /* HCOpenConsultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCOpenConsultStatus.swift; sourceTree = "<group>"; };
 		B842D1FD22258CC000A4F8DF /* HCAppDelegate+UM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCAppDelegate+UM.swift"; sourceTree = "<group>"; };
 		B842D1FF22258D7F00A4F8DF /* HuChuangApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuChuangApp.entitlements; sourceTree = "<group>"; };
 		B844BB07247F5CF50087BEA5 /* HCPatientConsultRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPatientConsultRecordHeader.swift; sourceTree = "<group>"; };
@@ -2490,6 +2492,7 @@
 				B83883F5249C8B1900287019 /* HCFileUpload.swift */,
 				B8388406249E5D1000287019 /* HCTagName.swift */,
 				B8388408249EFB0100287019 /* HCDepartment.swift */,
+				B8388415249F2A5A00287019 /* HCOpenConsultStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3105,6 +3108,7 @@
 				B816EABD221DABF400F024D5 /* ZXPerspectiveTransform.m in Sources */,
 				B816EABB221DABF400F024D5 /* ZXMathUtils.m in Sources */,
 				B816EAE4221DABF400F024D5 /* ZXDataMatrixErrorCorrection.m in Sources */,
+				B8388416249F2A5A00287019 /* HCOpenConsultStatus.swift in Sources */,
 				C421338622059B8C006C10C4 /* DB.swift in Sources */,
 				B816EAD8221DABF400F024D5 /* ZXPDF417BarcodeValue.m in Sources */,
 				C421338422059B8C006C10C4 /* DBQueue.swift in Sources */,

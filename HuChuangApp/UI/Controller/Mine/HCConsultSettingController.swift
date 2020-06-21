@@ -16,6 +16,9 @@ class HCConsultSettingController: BaseViewController {
     
     override func setupUI() {
         contentView = HCConsultSettingContentView.init(frame: .init(x: 0, y: 0, width: view.width, height: 719))
+        var rect = contentView.frame
+        rect.size.height = contentView.realHeight
+        contentView.frame = rect
         
         tableView.tableHeaderView = contentView
     }

@@ -151,6 +151,9 @@ enum API{
     case allDepartment
     /// 获取所有医生职称
     case selectZPList(parentCode: HCZPListParentCode)
+    /// 获取咨询设置配置
+    case getOpenConsultStatus
+    
     /// 首页banner
     case selectBanner
     /// 咨询列表 sort - 0顺序1倒叙
@@ -234,6 +237,9 @@ extension API: TargetType{
             return "api/user/allDepartment"
         case .selectZPList(_):
             return "api/index/selectZPList"
+        case .getOpenConsultStatus:
+            return "api/patientConsult/getOpenConsultStatus"
+            
         case .selectBanner:
             return "index/bannerList"
         case .consultList(_):

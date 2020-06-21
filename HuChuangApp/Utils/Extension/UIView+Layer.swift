@@ -154,5 +154,4 @@ extension UIView {
         
         layer.shadowPath = path.cgPath
     }
-    
 }
