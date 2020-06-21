@@ -126,11 +126,11 @@ extension TYFiliterView: TYFiliterLayoutDelegate {
     }
     
     func minimumLineSpacing(in section: Int, layout: TYFiliterLayout) -> CGFloat {
-        return 12
+        return 6
     }
     
     func minimumInterSpacing(in section: Int, layout: TYFiliterLayout) -> CGFloat {
-        return 15
+        return 8
     }
     
     func sectionInset(in section: Int, layout: TYFiliterLayout) -> UIEdgeInsets {
